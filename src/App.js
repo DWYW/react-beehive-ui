@@ -1,6 +1,8 @@
 import React from "react"
 import {Route, Link} from 'react-router-dom'
 
+import {BeehiveGrid} from './beehive/'
+
 export default class App extends React.Component {
    constructor(props) {
       super(props);
@@ -12,6 +14,9 @@ export default class App extends React.Component {
          <div className="beehive-app">
 
             <h2>app</h2>
+            <BeehiveGrid>
+               wode
+            </BeehiveGrid>
 
          </div>
       )

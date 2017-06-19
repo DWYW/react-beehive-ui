@@ -13,9 +13,7 @@ reactDom.render(
       <Router>
          <div>
             <ul>
-              <li><NavLink to="/">home</NavLink></li>
-              <li><NavLink to="/hello?id=1">hello</NavLink></li>
-              <li><NavLink to="/welcome">welcome</NavLink></li>
+             test
             </ul>
             <hr/>
            <RouteView routes={routes}></RouteView>
