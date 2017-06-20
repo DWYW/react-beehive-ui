@@ -2,20 +2,43 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './BeehiveGrid.less'
 
-class BeehiveGrid extends React.Component {
+class FlexBox extends React.Component {
    constructor(props) {
       super(props);
    }
 
+   componentDidMount() {
+
+   }
+
    render() {
+      const {flexDirection, flexWrap, justifyContent, alignItems, alignContent, ...restProps} = this.props;
       return (
-         <div className={GRID_CLASSNAME}>
+         <div
+            className={GRID_CLASSNAME}
+            data-flexDirection={flexDirection ? flexDirection : false}
+            data-flexWrap={flexWrap ? flexWrap : false}
+            data-justifyContent={justifyContent? justifyContent : false}
+            data-alignItems={alignItems? alignItems : false}
+            data-alignContent={alignContent? alignContent : false}
+            {...restProps}
+         >
          {this.props.children}
+         <div className="grid-1"></div>
          </div>
       )
    }
 }
 
-const GRID_CLASSNAME = 'beehive-grid';
+FlexBox.propTypes = {
+   flexDirection: PropTypes.string,
+   flexWrap: PropTypes.string,
+   justifyContent: PropTypes.string,
+   alignItems: PropTypes.string,
+   alignContent: PropTypes.string
+};
 
-export default BeehiveGrid
+const PREFIX = 'beehive-';
+const GRID_CLASSNAME = `${PREFIX}grid`;
+
+export default FlexBox
