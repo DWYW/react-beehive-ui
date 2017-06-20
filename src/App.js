@@ -1,7 +1,7 @@
 import React from "react"
 import {Route, Link} from 'react-router-dom'
 
-import {FlexBox} from './beehive/'
+import {FlexBox, FlexItem} from './beehive/'
 
 export default class App extends React.Component {
    constructor(props) {
@@ -10,11 +10,18 @@ export default class App extends React.Component {
       this.test1 = "ewerwq";
       this.test2 = "wrw";
       this._callback = this._callback.bind(this);
-      this.count = 0;
+      this.state = {
+         count: 0
+      }
    }
    _callback(){
 
-      setTimeout(()=>{this.count++;console.log(this.count);},2000)
+      setTimeout(()=>{
+         const count = ++this.state.count;
+         this.setState({
+            count
+         })
+      },100)
    }
    render() {
       console.log(`${this.test1}
@@ -22,14 +29,10 @@ export default class App extends React.Component {
       return (
          <div className="beehive-app">
 
-            <h2>app</h2>
+            <h2>{this.state.count}</h2>
             <FlexBox onClick={()=>{this._callback()}} style={{width:'100px'}} flexDirection="row">
-               <div>22342</div>
-               <div>22342<br/>werwe</div>
-               <div>22342<br/>werwe</div>
-               <div>22342<br/>werwe<br/>werwe<br/>werwe</div>
-               <div>22342<br/>werwe</div>
-               <div>22342</div>
+               <FlexItem order={0} flexGrow={0}>22342</FlexItem>
+               <FlexItem flexGrow={0}>22342<br/>werwe</FlexItem>
             </FlexBox>
 
          </div>

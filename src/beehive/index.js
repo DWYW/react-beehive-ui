@@ -1,5 +1,6 @@
-import FlexBox from './grid/BeehiveGrid'
+import {FlexBox, FlexItem} from './grid/BeehiveGrid'
 
 module.exports = {
-   FlexBox
+   FlexBox,
+   FlexItem
 }
