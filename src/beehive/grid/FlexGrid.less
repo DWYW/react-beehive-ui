@@ -5,7 +5,6 @@
 @alignItems: "flex-start", "flex-end", "center", "baseline", "stretch";
 @alignContent: "flex-start", "flex-end", "center", "space-between", "space-around", "stretch";
 
-
 .data-attr(@dataName, @cssKey, @list, @i: 1) when (@i <= length(@list)) {
    @value: extract(@list, @i);
    .@{prefix}flex-box[@{dataName} = @{value}]{
@@ -16,10 +15,66 @@
 
 .@{prefix}flex-box{
    display: flex;
+   flex-wrap: wrap;
    width: 100%;
 }
+
 .data-attr(data-flexDirection, flex-direction, @flexDirection);
 .data-attr(data-flexWrap, flex-wrap, @flexWrap);
 .data-attr(data-justifyContent, justifu-content, @justifyContent);
 .data-attr(data-alignItems, align-items, @alignItems);
 .data-attr(data-alignContent, align-content, @alignContent);
+
+.beehive-flex-item{
+   width: 100%;
+   max-width: 100%;
+   padding: 0 0.5rem;
+   box-sizing: border-box;
+   flex: 0 0 auto;
+}
+
+.media-col(@clsPrefix, @i:1) when (@i <= 12) {
+   .@{clsPrefix}-@{i} {
+      flex-basis: @i/12*100%;
+      max-width: @i/12*100%;
+   }
+   .media-col(@clsPrefix, @i + 1)
+}
+
+.media-col(col-xs);
+.first-xs{
+   order: -1;
+}
+.last-xs{
+   order: 2;
+}
+
+@media screen and (min-width:768px) {
+   .media-col(col-sm);
+   .first-sm{
+      order: -1;
+   }
+   .last-sm{
+      order: 2;
+   }
+}
+
+@media screen and (min-width:992px) {
+   .media-col(col-md);
+   .first-md{
+      order: -1;
+   }
+   .last-md{
+      order: 2;
+   }
+}
+
+@media screen and (min-width:1200px) {
+   .media-col(col-lg);
+   .first-lg{
+      order: -1;
+   }
+   .last-lg{
+      order: 2;
+   }
+}

@@ -23,6 +23,7 @@ export default class App extends React.Component {
          })
       },100)
    }
+
    render() {
       console.log(`${this.test1}
          ${this.test2}`)
@@ -30,9 +31,9 @@ export default class App extends React.Component {
          <div className="beehive-app">
 
             <h2>{this.state.count}</h2>
-            <FlexBox onClick={()=>{this._callback()}} style={{width:'100px'}} flexDirection="row">
-               <FlexItem order={0} flexGrow={0}>22342</FlexItem>
-               <FlexItem flexGrow={0}>22342<br/>werwe</FlexItem>
+            <FlexBox onClick={()=>{this._callback()}} style={{width:'100%'}} flexDirection="wrap">
+               <FlexItem style={{backgroundColor: 'red'}}>22342</FlexItem>
+               <FlexItem style={{backgroundColor: 'green'}}>22342<br/>werwe</FlexItem>
             </FlexBox>
 
          </div>
