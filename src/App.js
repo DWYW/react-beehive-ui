@@ -2,6 +2,7 @@ import React from "react"
 import {Route, Link} from 'react-router-dom'
 
 import {FlexBox, FlexItem} from './beehive/'
+import utils from './common/utils/'
 
 export default class App extends React.Component {
    constructor(props) {
@@ -25,8 +26,17 @@ export default class App extends React.Component {
    }
 
    render() {
-      console.log(`${this.test1}
-         ${this.test2}`)
+      console.log(utils.string.removeStringBlanks('  sfsf-sf ',false));
+      let a = {a:'a',c:4};
+      let b = {b:'b',c:8};
+      a = utils.object.assignOwnProperty(a,b);
+      console.log(a);
+      b.c=10;
+      console.log(a);
+      console.log(b);
+
+
+
       return (
          <div className="beehive-app">
 
