@@ -16,7 +16,7 @@ class FlexBox extends React.Component {
       alignItems ? attribute['data-alignItems'] = alignItems : "";
       alignContent ? attribute['data-alignContent'] = alignContent : "";
       return (
-         <div className={FLEXBOX_CLASSNAME} {...attribute} {...restProps} >
+         <div className={FLEX_BOX_CLASSNAME} {...attribute} {...restProps} >
             {this.props.children}
          </div>
       )
@@ -32,6 +32,6 @@ FlexBox.propTypes = {
 };
 
 const PREFIX = 'beehive';
-const FLEXBOX_CLASSNAME = `${PREFIX}-flex-box`;
+const FLEX_BOX_CLASSNAME = `${PREFIX}-flex-box`;
 
 export default FlexBox

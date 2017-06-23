@@ -39,7 +39,9 @@ const routes = [{
    path: '/',
    exact: true,
    component: App,
-   params:{classname:'App'}
+   params: {
+      classname: 'App'
+   }
 }]
 
 module.exports = routes
