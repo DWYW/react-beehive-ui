@@ -8,7 +8,7 @@ class FlexItem extends React.Component {
 
    render() {
       let {className, ...restProps} = this.props;
-      className = className? `${FLEXITEM_CLASSNAME} ${className}` : FLEXITEM_CLASSNAME;
+      className = className ? `${FLEX_ITEM_CLASSNAME} ${className}` : FLEX_ITEM_CLASSNAME;
       return (
          <div className={className} {...restProps} >
             {this.props.children}
@@ -23,6 +23,6 @@ FlexItem.propTypes = {
 };
 
 const PREFIX = 'beehive';
-const FLEXITEM_CLASSNAME = `${PREFIX}-flex-item`;
+const FLEX_ITEM_CLASSNAME = `${PREFIX}-flex-item`;
 
 export default FlexItem

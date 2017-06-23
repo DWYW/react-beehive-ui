@@ -1,7 +1,7 @@
 import React from "react"
-import {Route, Link} from 'react-router-dom'
+// import {Route, Link} from 'react-router-dom'
 
-import {FlexBox, FlexItem} from './beehive/'
+import {FlexBox, FlexItem, FieldClick} from './beehive/'
 import utils from './common/utils/'
 
 export default class App extends React.Component {
@@ -27,24 +27,26 @@ export default class App extends React.Component {
 
    render() {
       console.log(utils.string.removeStringBlanks('  sfsf-sf ',false));
-      let a = {a:'a',c:4};
-      let b = {b:'b',c:8};
+      let a = {a: 'a', c: 4};
+      let b = {b: 'b', c: 8};
       a = utils.object.assignOwnProperty(a,b);
       console.log(a);
-      b.c=10;
+      b.c = 10;
       console.log(a);
       console.log(b);
-
-
 
       return (
          <div className="beehive-app">
 
             <h2>{this.state.count}</h2>
-            <FlexBox onClick={()=>{this._callback()}} style={{width:'100%'}} flexDirection="wrap">
+            <FlexBox onClick={()=>{this._callback()}} style={{width: '100%'}} flexDirection="wrap">
                <FlexItem style={{backgroundColor: 'red'}}>22342</FlexItem>
                <FlexItem style={{backgroundColor: 'green'}}>22342<br/>werwe</FlexItem>
             </FlexBox>
+
+            <div style={{width: '120px', border: '1px solid #ccc'}}>
+               <FieldClick>button</FieldClick>
+            </div>
 
          </div>
       )
