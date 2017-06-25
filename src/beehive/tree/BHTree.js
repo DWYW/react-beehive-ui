@@ -90,7 +90,7 @@ class BHTree extends React.Component {
             }
             else{
                this.multiSelectedLayer.splice(this.multiSelectedLayer.indexOf(`${layer}-${key}`),1);
-               this.multiSelected.splice(this.multiSelectedLayer.indexOf(`${layer}-${key}`)+1,1);
+               this.multiSelected.splice(this.multiSelectedLayer.indexOf(`${layer}-${key}`) + 1,1);
             }
             data = this._setNodeSelect(layerPath, key, IS_SELECTED);
          }
@@ -99,14 +99,14 @@ class BHTree extends React.Component {
       this.setState({
          data: data
       })
-
    }
 
    render() {
-      let {data, spacing} = this.props;
+      let {data, className, spacing} = this.props;
       data = this.state.data;
       spacing = spacing == undefined ? "1rem" : spacing;
       const layer = "";
+      className = className ? `beehive-tree ${className}` : 'beehive-tree';
 
       const createTreeNode = (treeNodes, spacing, layer) => {
          return (
@@ -130,7 +130,7 @@ class BHTree extends React.Component {
                         <span>{item.label}</span>
                      </div>
                      {item.children && (item.children instanceof Array) && item.children.length > 0 &&
-                        <ul className={'beehive-tree'} style={itemStyle}>
+                        <ul className={className} style={itemStyle}>
                            {createTreeNode(item.children, spacing, itemLayer)}
                         </ul>
                      }
@@ -141,7 +141,7 @@ class BHTree extends React.Component {
       }
 
       return (
-         <ul className={'beehive-tree'}>
+         <ul className={className}>
             {createTreeNode(data, spacing, layer)}
          </ul>
       )

@@ -4,4 +4,40 @@
    left: 0;
    top: 0;
    height: 100vh;
+
+   .nav-tree{
+      width: 100%;
+      box-sizing: border-box;
+      user-select: none;
+      line-height: 42px;
+      overflow: hidden;
+      transition: all 0.5s;
+      transform-origin: center top;
+
+      .nav-tree-container{
+         list-style: none;
+         line-height: 35px;
+         cursor: pointer;
+
+         .nav-tree-container-label{
+            white-space: nowrap;
+            margin-bottom: 1px;
+
+            .iconfont{
+               padding-right: 3px;
+            }
+
+            &[data-selected = true]{
+               background: rgba(21, 195, 255, 0.3);
+            }
+         }
+
+
+
+         .nav-tree-children-container{
+            width: 100%;
+            overflow: hidden;
+         }
+      }
+   }
 }

@@ -1,4 +1,5 @@
-import {FlexBox, FlexItem, BHTree} from 'beehive';
+import {FlexBox, FlexItem} from 'beehive';
+import NavTree from './NavTree'
 import React from 'react';
 
 export default class Navigation extends React.Component {
@@ -120,7 +121,7 @@ export default class Navigation extends React.Component {
          <FlexBox className="navigation" >
             {this.state.treeSelect}
             <FlexItem className="col-xs-12">
-               <BHTree data={this.treeData} onClick={this._clickCB}></BHTree>
+               <NavTree data={this.treeData} onClick={this._clickCB}></NavTree>
             </FlexItem>
             <i className="iconfont icon-wenjian"></i>
          </FlexBox>
