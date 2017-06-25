@@ -12,7 +12,7 @@ import './styles/index.less';
 reactDom.render(
    <Provider store={store}>
       <Router>
-         <div>
+         <div className={'root-route-view'}>
             <Navigation />
             <RouteView routes={routes}></RouteView>
          </div>

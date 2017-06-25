@@ -1,5 +1,4 @@
 import React from 'react';
-import './FieldClick.less';
 
 class FieldClick extends React.Component {
    constructor(props) {
@@ -23,7 +22,7 @@ class FieldClick extends React.Component {
 
       window.setTimeout(()=>{
          this._deleteElement()
-      }, 1190)
+      }, 500)
    }
 
    _deleteElement(){
@@ -61,13 +60,13 @@ class FieldClick extends React.Component {
       return (
          <div ref={FieldClick => this.FieldClick = FieldClick} className={CLICK_FIELD_CLASSNAME} {...this.props} onClick={e =>{this._clickEvent(e);}}>
             <div className={ANIMATION_CLASSNAME}>
-               {animation.map((item, key) => {
+               {animation.map((item) => {
                   const style = {};
                   // style.width = this.FieldClick.offsetWidth + Math.abs(item.x) * 2;
                   style.width = '100%';
-                  style.height = '150px';
+                  style.height = '120px';
                   style.left = item.x;
-                  style.top = item.y - (150 - this.FieldClick.offsetHeight) / 2;
+                  style.top = item.y - (120 - this.FieldClick.offsetHeight) / 2;
                   return <div key={item.count} className={ANIMATION_ITEM_CLASSNAME} style={style} />
                })}
             </div>

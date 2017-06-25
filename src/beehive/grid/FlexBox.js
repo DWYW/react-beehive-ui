@@ -7,7 +7,7 @@ class FlexBox extends React.Component {
    }
 
    render() {
-      const {flexDirection, flexWrap, justifyContent, alignItems, alignContent, ...restProps} = this.props;
+      const {className, flexDirection, flexWrap, justifyContent, alignItems, alignContent, ...restProps} = this.props;
       const attribute = {};
       flexDirection ? attribute['data-flexDirection'] = flexDirection : "";
       flexWrap ? attribute['data-flexWrap'] = flexWrap : "";
@@ -15,7 +15,7 @@ class FlexBox extends React.Component {
       alignItems ? attribute['data-alignItems'] = alignItems : "";
       alignContent ? attribute['data-alignContent'] = alignContent : "";
       return (
-         <div className={FLEX_BOX_CLASSNAME} {...attribute} {...restProps} >
+         <div className={className ? `${FLEX_BOX_CLASSNAME} ${className}` : FLEX_BOX_CLASSNAME} {...attribute} {...restProps} >
             {this.props.children}
          </div>
       )

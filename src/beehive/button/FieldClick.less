@@ -10,11 +10,12 @@
       width: 100%;
       height: 100%;
       position: absolute;
+      overflow: hidden;
       .@{prefix}field-click-animation-item{
          position: absolute;
          background: rgba(0,0,0,.2);
          border-radius: 500px;
-         animation: item_Scale 1.2s ease;
+         animation: item_Scale 0.5s ease;
       }
    }
    .@{prefix}field-click-text{
@@ -22,22 +23,28 @@
       top: 0;
       left: 0;
       width: 100%;
+
       .@{prefix}field-click-text-inner{
          width: 100%;
          padding: 0.4rem;
          box-sizing: border-box;
+         // display: box;
+         // box-align: center;
+         // box-pack: center;
+         // box-origin: horizontal;
+         .box;
       }
    }
 }
 
 @keyframes item_Scale{
    0%{
-      transform:scale(0.6);
+      transform:scale(0.5);
    }
 
    100%{
-      transform:scale(1.3);
+      transform:scale(1.1);
       left: 0;
-      opacity: 0;
+      opacity: 0.2;
    }
 }

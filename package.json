@@ -2,6 +2,10 @@
   "name": "beehiveui",
   "version": "1.0.0",
   "description": "beehive-ui for react",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "keywords": [
     "react",
     "beehive",
@@ -53,6 +57,7 @@
     "less-loader": "^4.0.4",
     "node-sass": "^4.5.3",
     "ora": "^1.3.0",
+    "postcss-loader": "^2.0.6",
     "react-hot-loader": "^1.3.1",
     "redux-devtools": "^3.4.0",
     "sass-loader": "^6.0.6",

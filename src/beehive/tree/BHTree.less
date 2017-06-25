@@ -1,0 +1,41 @@
+.beehive-tree{
+   width: 100%;
+   box-sizing: border-box;
+   user-select: none;
+   line-height: 32px;
+   overflow: hidden;
+
+   .beehive-tree-container{
+      list-style: none;
+      line-height: 27px;
+      cursor: pointer;
+
+      .beehive-tree-container-label{
+         white-space: nowrap;
+         margin-bottom: 1px;
+
+         .iconfont{
+            padding-right: 3px;
+         }
+
+         .icon-wenjianjia, .icon-wenjianjia-open{
+            color: #15c3ff;
+         }
+         .icon-wenjian{
+            color: #999999;
+         }
+
+
+         &[data-selected = true]{
+            background: rgba(21, 195, 255, 0.3);
+         }
+      }
+
+
+
+      .beehive-tree-children-container{
+         width: 100%;
+         overflow: hidden;
+      }
+   }
+}
