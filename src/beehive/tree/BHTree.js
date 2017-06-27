@@ -36,7 +36,7 @@ class BHTree extends React.Component {
    }
 
    _setNodeSelect(layerPath, key, attr) {
-      if(attr == IS_SELECTED && !this.props.multiselect){
+      if(attr == IS_SELECTED && !this.props.multiselect) {
          this.nodeSelected = {
             layerPath: layerPath,
             key: key

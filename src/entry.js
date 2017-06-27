@@ -13,7 +13,7 @@ reactDom.render(
    <Provider store={store}>
       <Router>
          <div className={'root-route-view'}>
-            <Navigation />
+            <Navigation/>
             <RouteView routes={routes}></RouteView>
          </div>
       </Router>

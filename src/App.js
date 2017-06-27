@@ -1,3 +1,6 @@
+// import {Route, Link} from 'react-router-dom'
+// import RouteView from './common/RouteView'
+// import Navigation from './components/navigation/Navigation';
 import React from "react"
 // import {Route, Link} from 'react-router-dom'
 
@@ -39,6 +42,7 @@ export default class App extends React.Component {
          <div className="beehive-app">
 
             <h2>{this.state.count}</h2>
+
             <FlexBox onClick={()=>{this._callback()}} style={{width: '100%'}} flexDirection="wrap">
                <FlexItem style={{backgroundColor: 'red'}}>22342</FlexItem>
                <FlexItem style={{backgroundColor: 'green'}}>22342<br/>werwe</FlexItem>

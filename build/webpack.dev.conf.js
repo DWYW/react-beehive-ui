@@ -10,11 +10,10 @@ var merge = require('webpack-merge')
 Object.keys(baseWebpackConfig.entry).forEach(function(name) {
       baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
    })
-   //add fetch
-   // Object.keys(baseWebpackConfig.entry)
-   //    .forEach(function(name) {
-   //       baseWebpackConfig.entry[name] = ['whatwg-fetch'].concat(baseWebpackConfig.entry[name])
-   //    })
+//add fetch
+Object.keys(baseWebpackConfig.entry).forEach(function(name) {
+      baseWebpackConfig.entry[name] = ['whatwg-fetch'].concat(baseWebpackConfig.entry[name])
+   })
 module.exports = merge(baseWebpackConfig, {
    // [ { test: /\.css$/, loader: 'vue-style-loader!css-loader' },
    // { test: /\.postcss$/, loader: 'vue-style-loader!css-loader' },

@@ -4,6 +4,8 @@
    left: 0;
    top: 0;
    height: 100vh;
+   background-color: #203145;
+   color: #788fb0;
 
    .nav-tree{
       width: 100%;
@@ -11,28 +13,52 @@
       user-select: none;
       line-height: 42px;
       overflow: hidden;
-      transition: all 0.5s;
+      transition: height 0.3s;
       transform-origin: center top;
 
       .nav-tree-container{
          list-style: none;
-         line-height: 35px;
+         line-height: 41px;
          cursor: pointer;
 
          .nav-tree-container-label{
             white-space: nowrap;
             margin-bottom: 1px;
+            transition: background  0.3s, color 0.3s;
+            padding-left: 1rem;
+            display: block;
 
             .iconfont{
-               padding-right: 3px;
+               padding-right: 5px;
+               font-size: 1.2rem;
+            }
+
+            &:link{
+               color: #788fb0;
+               text-decoration: none;
+            }
+            &:visited{
+               color: #788fb0;
+               text-decoration: none;
+            }
+            &:hover{
+               color: #788fb0;
+               text-decoration: none;
+            }
+            &:active{
+               color: #788fb0;
+               text-decoration: none;
             }
 
             &[data-selected = true]{
-               background: rgba(21, 195, 255, 0.3);
+               background: #3f5374;
             }
+
+            &[data-selected = true]:hover{
+               background: #3f5374;
+            }
+
          }
-
-
 
          .nav-tree-children-container{
             width: 100%;

@@ -37,8 +37,8 @@ class Test extends React.Component {
 }
 // console.log(test)
 function mapStateToProps(state) {
-  return {
-   num: state.test
-  }
+   return {
+      num: state.test
+   }
 }
 module.exports = connect(mapStateToProps,test)(Test)

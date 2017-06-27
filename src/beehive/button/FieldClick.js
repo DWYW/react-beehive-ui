@@ -33,15 +33,6 @@ class FieldClick extends React.Component {
       })
    }
 
-   // _getElement(e) {
-   //    const style = {};
-   //    style.width = this.FieldClick.offsetWidth + Math.abs(offset.x) * 2;
-   //    style.height = '200px';
-   //    style.left = offset.x;
-   //    style.top = offset.y - (200 - this.FieldClick.offsetheight) / 2;
-   //    return <div key={new Date()} className={ANIMATION_ITEM_CLASSNAME} style={style} />
-   // }
-
    _getPoint(e) {
       if(e.pageX && e.pageY){
          return {x: e.pageX, y: e.pageY}
