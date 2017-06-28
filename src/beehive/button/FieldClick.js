@@ -53,7 +53,6 @@ class FieldClick extends React.Component {
             <div className={ANIMATION_CLASSNAME}>
                {animation.map((item) => {
                   const style = {};
-                  // style.width = this.FieldClick.offsetWidth + Math.abs(item.x) * 2;
                   style.width = '100%';
                   style.height = '120px';
                   style.left = item.x;
