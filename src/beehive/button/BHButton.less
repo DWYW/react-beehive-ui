@@ -1,0 +1,44 @@
+@import '../variables.less';
+
+.@{prefix}button{
+   width: 120px;
+   height: 32px;
+   border: 1px solid @borderColor;
+   border-radius: 4px;
+   margin: 2px 3px;
+   display: inline-block;
+   vertical-align: middle;
+   user-select:none;
+   cursor: pointer;
+   background-color: #ffffff;
+   font-size: 0.9rem;
+
+   &.primary{
+      background-color: @primaryColor;
+      border-color: @primaryColor;
+      color: #ffffff;
+   }
+
+   &.warning{
+      background-color: @warningColor;
+      border-color: @warningColor;
+      color: #ffffff;
+   }
+
+   &.success{
+      background-color: @successColor;
+      border-color: @successColor;
+      color: #ffffff;
+   }
+
+   &.error{
+      background-color: @errorColor;
+      border-color: @errorColor;
+      color: #ffffff;
+   }
+
+   &.disabled{
+      cursor: default;
+      background-color: @disableColor;
+   }
+}

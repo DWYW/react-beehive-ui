@@ -4,7 +4,7 @@
 import React from "react"
 // import {Route, Link} from 'react-router-dom'
 
-import {FlexBox, FlexItem, FieldClick} from './beehive/'
+import {FlexBox, FlexItem, FieldClick,BHButton} from './beehive/'
 // import utils from './common/utils/'
 
 export default class App extends React.Component {
@@ -43,7 +43,7 @@ export default class App extends React.Component {
 
             <h2>{this.state.count}</h2>
 
-            <FlexBox onClick={()=>{this._callback()}} style={{width: '100%'}} flexDirection="wrap">
+            <FlexBox onClick={()=>{this._callback()}} style={{width: '100%'}} justifyContent="center" alignItems={'center'} flexDirection="wrap">
                <FlexItem style={{backgroundColor: 'red'}}>22342</FlexItem>
                <FlexItem style={{backgroundColor: 'green'}}>22342<br/>werwe</FlexItem>
             </FlexBox>
@@ -54,6 +54,13 @@ export default class App extends React.Component {
             <div style={{width: '120px', border: '1px solid #ccc'}}>
                <FieldClick>button</FieldClick>
             </div>
+
+            <BHButton className={'primary'} type={'button'} animation={true} disabled={true} onClick={() => this._callback()}>disabled</BHButton>
+            <BHButton onClick={() => this._callback()}>primary</BHButton>
+            <BHButton className={'primary'} onClick={() => this._callback()}>primary</BHButton>
+            <BHButton className={'warning'} type={'button'}  onClick={() => this._callback()}>warning</BHButton>
+            <BHButton className={'error'} type={'button'}  onClick={() => this._callback()}>error</BHButton>
+            <BHButton className={'success'} type={'button'} onClick={() => this._callback()}>success</BHButton>
 
          </div>
       )

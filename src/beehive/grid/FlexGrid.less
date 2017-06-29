@@ -1,13 +1,13 @@
 @import '../variables.less';
-@flexDirection: "row", "row-reverse", "column", "column-reverse";
-@flexWrap: "nowrap", "wrap", "wrap-reverse";
-@justifyContent: "flex-start", "flex-end", "center", "space-between", "space-around";
-@alignItems: "flex-start", "flex-end", "center", "baseline", "stretch";
-@alignContent: "flex-start", "flex-end", "center", "space-between", "space-around", "stretch";
+@flexDirection: row, row-reverse, column, column-reverse;
+@flexWrap: nowrap, wrap, wrap-reverse;
+@justifyContent: flex-start, flex-end, center, space-between, space-around;
+@alignItems: flex-start, flex-end, center, baseline, stretch;
+@alignContent: flex-start, flex-end, center, space-between, space-around, stretch;
 
 .data-attr(@dataName, @cssKey, @list, @i: 1) when (@i <= length(@list)) {
    @value: extract(@list, @i);
-   .@{prefix}flex-box[@{dataName} = @{value}]{
+   .@{prefix}flex-box[@{dataName} = "@{value}"]{
       @{cssKey}: extract(@list, @i);
    }
    .data-attr(@dataName, @cssKey, @list, (@i + 1))
@@ -21,7 +21,7 @@
 
 .data-attr(data-flexDirection, flex-direction, @flexDirection);
 .data-attr(data-flexWrap, flex-wrap, @flexWrap);
-.data-attr(data-justifyContent, justifu-content, @justifyContent);
+.data-attr(data-justifyContent, justify-content, @justifyContent);
 .data-attr(data-alignItems, align-items, @alignItems);
 .data-attr(data-alignContent, align-content, @alignContent);
 
