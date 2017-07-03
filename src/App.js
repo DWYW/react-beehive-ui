@@ -4,7 +4,7 @@
 import React from "react"
 // import {Route, Link} from 'react-router-dom'
 
-import {FlexBox, FlexItem, FieldClick,BHButton} from './beehive/'
+import {FlexBox, FlexItem, FieldClick, BHButton, BHInput} from './beehive/'
 // import utils from './common/utils/'
 
 export default class App extends React.Component {
@@ -55,12 +55,23 @@ export default class App extends React.Component {
                <FieldClick>button</FieldClick>
             </div>
 
-            <BHButton className={'primary'} type={'button'} animation={true} disabled={true} onClick={() => this._callback()}>disabled</BHButton>
+            <BHButton className={'primary'} animation={true} disabled={true} onClick={() => this._callback()}>disabled</BHButton>
             <BHButton onClick={() => this._callback()}>primary</BHButton>
             <BHButton className={'primary'} onClick={() => this._callback()}>primary</BHButton>
-            <BHButton className={'warning'} type={'button'}  onClick={() => this._callback()}>warning</BHButton>
-            <BHButton className={'error'} type={'button'}  onClick={() => this._callback()}>error</BHButton>
-            <BHButton className={'success'} type={'button'} onClick={() => this._callback()}>success</BHButton>
+            <BHButton className={'warning'} onClick={() => this._callback()}>warning</BHButton>
+            <BHButton className={'error'} onClick={() => this._callback()}>error</BHButton>
+            <BHButton className={'success'} onClick={() => this._callback()}>success</BHButton>
+            <br/>
+            <BHButton animation={true} onClick={() => this._callback()}>primary</BHButton>
+            <BHButton animation={true} className={'primary'} onClick={() => this._callback()}>primary</BHButton>
+            <BHButton animation={true} className={'warning'} onClick={() => this._callback()}>warning</BHButton>
+            <BHButton animation={true} className={'error'} onClick={() => this._callback()}>error</BHButton>
+            <BHButton animation={true} className={'success'} onClick={() => this._callback()}>success</BHButton>
+
+            <div>
+               <div><BHInput/></div>
+               <div><BHInput type={'number'}/></div>
+            </div>
 
          </div>
       )

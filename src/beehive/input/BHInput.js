@@ -38,5 +38,5 @@ BHInput.propTypes = {
 }
 
 const BHINPUT_CONTAINER_CLASSNAME = `${PREFIX}-input-container`
-const BHINPUT_CLASSNAME = `${PREFIX}-input-container`
+const BHINPUT_CLASSNAME = `${PREFIX}-input`
 export default BHInput;
