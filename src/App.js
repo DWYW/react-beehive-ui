@@ -4,7 +4,7 @@
 import React from "react"
 // import {Route, Link} from 'react-router-dom'
 
-import {FlexBox, FlexItem, FieldClick, BHButton, BHInput} from './beehive/'
+import {FlexBox, FlexItem, FieldClick, BHButton, BHInput, NumberInput} from './beehive/'
 // import utils from './common/utils/'
 
 export default class App extends React.Component {
@@ -70,7 +70,7 @@ export default class App extends React.Component {
 
             <div>
                <div><BHInput/></div>
-               <div><BHInput type={'number'}/></div>
+               <div><NumberInput type={'number'}/></div>
             </div>
 
          </div>

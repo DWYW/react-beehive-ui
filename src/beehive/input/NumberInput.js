@@ -1,8 +1,9 @@
+import BHInput from './BHInput';
 import {PREFIX} from '../variables';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class BHInput extends React.Component {
+class NumberInput extends BHInput {
    constructor(props) {
       super(props);
    }
@@ -49,7 +50,7 @@ class BHInput extends React.Component {
    }
 }
 
-BHInput.propTypes = {
+NumberInput.propTypes = {
    type: PropTypes.string,
    style: PropTypes.object,
    className: PropTypes.string,
@@ -58,4 +59,4 @@ BHInput.propTypes = {
 
 const BHINPUT_CONTAINER_CLASSNAME = `${PREFIX}-input-container`
 const BHINPUT_CLASSNAME = `${PREFIX}-input`
-export default BHInput;
+export default NumberInput;
