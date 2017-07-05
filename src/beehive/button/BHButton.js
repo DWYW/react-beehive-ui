@@ -23,7 +23,6 @@ class BHButton extends React.Component {
       let otherProps = this.props.disabled ? null : restProps;
       animation = this.props.disabled ? false : animation;
       className = this.props.disabled ? 'disabled' : className;
-      console.log(className)
       return (
          <div className={this._setClassName(className)} {...otherProps} data-animation={animation}>
             {animation ? (

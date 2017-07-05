@@ -69,8 +69,8 @@ export default class App extends React.Component {
             <BHButton animation={true} className={'success'} onClick={() => this._callback()}>success</BHButton>
 
             <div>
-               <div><BHInput/></div>
-               <div><NumberInput type={'number'} onChange={(res) => {console.log(res)}}/></div>
+               <div><BHInput type={'text'}/></div>
+               <div><NumberInput className={'primary'} type={'number'} onChange={(res) => {console.log(res)}}/></div>
             </div>
 
          </div>
