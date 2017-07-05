@@ -70,7 +70,7 @@ export default class App extends React.Component {
 
             <div>
                <div><BHInput/></div>
-               <div><NumberInput type={'number'}/></div>
+               <div><NumberInput type={'number'} onChange={(res) => {console.log(res)}}/></div>
             </div>
 
          </div>

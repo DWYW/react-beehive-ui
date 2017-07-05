@@ -6,47 +6,74 @@ import PropTypes from 'prop-types';
 class NumberInput extends BHInput {
    constructor(props) {
       super(props);
-   }
-
-   _getClassName(clsn) {
-      return clsn ? `${BHINPUT_CONTAINER_CLASSNAME} ${clsn}` : BHINPUT_CONTAINER_CLASSNAME;
+      this._timeout = null;
+      this.state = {
+         value: this.defaultValue
+      }
    }
 
    render() {
-      const {className, style, type, icon, defaultValue, ...restProps} = this.props;
-      const getInput = () => {
-         const iptType = type == 'number' ? "text" : type;
-         const iptClassName = type == 'number' ? `${BHINPUT_CLASSNAME} input-number` : BHINPUT_CLASSNAME;
-         let iptDefaultVal;
-
-         if(type == 'number') {
-            if(typeof defaultValue == 'number') {
-               iptDefaultVal = defaultValue;
-            }
-            else{
-               iptDefaultVal = 0;
-            }
-         }
-         else {
-            iptDefaultVal = defaultValue;
-         }
-
-         return <input className={iptClassName} type={iptType} defaultValue={iptDefaultVal} {...restProps}/>
-      }
+      console.log(this.type)
       return (
-         <div className={this._getClassName(className)} style={style}>
-            {icon &&
-               <i className={`iconfont ${icon}`}></i>
+         <div className={this.getClassName(this.className)} style={this.style}>
+            {this.icon &&
+               <i className={`iconfont ${this.icon}`}></i>
             }
-            {getInput()}
-            {type == 'number' &&
-               <div className={'count-btn-container'}>
-                  <div className='count-btn count-add-btn'>+</div>
-                  <div className={'count-btn count-subtract-btn'}>-</div>
-               </div>
-            }
+            <input ref={'numberInput'} className={BHINPUT_CLASSNAME}
+               type={this.type} defaultValue={this.defaultValue}
+               onChange={(e) => {this._handleChange(e)}} value={this.state.value}
+               {...this.restProps}/>
+            <div className={'count-btn-container'}>
+               <div className='count-btn count-add-btn'><span></span></div>
+               <div className={'count-btn count-subtract-btn'}><span></span></div>
+            </div>
          </div>
       )
+   }
+
+   propsInit(){
+      super.propsInit();
+      this._onChange = this.restProps.onChange;
+      this._bakValue = this.defaultValue;
+      delete this.restProps.onChange;
+      console.log(this)
+   }
+
+   set type(type) {
+      console.log(type)
+      this._type = type != 'number' ? 'number' : type;
+   }
+
+   set defaultValue(value) {
+      this._defaultValue = typeof value == 'number' ? value : 0;
+   }
+
+   get defaultValue(){
+      return this._defaultValue;
+   }
+
+   _handleChange(e) {
+      console.log(e.target.value)
+      console.log(this.state.value)
+      let value = e.target.value;
+      clearTimeout(this._timeout);
+
+      this._timeout = window.setTimeout(()=>{
+         if(value.match(/^\d+$/g)) {
+            this._bakValue = value;
+            this.setState({
+               value: value
+            })
+         }
+         else {
+            this.setState({
+               value: this._bakValue
+            })
+
+         }
+
+         this._onChange(value)
+      },100)
    }
 }
 

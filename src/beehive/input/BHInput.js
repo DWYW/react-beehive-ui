@@ -7,46 +7,45 @@ class BHInput extends React.Component {
       super(props);
    }
 
-   _getClassName(clsn) {
-      return clsn ? `${BHINPUT_CONTAINER_CLASSNAME} ${clsn}` : BHINPUT_CONTAINER_CLASSNAME;
+   componentWillMount() {
+      this.propsInit();
    }
 
    render() {
-      const {className, style, type, icon, defaultValue, ...restProps} = this.props;
-      const getInput = () => {
-         const iptType = type == 'number' ? "text" : type;
-         const iptClassName = type == 'number' ? `${BHINPUT_CLASSNAME} input-number` : BHINPUT_CLASSNAME;
-         let iptDefaultVal;
-
-         if(type == 'number') {
-            if(typeof defaultValue == 'number') {
-               iptDefaultVal = defaultValue;
-            }
-            else{
-               iptDefaultVal = 0;
-            }
-         }
-         else {
-            iptDefaultVal = defaultValue;
-         }
-
-         return <input className={iptClassName} type={iptType} defaultValue={iptDefaultVal} {...restProps}/>
-      }
       return (
-         <div className={this._getClassName(className)} style={style}>
-            {icon &&
-               <i className={`iconfont ${icon}`}></i>
+         <div className={this.getClassName(this._className)} style={this._style}>
+            {this.icon &&
+               <i className={`iconfont ${this.icon}`}></i>
             }
-            {getInput()}
-            {type == 'number' &&
-               <div className={'count-btn-container'}>
-                  <div className='count-btn count-add-btn'>+</div>
-                  <div className={'count-btn count-subtract-btn'}>-</div>
-               </div>
-            }
+            <input className={BHINPUT_CLASSNAME}
+               type={this.type} defaultValue={this.defaultValue}
+               {...this.restProps}/>
          </div>
       )
    }
+
+   propsInit() {
+      const {className, style, type, icon, defaultValue, ...restProps} = this.props;
+      this.className = className;
+      this.style = style;
+      this.type = type;
+      this.icon = icon;
+      this.defaultValue = defaultValue;
+      this.restProps = restProps;
+   }
+
+   getClassName(clsn) {
+      return clsn ? `${BHINPUT_CONTAINER_CLASSNAME} ${clsn}` : BHINPUT_CONTAINER_CLASSNAME;
+   }
+
+   set type(type) {
+      this._type = type == 'number' ? 'text' : type;
+   }
+
+   get type(){
+      return this._type;
+   }
+
 }
 
 BHInput.propTypes = {

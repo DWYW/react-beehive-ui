@@ -1,4 +1,5 @@
 @import '../variables.less';
+@TBBorderColor: #666666;
 
 .@{prefix}input-container {
    max-width: 100%;
@@ -47,8 +48,28 @@
          cursor: pointer;
          user-select: none;
 
+         &.count-add-btn>span, &.count-subtract-btn>span{
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            box-sizing: border-box;
+            transform: rotate(45deg);
+         }
+
          &.count-add-btn {
             border-bottom: 1px solid @borderColor;
+
+            >span {
+               border-left: 1px solid @TBBorderColor;
+               border-top: 1px solid @TBBorderColor;
+               margin-top: 3px;
+            }
+         }
+
+         &.count-subtract-btn>span{
+            border-right: 1px solid @TBBorderColor;
+            border-bottom: 1px solid @TBBorderColor;
+            margin-top: -3px;
          }
 
          &:active {
