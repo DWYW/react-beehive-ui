@@ -24,12 +24,12 @@ class BHInput extends React.Component {
 
    render() {
       return (
-         <div className={this.getClassName(this.className)} style={this._style}>
+         <div className={this.getClassName(this.className)}>
             {this.icon &&
                <i className={`iconfont ${this.icon}`}></i>
             }
             <input className={BHINPUT_CLASSNAME}
-               type={this.type} defaultValue={this.defaultValue}
+               type={this.type} defaultValue={this.defaultValue}  style={this.style}
                {...this.restProps}/>
          </div>
       )

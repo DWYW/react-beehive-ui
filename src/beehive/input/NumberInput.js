@@ -19,11 +19,11 @@ class NumberInput extends BHInput {
 
    render() {
       return (
-         <div className={this.getClassName(this.className)} style={this.style}>
+         <div className={this.getClassName(this.className)}>
             {this.icon &&
                <i className={`iconfont ${this.icon}`}></i>
             }
-            <input className={`${BHINPUT_CLASSNAME} input-number`} type={this.type}
+            <input className={`${BHINPUT_CLASSNAME} input-number`} type={this.type} style={this.style}
                onChange={(e) => {this._handleChange(e)}} value={this.state.value}
                {...this.restProps}/>
             <div className={'count-btn-container'}>
@@ -65,7 +65,10 @@ class NumberInput extends BHInput {
       this._timeout = window.setTimeout(()=>{
          if(value.match(/^[-]?\d*$/g)) {
             this._updateValue(value);
-            this._onChange(value);
+
+            if(this._onChange){
+               this._onChange(value);
+            }
          }
          else {
             this.setState({
@@ -78,13 +81,18 @@ class NumberInput extends BHInput {
    _handleCountAdd() {
       const value = this.state.value == "" ? 1 : parseInt(this.state.value) + 1;
       this._updateValue(value.toString());
-      this._onChange(value.toString());
+
+      if(this._onChange){
+         this._onChange(value.toString());
+      }
    }
 
    _handleCountSubtract() {
       const value = this.state.value == "" ? -1 :  parseInt(this.state.value) - 1;
       this._updateValue(value.toString());
-      this._onChange(value.toString());
+      if(this._onChange){
+         this._onChange(value.toString());
+      }
    }
 
    _updateValue(value) {
