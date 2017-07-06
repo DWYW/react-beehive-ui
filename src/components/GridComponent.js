@@ -1,9 +1,9 @@
 import Example from 'common/Example';
-import {BHButton} from 'beehive';
+import {FlexBox, FlexItem} from 'beehive';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class ButtonComponent extends React.Component {
+class GridComponent extends React.Component {
    constructor(props) {
       super(props);
    }
@@ -12,11 +12,11 @@ class ButtonComponent extends React.Component {
       return (
          <div>
             <Example title={"button"} code={"<BHButton>buttton</BHButton>"}>
-               <BHButton>buttton</BHButton>
+               221321
             </Example>
          </div>
       )
    }
 }
 
-export default ButtonComponent
+export default GridComponent

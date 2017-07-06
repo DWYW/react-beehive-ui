@@ -8,6 +8,24 @@ const navigations = [{
    },
    children: []
 }, {
+   label: "FlexGrid",
+   iconClassName: 'icon-wenjian',
+   isOpen: false,
+   isSelected: false,
+   to: {
+      pathname: '/flexgrid'
+   },
+   children: []
+}, {
+   label: "Button",
+   iconClassName: 'icon-wenjian',
+   isOpen: false,
+   isSelected: false,
+   to: {
+      pathname: '/button'
+   },
+   children: []
+},{
    label: "lable2",
    iconClassName: 'icon-setting',
    isOpen: false,
