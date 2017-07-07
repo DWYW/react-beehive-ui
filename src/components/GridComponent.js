@@ -10,7 +10,7 @@ class GridComponent extends React.Component {
 
    render() {
       return (
-         <div>
+         <div className={'component'}>
             <Example title={"button"} code={"<BHButton>buttton</BHButton>"}>
                221321
             </Example>

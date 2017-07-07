@@ -13,8 +13,8 @@ class Example extends React.Component {
             <h2>{this.props.title}</h2>
             <div className="example-container">
                <FlexBox>
-                  <FlexItem>{this.props.children}</FlexItem>
-                  <FlexItem>{this.props.code}</FlexItem>
+                  <FlexItem className={'col-xs-12 example-example'}>{this.props.children}</FlexItem>
+                  <FlexItem className={'col-xs-12 example-code'}>{this.props.code}</FlexItem>
                </FlexBox>
             </div>
          </div>
