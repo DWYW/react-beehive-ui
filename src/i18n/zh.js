@@ -5,7 +5,6 @@ const zh = {
    description: "说明",
    default: "默认",
    type: "类型"
-
 }
 
 export default zh
