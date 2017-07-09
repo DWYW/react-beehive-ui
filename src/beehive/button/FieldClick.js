@@ -21,7 +21,7 @@ class FieldClick extends React.Component {
       })
 
       window.setTimeout(()=>{
-         this._deleteElement()
+         // this._deleteElement()
       }, 500)
    }
 
@@ -35,13 +35,23 @@ class FieldClick extends React.Component {
 
    _getPoint(e) {
       if(e.pageX && e.pageY){
+         console.log(e.target.offsetLeft)
+         console.log(this.FieldClick)
          return {x: e.pageX, y: e.pageY}
       }
    }
 
+   _getOffset(){
+      console.log(this.FieldClick.offsetParent)
+   }
+
    _mountPoint(pos){
       const count = ++this.count;
-      const x = pos.x - this.FieldClick.offsetWidth / 2 - this.FieldClick.offsetLeft;
+      this._getOffset();
+      console.log(pos.x)
+      console.log(this.FieldClick.offsetLeft)
+      console.log(this.FieldClick.offsetWidth / 2)
+      const x = pos.x - this.FieldClick.offsetLeft - this.FieldClick.offsetWidth / 2;
       const y = pos.y - this.FieldClick.offsetHeight / 2 - this.FieldClick.offsetTop;
       return {x: x, y: y, count: count}
    }
@@ -57,7 +67,7 @@ class FieldClick extends React.Component {
                   style.height = '120px';
                   style.left = item.x;
                   style.top = item.y - (120 - this.FieldClick.offsetHeight) / 2;
-                  return <div key={item.count} className={ANIMATION_ITEM_CLASSNAME} style={style} />
+                  return <div key={`FieldClick${item.count}`} className={ANIMATION_ITEM_CLASSNAME} style={style} />
                })}
             </div>
             <div className={TEXT_CLASSNAME}>

@@ -1,5 +1,5 @@
 import App from '../App';
-import ButtonComponent from '../components/button/ButtonComponent';
+import ButtonComponent from '../components/ButtonComponent';
 import GridComponent from '../components/GridComponent';
 
 import Test from '../Test'

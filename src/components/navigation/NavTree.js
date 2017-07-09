@@ -151,6 +151,7 @@ class NavTree extends React.Component {
                const itemStyle = {
                   height: item.isOpen == false ? "0px" : `${42 * item.children.length}px`
                };
+
                return (
                   <li key={item.label} className="nav-tree-container">
                      {!item.isSelected && (this._route.layer != layer || this._route.key != key) && item.children.length == 0 ?

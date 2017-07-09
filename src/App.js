@@ -51,6 +51,7 @@ export default class App extends React.Component {
             <BHButton className={'success'} onClick={() => this._callback()}>success</BHButton>
             <br/>
             <BHButton animation={true} onClick={() => this._callback()}>primary</BHButton>
+            <BHButton animation={true}>default</BHButton>
             <BHButton animation={true} className={'primary'} onClick={() => this._callback()}>primary</BHButton>
             <BHButton animation={true} className={'warning'} onClick={() => this._callback()}>warning</BHButton>
             <BHButton animation={true} className={'error'} onClick={() => this._callback()}>error</BHButton>

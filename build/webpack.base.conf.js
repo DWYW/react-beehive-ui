@@ -29,6 +29,7 @@ module.exports = {
          'assets': path.resolve(__dirname, '../src/assets'),
          'components': path.resolve(__dirname, '../src/components'),
          'common': path.resolve(__dirname, '../src/common'),
+         'i18n': path.resolve(__dirname, '../src/i18n'),
          'beehive': path.resolve(__dirname, '../src/beehive')
       }
    },

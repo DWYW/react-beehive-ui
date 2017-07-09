@@ -1,11 +1,12 @@
 .navigation{
-   width: 160px;
+   width: 180px;
    position: fixed;
    left: 0;
    top: 0;
    height: 100vh;
-   background-color: #203145;
-   color: #788fb0;
+   background-color: #ffffff;
+   color: #414141;
+   border-right: 1px solid #e5e5e5;
 
    .nav-tree{
       width: 100%;
@@ -34,28 +35,25 @@
             }
 
             &:link{
-               color: #788fb0;
+               color: #666666;
                text-decoration: none;
             }
             &:visited{
-               color: #788fb0;
+               color: #666666;
                text-decoration: none;
             }
             &:hover{
-               color: #788fb0;
+               color: #219ffa;
                text-decoration: none;
             }
             &:active{
-               color: #788fb0;
+               color: #666666;
                text-decoration: none;
             }
 
             &[data-selected = true]{
-               background: #3f5374;
-            }
-
-            &[data-selected = true]:hover{
-               background: #3f5374;
+               background: #d7efff;
+               color: #219ffa;
             }
 
          }

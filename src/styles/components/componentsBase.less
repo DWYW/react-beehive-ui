@@ -1,5 +1,20 @@
 .component {
-   padding: 5px 10px;
+   padding: 5px 15px 50px;
+}
+
+.text-pane {
+   width: 100%;
+   box-sizing: border-box;
+   padding: 3px 10px;
+   line-height: 20px;
+
+   h3 {
+      padding: 10px 0;
+   }
+
+   .text-container{
+      font-size: 14px;
+   }
 }
 
 .base-example {
@@ -8,26 +23,58 @@
    box-sizing: border-box;
    margin-bottom: 15px;
 
-   >h2 {
-      line-height: 42px;
-   }
-
-   .example-container{
+   .example-container {
       border: 1px solid #e9e9e9;
       line-height: 20px;
-      border-radius: 6px;
+      border-radius: 4px;
       font-size: 14px;
       overflow: hidden;
+      position: relative;
 
-      .example-example{
-         padding: 10px;
+      .iconfont {
+         position: absolute;
+         right: 8px;
+         top: 5px;
+         cursor: pointer;
+
+         &:active {
+            color: #108ee9;
+         }
+      }
+
+      .example-example {
+         padding: 30px 10px 20px;
          box-sizing: border-box;
       }
 
-      .example-code{
+      .example-descrition {
+         position: relative;
+         padding: 15px 10px;
+         border-top: 1px solid #e9e9e9;
+         font-size: 12px;
 
-         padding: 10px;
+         &>span {
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            line-height: 24px;
+            font-size: 14px;
+            font-weight: bold;
+            background: #fff;
+            padding: 0 10px;
+
+         }
+      }
+
+      .example-code {
+         padding: 10px 10px 0;
          box-sizing: border-box;
+         font-size: 12px;
+         border-top: 1px dashed #e9e9e9;
+
+         code {
+            padding-bottom: 10px;
+         }
       }
    }
 }

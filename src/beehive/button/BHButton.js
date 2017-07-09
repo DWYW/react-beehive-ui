@@ -10,10 +10,6 @@ class BHButton extends React.Component {
       super(props);
    }
 
-   createBtn() {
-
-   }
-
    _setClassName(className){
       return className ? `${BTN_CLASSNAME} ${className}` : BTN_CLASSNAME;
    }
@@ -24,7 +20,7 @@ class BHButton extends React.Component {
       animation = this.props.disabled ? false : animation;
       className = this.props.disabled ? 'disabled' : className;
       return (
-         <div className={this._setClassName(className)} {...otherProps} data-animation={animation}>
+         <button className={this._setClassName(className)} {...otherProps} data-animation={animation}>
             {animation ? (
                <FieldClick>
                   <FlexBox justifyContent="center" alignItems="center" style={FLEX_BOX_STYLE}>
@@ -40,7 +36,7 @@ class BHButton extends React.Component {
                   </FlexItem>
                </FlexBox>
             )}
-         </div>
+         </button>
       )
    }
 }
@@ -61,7 +57,8 @@ const FLEX_BOX_STYLE = {
    boxSizing: 'border-box'
 }
 const FLEX_ITEM_STYLE = {
-   textAlign: 'center'
+   textAlign: 'center',
+   marginTop: '-2px'
 }
 
 export default BHButton
