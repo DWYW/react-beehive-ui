@@ -20,8 +20,8 @@ class NumberInput extends BHInput {
    render() {
       return (
          <div className={this.getClassName(this.className)}>
-            {this.icon &&
-               <i className={`iconfont ${this.icon}`}></i>
+            {this.iconClassName &&
+               <i className={`iconfont ${this.iconClassName}`}></i>
             }
             <input className={`${BHINPUT_CLASSNAME} input-number`} type={this.type} style={this.style}
                onChange={(e) => {this._handleChange(e)}} value={this.state.value}
@@ -79,6 +79,10 @@ class NumberInput extends BHInput {
    }
 
    _handleCountAdd() {
+      if(this.props.disabled === true || this.props.disabled === "disabled") {
+         return false;
+      }
+
       const value = this.state.value == "" ? 1 : parseInt(this.state.value) + 1;
       this._updateValue(value.toString());
 
@@ -88,6 +92,10 @@ class NumberInput extends BHInput {
    }
 
    _handleCountSubtract() {
+      if(this.props.disabled === true || this.props.disabled === "disabled") {
+         return false;
+      }
+
       const value = this.state.value == "" ? -1 :  parseInt(this.state.value) - 1;
       this._updateValue(value.toString());
       if(this._onChange){

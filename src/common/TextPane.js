@@ -14,7 +14,7 @@ class TextPane extends React.Component {
 
       return (
          <div className={this._initClassName(className)} {...restProps}>
-            <h3>{this.props.title}</h3>
+            {this.props.title && <h3>{this.props.title}</h3>}
             {this.props.children &&
                <div className="text-container">{this.props.children}</div>
             }

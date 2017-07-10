@@ -3,7 +3,6 @@ import TextPane from 'common/TextPane';
 import i18n from  'i18n/'
 import {FlexBox, FlexItem} from 'beehive';
 import React from 'react';
-// import PropTypes from 'prop-types';
 
 const codes = [`<FlexBox flexDirection="row" flexWrap="nowrap">
    <FlexItem style={{width: '25%', background: "#108ee9", color: "#ffffff"}}>

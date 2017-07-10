@@ -25,8 +25,8 @@ class BHInput extends React.Component {
    render() {
       return (
          <div className={this.getClassName(this.className)}>
-            {this.icon &&
-               <i className={`iconfont ${this.icon}`}></i>
+            {this.iconClassName &&
+               <i className={`iconfont ${this.iconClassName}`}></i>
             }
             <input className={BHINPUT_CLASSNAME}
                type={this.type} defaultValue={this.defaultValue}  style={this.style}
@@ -36,11 +36,11 @@ class BHInput extends React.Component {
    }
 
    propsInit(props) {
-      const {className, style, type, icon, defaultValue, ...restProps} = props;
+      const {className, style, type, iconClassName, defaultValue, ...restProps} = props;
       this.className = className;
       this.style = style;
       this.type = type;
-      this.icon = icon;
+      this.iconClassName = iconClassName;
       this.defaultValue = defaultValue;
       this.restProps = restProps;
       delete this.props.value;
@@ -67,6 +67,7 @@ BHInput.propTypes = {
    type: PropTypes.string,
    style: PropTypes.object,
    className: PropTypes.string,
+   iconClassName: PropTypes.string
 
 }
 

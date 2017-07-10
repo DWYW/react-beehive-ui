@@ -25,7 +25,16 @@ const navigations = [{
       pathname: '/button'
    },
    children: []
-},{
+}, {
+   label: "Input",
+   iconClassName: 'icon-wenjian',
+   isOpen: false,
+   isSelected: false,
+   to: {
+      pathname: '/input'
+   },
+   children: []
+}, {
    label: "lable2",
    iconClassName: 'icon-setting',
    isOpen: false,

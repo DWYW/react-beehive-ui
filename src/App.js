@@ -4,7 +4,7 @@
 import React from "react"
 // import {Route, Link} from 'react-router-dom'
 
-import {BHButton, BHInput, NumberInput} from './beehive/'
+import {BHButton, BHInput, NumberInput,BHTree} from './beehive/'
 // import utils from './common/utils/'
 
 export default class App extends React.Component {
@@ -14,9 +14,33 @@ export default class App extends React.Component {
       this.test1 = "ewerwq";
       this.test2 = "wrw";
       this._callback = this._callback.bind(this);
+
       this.state = {
          count: 0
       }
+
+      this.treeData = [{
+         idx: '000001',
+         label: "tree-0-0",
+         isSelected: false,
+         isOpen: false,
+         iconClassName: [null, null],
+         children: [{
+            idx: '000011',
+            label: "tree-0-1-0",
+            isSelected: false,
+            isOpen: false,
+            iconClassName: [null, null],
+            children: null
+         }]
+      }, {
+         idx: '000002',
+         label: "tree-0-1",
+         isSelected: false,
+         isOpen: false,
+         iconClassName: [null, null],
+         children: null
+      }]
    }
    _callback(){
 
@@ -65,6 +89,8 @@ export default class App extends React.Component {
                <div><NumberInput className={'error'} type={'number'} /></div>
                <div><NumberInput type={'number'} /></div>
             </div>
+
+            <BHTree data={this.treeData}></BHTree>
 
          </div>
       )

@@ -1,6 +1,7 @@
 import App from '../App';
 import ButtonComponent from '../components/ButtonComponent';
 import GridComponent from '../components/GridComponent';
+import InputComponent from '../components/InputComponent';
 
 import Test from '../Test'
 import Hello from '../Hello'
@@ -25,6 +26,12 @@ const routes = [{
    component: ButtonComponent,
    params: {
       classname: 'ButtonComponent'
+   },
+}, {
+   path: '/input',
+   component: InputComponent,
+   params: {
+      classname: 'InputComponent'
    },
 }, {
    path: '/welcome',

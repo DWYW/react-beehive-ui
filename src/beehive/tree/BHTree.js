@@ -32,7 +32,9 @@ class BHTree extends React.Component {
    }
 
    _parentCallback(node){
-      this.props.onClick(node)
+      if(this.props.onClick) {
+         this.props.onClick(node)
+      }
    }
 
    _setNodeSelect(layerPath, key, attr) {
