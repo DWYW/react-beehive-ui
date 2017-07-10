@@ -20,8 +20,8 @@ class FieldClick extends React.Component {
          animation: animation
       })
 
-      window.setTimeout(()=>{
-         // this._deleteElement()
+      window.setTimeout(() => {
+         this._deleteElement()
       }, 500)
    }
 
@@ -34,25 +34,35 @@ class FieldClick extends React.Component {
    }
 
    _getPoint(e) {
-      if(e.pageX && e.pageY){
-         console.log(e.target.offsetLeft)
-         console.log(this.FieldClick)
+      if(e.pageX && e.pageY) {
          return {x: e.pageX, y: e.pageY}
+      }
+      else {
+         let x = e.clientX + Math.max(document.body.scrollLeft, document.documentElement.scrollLeft);
+         let y = e.clientY + Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+         return {x, y}
       }
    }
 
-   _getOffset(){
-      console.log(this.FieldClick.offsetParent)
+   _getOffset(element){
+      let left = 0, top = 0, parent = element.offsetParent;
+      left += this.FieldClick.offsetLeft;
+      top += this.FieldClick.offsetTop;
+
+      while(parent) {
+         left += parent.offsetLeft;
+         top += parent.offsetTop;
+         parent = parent.offsetParent
+      }
+
+      return {left: left, top: top}
    }
 
    _mountPoint(pos){
       const count = ++this.count;
-      this._getOffset();
-      console.log(pos.x)
-      console.log(this.FieldClick.offsetLeft)
-      console.log(this.FieldClick.offsetWidth / 2)
-      const x = pos.x - this.FieldClick.offsetLeft - this.FieldClick.offsetWidth / 2;
-      const y = pos.y - this.FieldClick.offsetHeight / 2 - this.FieldClick.offsetTop;
+      const offset = this._getOffset(this.FieldClick);
+      const x = pos.x - offset.left - this.FieldClick.offsetWidth / 2;
+      const y = pos.y - this.FieldClick.offsetHeight / 2 - offset.top;
       return {x: x, y: y, count: count}
    }
 

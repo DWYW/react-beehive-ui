@@ -1,5 +1,6 @@
 var path = require('path')
 var config = require('../config')
+var autoprefixer = require('autoprefixer')
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
@@ -15,12 +16,32 @@ Object.keys(baseWebpackConfig.entry).forEach(function(name) {
 
 var webpackConfig = merge(baseWebpackConfig, {
    module: {
-      rules: [{
+     rules: [{
          test: /\.less$/,
-         use:["style-loader", "css-loader", "autoprefixer-loader", "less-loader"]
+         use:["style-loader", "css-loader",
+            {
+               loader: "postcss-loader",
+               options: { plugins: [autoprefixer({
+                  browsers: [
+                     'ie >= 9'
+                  ],
+                  cascade: true,
+                  remove: true
+                  })]}
+            }, "less-loader"]
       },{
          test: /\.(scss|sass)$/,
-         use:["style-loader", "css-loader", "autoprefixer-loader", "sass-loader"]
+         use:["style-loader", "css-loader",
+            {
+               loader: "postcss-loader",
+               options: { plugins: [autoprefixer({
+                  browsers: [
+                     'ie >= 9'
+                  ],
+                  cascade: true,
+                  remove: true
+                  })]}
+            }, "sass-loader"]
       }]
    },
    devtool: config.build.productionSourceMap ? 'source-map' : false,

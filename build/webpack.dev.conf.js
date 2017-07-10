@@ -1,5 +1,6 @@
 var baseWebpackConfig = require('./webpack.base.conf')
 var config = require('../config')
+var autoprefixer = require('autoprefixer')
 var FriendlyErrors = require('friendly-errors-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path')
@@ -58,15 +59,56 @@ module.exports = merge(baseWebpackConfig, {
          exclude: /node_modules/
       },{
          test: /\.less$/,
-         use:["style-loader", "css-loader", "autoprefixer-loader", "less-loader"]
+         use:["style-loader", "css-loader",
+            {
+               loader: "postcss-loader",
+               options: { plugins: [autoprefixer({
+                  browsers: [
+                     'ie >= 9'
+                  ],
+                  cascade: true,
+                  remove: true
+                  })] }
+            }, "less-loader"]
       },{
          test: /\.(scss|sass)$/,
-         use:["style-loader", "css-loader", "autoprefixer-loader", "sass-loader"]
+         use:["style-loader", "css-loader",
+            {
+               loader: "postcss-loader",
+               options: { plugins: [autoprefixer({
+                  browsers: [
+                     'ie >= 9'
+                  ],
+                  cascade: true,
+                  remove: true
+                  })]}
+            }, "sass-loader"]
       }]
    },
    // eval-source-map is faster for development
    devtool: 'eval-source-map',
    plugins: [
+      // new webpack.LoaderOptionsPlugin({
+      //    options: {
+      //       context: '/',
+      //       minimize: true,
+            // postcss: [autoprefixer({
+            //    browsers: [
+            //       'ie >= 9',
+            //       'ie_mob >= 10',
+            //       'ff >= 30',
+            //       'chrome >= 34',
+            //       'safari >= 7',
+            //       'opera >= 23',
+            //       'ios >= 7',
+            //       'android >= 4.4',
+            //       'bb >= 10'
+            //    ],
+            //    cascade: true,
+            //    remove: true
+            // })]
+      //    }
+      // }),
       new webpack.DefinePlugin({
          'process.env': config.dev.env
       }),
