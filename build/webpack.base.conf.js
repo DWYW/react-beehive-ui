@@ -1,5 +1,6 @@
 var config = require('../config')
 var path = require('path')
+var webpack = require('webpack')
 
 var projectRoot = path.resolve(__dirname, '../')
 
@@ -13,6 +14,7 @@ var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 module.exports = {
    entry: {
+      react:["react", "prop-types", "react-router", "react-redux", "redux"],
       app: './src/entry.js'
    },
    output: {
@@ -64,5 +66,11 @@ module.exports = {
             exclude: /node_modules/
          }
       ]
-   }
+   },
+   plugins: [
+      new webpack.optimize.CommonsChunkPlugin({
+         names: ["react"],
+         minChunks: Infinity
+      })
+   ]
 }
