@@ -19,13 +19,14 @@ class NavTree extends React.Component {
    }
 
    _init() {
-      const data = this._initData(this.props.data);
+      this._hashPath = location.hash.substring(1);
+      let data = this._initData(this.props.data);
+      data = this._initNodeAttribute(data);
+      console.log(data)
       this.setState({
          data: data
       })
-   }
 
-   _initData(data) {
       data[0]['isSelected'] = true;
       this.nodeSelected = {
          layer: "",
@@ -35,8 +36,47 @@ class NavTree extends React.Component {
          layer: "",
          key: 0
       }
+   }
 
-      return data;
+   _initNodeAttribute(nodes) {
+      let posArr = this._nodeSelectedPos.split("-");
+      posArr = posArr.slice(1, posArr.length-1);
+
+      if(posArr.length == 0) {
+         return nodes;
+      }
+
+      let treeNode = nodes;
+
+      posArr.forEach((item) => {
+         if(treeNode[parseInt(item)].children && treeNode[parseInt(item)].children.length > 0) {
+            treeNode[parseInt(item)].isOpen = true;
+            treeNode = treeNode[parseInt(item)].children;
+         }
+      })
+
+      return nodes
+   }
+
+   _initData(nodes, pos = false) {
+      if(nodes === null || nodes.length === 0) {
+         return []
+      }
+
+      nodes.map((node, key) => {
+         node._pos = pos ? `${pos}-${key}` : `0-${key}`;
+
+         if(node.to && node.to.pathname == this._hashPath) {
+            node.isSelected = true;
+            this._nodeSelectedPos = node._pos;
+         }
+
+         if(node.children && node.children instanceof Array && node.children.length > 0) {
+            node.children = this._initData(node.children, node._pos);
+         }
+      })
+
+      return nodes
    }
 
    _setNodeSelect(layerPath, key, attr) {

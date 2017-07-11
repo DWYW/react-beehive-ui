@@ -1,7 +1,7 @@
 import Example from 'common/Example';
 import TextPane from 'common/TextPane';
 import i18n from  'i18n/'
-import {BHButton, BHInput, NumberInput, FlexBox, FlexItem} from 'beehive';
+import {BHInput, NumberInput, FlexBox, FlexItem} from 'beehive';
 import React from 'react';
 
 let codes = [`<BHInput type={'text'}/>
