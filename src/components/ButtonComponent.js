@@ -45,7 +45,7 @@ class ButtonComponent extends React.Component {
                </FlexItem>
                <FlexItem className={'col-xs-12 col-sm-6'}>
                   <Example title={"特殊效果"} code={codes[1]} description={'特殊效果button的代码示例。'}>
-                     <BHButton animation={true}>default</BHButton>
+                     <BHButton animation={true} type={"submit"}>default</BHButton>
                      <BHButton className="primary" animation={true}>primary</BHButton>
                      <BHButton className="warning" animation={true}>warning</BHButton>
                      <BHButton className="success" animation={true}>success</BHButton>

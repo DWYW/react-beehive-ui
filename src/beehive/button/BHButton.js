@@ -20,7 +20,7 @@ class BHButton extends React.Component {
       animation = this.props.disabled ? false : animation;
       className = this.props.disabled ? 'disabled' : className;
       return (
-         <button className={this._setClassName(className)} {...otherProps} data-animation={animation}>
+         <div className={this._setClassName(className)} {...otherProps} data-animation={animation}>
             {animation ? (
                <FieldClick>
                   <FlexBox justifyContent="center" alignItems="center" style={FLEX_BOX_STYLE}>
@@ -36,7 +36,7 @@ class BHButton extends React.Component {
                   </FlexItem>
                </FlexBox>
             )}
-         </button>
+         </div>
       )
    }
 }

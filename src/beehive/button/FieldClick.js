@@ -69,7 +69,7 @@ class FieldClick extends React.Component {
    render() {
       const {animation} = this.state;
       return (
-         <div ref={FieldClick => this.FieldClick = FieldClick} className={CLICK_FIELD_CLASSNAME} {...this.props} onClick={e =>{this._clickEvent(e);}}>
+         <div ref={FieldClick => this.FieldClick = FieldClick} className={CLICK_FIELD_CLASSNAME} {...this.props} onClick={this._clickEvent}>
             <div className={ANIMATION_CLASSNAME}>
                {animation.map((item) => {
                   const style = {};

@@ -64,7 +64,8 @@ module.exports = merge(baseWebpackConfig, {
                loader: "postcss-loader",
                options: { plugins: [autoprefixer({
                   browsers: [
-                     'ie >= 9'
+                     "> 1%",
+                     "last 2 versions"
                   ],
                   cascade: true,
                   remove: true
