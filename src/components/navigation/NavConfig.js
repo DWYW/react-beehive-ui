@@ -1,6 +1,6 @@
 const navigations = [{
    label: "lable1",
-   iconClassName: 'icon-home',
+   iconClassName: 'icon-wenjian',
    isOpen: false,
    isSelected: false,
    to: {
@@ -9,7 +9,7 @@ const navigations = [{
    children: []
 }, {
    label: "FlexGrid",
-   iconClassName: 'icon-wenjian',
+   iconClassName: 'icon-zujianku',
    isOpen: false,
    isSelected: false,
    to: {
@@ -18,7 +18,7 @@ const navigations = [{
    children: []
 }, {
    label: "Button",
-   iconClassName: 'icon-wenjian',
+   iconClassName: 'icon-Onebuttonalarm',
    isOpen: false,
    isSelected: false,
    to: {
@@ -27,7 +27,7 @@ const navigations = [{
    children: []
 }, {
    label: "Input",
-   iconClassName: 'icon-wenjian',
+   iconClassName: 'icon-shuru',
    isOpen: false,
    isSelected: false,
    to: {
@@ -36,13 +36,13 @@ const navigations = [{
    children: []
 }, {
    label: "lable2",
-   iconClassName: 'icon-setting',
+   iconClassName: 'icon-zujian1',
    isOpen: false,
    isSelected: false,
    to: null,
    children: [{
       label: "lable2-1",
-      iconClassName: 'icon-qrcode',
+      iconClassName: 'icon-zujian',
       isOpen: false,
       isSelected: false,
       to: {
@@ -53,13 +53,13 @@ const navigations = [{
    }]
 }, {
    label: "lable3",
-   iconClassName: 'icon-setting',
+   iconClassName: 'icon-zujian1',
    isOpen: false,
    isSelected: false,
    to: null,
    children: [{
       label: "lable3-1",
-      iconClassName: 'icon-qrcode',
+      iconClassName: 'icon-zujian',
       isOpen: false,
       isSelected: false,
       to: {

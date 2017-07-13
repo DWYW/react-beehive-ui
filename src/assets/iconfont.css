@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1498306743282'); /* IE9*/
-  src: url('iconfont.eot?t=1498306743282#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1498306743282') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1498306743282') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1498306743282#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1499960198668'); /* IE9*/
+  src: url('iconfont.eot?t=1499960198668#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1499960198668') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1499960198668') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1499960198668#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -15,9 +15,27 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-shuru:before { content: "\e602"; }
+
+.icon-zujian:before { content: "\e62e"; }
+
+.icon-pengyouquan:before { content: "\e605"; }
+
+.icon-xinlang:before { content: "\e606"; }
+
+.icon-weixin:before { content: "\e607"; }
+
+.icon-jia:before { content: "\e608"; }
+
+.icon-jian:before { content: "\e609"; }
+
 .icon-github:before { content: "\eaf6"; }
 
 .icon-traingle-down:before { content: "\e611"; }
+
+.icon-zujianxuanze:before { content: "\e67d"; }
+
+.icon-switch:before { content: "\e6a7"; }
 
 .icon-close:before { content: "\e641"; }
 
@@ -69,6 +87,10 @@
 
 .icon-checkbox1:before { content: "\e600"; }
 
+.icon-zujian1:before { content: "\e62f"; }
+
+.icon-bk-line-chart2:before { content: "\e629"; }
+
 .icon-traingle-right:before { content: "\e604"; }
 
 .icon-heart:before { content: "\e684"; }
@@ -79,9 +101,13 @@
 
 .icon-traingle-left:before { content: "\e60a"; }
 
+.icon-timepickertool:before { content: "\e6aa"; }
+
 .icon-CheckBox:before { content: "\e61f"; }
 
 .icon-success1:before { content: "\e74a"; }
+
+.icon-diy-com-scrollablepicker:before { content: "\e926"; }
 
 .icon-trainglr-up:before { content: "\e601"; }
 
@@ -91,7 +117,23 @@
 
 .icon-checkbox-checked:before { content: "\e734"; }
 
+.icon-biaodan:before { content: "\e619"; }
+
+.icon-piaofang:before { content: "\e60d"; }
+
+.icon-tubiao:before { content: "\e60e"; }
+
 .icon-radio:before { content: "\e652"; }
 
 .icon-checkbox3:before { content: "\e603"; }
+
+.icon-tubiao1:before { content: "\e631"; }
+
+.icon-chart1:before { content: "\e655"; }
+
+.icon-datepicker:before { content: "\e60f"; }
+
+.icon-zujianku:before { content: "\e614"; }
+
+.icon-Onebuttonalarm:before { content: "\e6df"; }
 

@@ -23,7 +23,8 @@ class NavTree extends React.Component {
    }
 
    _init() {
-      this._hashPath = location.hash.substring(1);
+      const router = location.hash.substring(1);
+      this._hashPath = "/" + router.split("/")[1];
       let data = this._initData(this.props.data);
       data = this._initNodeAttribute(data, "isOpen", true);
       this.setState({
@@ -32,6 +33,10 @@ class NavTree extends React.Component {
    }
 
    _initNodeAttribute(nodes, attribute, value) {
+      if(!this._nodeSelectedPos) {
+         return nodes;
+      }
+
       let posArr = this._nodeSelectedPos.split("-");
       posArr = posArr.slice(1, posArr.length - 1);
 
@@ -75,7 +80,7 @@ class NavTree extends React.Component {
       const data = this.state.data;
       const layer = this._getLayerPath(pos);
 
-      if(pos.split("-")[1] !== this._nodeSelectedPos.split("-")[1] && attr == 'isOpen') {
+      if(this._nodeSelectedPos && pos.split("-")[1] !== this._nodeSelectedPos.split("-")[1] && attr == 'isOpen') {
          const key = this._nodeSelectedPos.split("-")[1];
          data[key][attr] = false;
       }

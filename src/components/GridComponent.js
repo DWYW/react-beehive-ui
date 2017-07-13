@@ -62,7 +62,7 @@ class GridComponent extends React.Component {
       }
       return (
          <div className={'component'}>
-            <TextPane title={i18n.$t('gridLayout')}>
+            <TextPane title={`${i18n.$t('gridLayout')}(基于flex)`}>
                <p>借用bootstrap的栅格布局思路，与flex结合实现栅格布局。</p>
                <p>col-xs-{'{num}'}, col-sm-{'{num}'}, col-md-{'{num}'}, col-lg-{'{num}'}.</p>
             </TextPane>
