@@ -2,10 +2,6 @@
   "name": "beehiveui",
   "version": "1.0.0",
   "description": "beehive-ui for react",
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ],
   "keywords": [
     "react",
     "beehive",
@@ -17,10 +13,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "bundle-loader": "^0.5.5",
+    "highlight.js": "^9.12.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-highlight": "^0.10.0",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",

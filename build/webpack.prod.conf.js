@@ -1,6 +1,5 @@
 var path = require('path')
 var config = require('../config')
-var autoprefixer = require('autoprefixer')
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
@@ -15,36 +14,6 @@ Object.keys(baseWebpackConfig.entry).forEach(function(name) {
 })
 
 var webpackConfig = merge(baseWebpackConfig, {
-   module: {
-     rules: [{
-         test: /\.less$/,
-         use:["style-loader", "css-loader",
-            {
-               loader: "postcss-loader",
-               options: { plugins: [autoprefixer({
-                  browsers: [
-                     "> 1%",
-                     "last 2 versions"
-                  ],
-                  cascade: true,
-                  remove: true
-                  })]}
-            }, "less-loader"]
-      },{
-         test: /\.(scss|sass)$/,
-         use:["style-loader", "css-loader",
-            {
-               loader: "postcss-loader",
-               options: { plugins: [autoprefixer({
-                  browsers: [
-                     'ie >= 9'
-                  ],
-                  cascade: true,
-                  remove: true
-                  })]}
-            }, "sass-loader"]
-      }]
-   },
    devtool: config.build.productionSourceMap ? 'source-map' : false,
    output: {
       path: config.build.assetsRoot,
@@ -56,6 +25,7 @@ var webpackConfig = merge(baseWebpackConfig, {
          'process.env': env
       }),
       new webpack.optimize.UglifyJsPlugin({
+         sourceMap: false,
          compress: {
             warnings: false
          }
@@ -87,7 +57,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       // split vendor js into its own file
       new webpack.optimize.CommonsChunkPlugin({
          name: 'vendor',
-         minChunks: function(module, count) {
+         minChunks: function(module) {
             // any required modules inside node_modules are extracted to vendor
             return (
                module.resource &&
@@ -98,6 +68,7 @@ var webpackConfig = merge(baseWebpackConfig, {
             )
          }
       }),
+
       // extract webpack runtime and module manifest to its own file in order to
       // prevent vendor hash from being updated whenever app bundle is updated
       new webpack.optimize.CommonsChunkPlugin({

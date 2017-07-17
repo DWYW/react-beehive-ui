@@ -1,5 +1,5 @@
 const navigations = [{
-   label: "lable1",
+   label: "home",
    iconClassName: 'icon-wenjian',
    isOpen: false,
    isSelected: false,

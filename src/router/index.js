@@ -1,12 +1,22 @@
+import Bundle from '../common/Bundle';
+import React from 'react';
+
+// Sync load component.
 import App from '../App';
-import ButtonComponent from '../components/ButtonComponent';
-import GridComponent from '../components/GridComponent';
-import InputComponent from '../components/InputComponent';
+
+// Async load component.
+import ButtonComponent from 'bundle-loader?lazy&name=[name]!../components/ButtonComponent.js';
+import GridComponent from 'bundle-loader?lazy&name=[name]!../components/GridComponent.js';
+import InputComponent from 'bundle-loader?lazy&name=[name]!../components/InputComponent.js';
 
 import Test from '../Test'
 import Hello from '../Hello'
 import Welcome from '../Welcome'
 import Default from '../Default'
+
+const GetContainers = (component) => {
+   return () => (<Bundle load={component}>{(Containers) => <Containers />}</Bundle>)
+}
 
 const routes = [{
    path: '/',
@@ -17,19 +27,19 @@ const routes = [{
    },
 }, {
    path: '/flexgrid',
-   component: GridComponent,
+   component: GetContainers(GridComponent),
    params: {
       classname: 'GridComponent'
    },
 }, {
    path: '/button',
-   component: ButtonComponent,
+   component: GetContainers(ButtonComponent),
    params: {
       classname: 'ButtonComponent'
    },
 }, {
    path: '/input',
-   component: InputComponent,
+   component: GetContainers(InputComponent),
    params: {
       classname: 'InputComponent'
    },

@@ -1,7 +1,7 @@
 import {FlexBox, FlexItem} from 'beehive';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import Highlight from 'react-highlight';
+import Highlight from './Highlight';
 import React from 'react';
 
 class Example extends React.Component {

@@ -5,6 +5,8 @@ import BHTree from './tree/BHTree';
 import BHInput from './input/BHInput';
 import NumberInput from './input/NumberInput';
 
+import './index.less';
+
 module.exports = {
    FlexBox,
    FlexItem,

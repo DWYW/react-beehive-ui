@@ -1,6 +1,5 @@
 var baseWebpackConfig = require('./webpack.base.conf')
 var config = require('../config')
-var autoprefixer = require('autoprefixer')
 var FriendlyErrors = require('friendly-errors-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path')
@@ -16,36 +15,7 @@ Object.keys(baseWebpackConfig.entry).forEach(function(name) {
       baseWebpackConfig.entry[name] = ['whatwg-fetch'].concat(baseWebpackConfig.entry[name])
    })
 module.exports = merge(baseWebpackConfig, {
-   // [ { test: /\.css$/, loader: 'vue-style-loader!css-loader' },
-   // { test: /\.postcss$/, loader: 'vue-style-loader!css-loader' },
-   // { test: /\.less$/,
-   //   loader: 'vue-style-loader!css-loader!less-loader' },
-   // { test: /\.sass$/,
-   //   loader: 'vue-style-loader!css-loader!sass-loader?indentedSyntax' },
-   // preLoaders: [{
-   //   test: /\.js|jsx$/,
-   //   exclude: /node_modules/,
-   //   loader: 'eslint',
-   //   enforce: 'pre',
-   //   use: [{
-   //     // @remove-on-eject-begin
-   //     // Point ESLint to our predefined config.
-   //     options: {
-   //       configFile: path.join(__dirname, '../.eslintrc'),
-   //       useEslintrc: true
-   //     },
-   //     // @remove-on-eject-end
-   //     loader: 'eslint-loader'
-   //   }],
-   // }],
-   // eslint: {
-   //    configFile: './.eslintrc.js'
-   // },
    module: {
-      // loaders: [{
-      //    test: /\.less$/,
-      //    loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'
-      // }]
       rules: [{
          test: /\.(js|jsx)?$/,
          enforce: 'pre',
@@ -57,59 +27,11 @@ module.exports = merge(baseWebpackConfig, {
          }],
          include: path.resolve(__dirname, '../src'),
          exclude: /node_modules/
-      },{
-         test: /\.less$/,
-         use:["style-loader", "css-loader",
-            {
-               loader: "postcss-loader",
-               options: { plugins: [autoprefixer({
-                  browsers: [
-                     "> 1%",
-                     "last 2 versions"
-                  ],
-                  cascade: true,
-                  remove: true
-                  })] }
-            }, "less-loader"]
-      },{
-         test: /\.(scss|sass)$/,
-         use:["style-loader", "css-loader",
-            {
-               loader: "postcss-loader",
-               options: { plugins: [autoprefixer({
-                  browsers: [
-                     'ie >= 9'
-                  ],
-                  cascade: true,
-                  remove: true
-                  })]}
-            }, "sass-loader"]
       }]
    },
    // eval-source-map is faster for development
    devtool: 'eval-source-map',
    plugins: [
-      // new webpack.LoaderOptionsPlugin({
-      //    options: {
-      //       context: '/',
-      //       minimize: true,
-            // postcss: [autoprefixer({
-            //    browsers: [
-            //       'ie >= 9',
-            //       'ie_mob >= 10',
-            //       'ff >= 30',
-            //       'chrome >= 34',
-            //       'safari >= 7',
-            //       'opera >= 23',
-            //       'ios >= 7',
-            //       'android >= 4.4',
-            //       'bb >= 10'
-            //    ],
-            //    cascade: true,
-            //    remove: true
-            // })]
-      //    }
-      // }),
       new webpack.DefinePlugin({
          'process.env': config.dev.env
       }),

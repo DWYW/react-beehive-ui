@@ -1,4 +1,5 @@
 var config = require('../config')
+var autoprefixer = require('autoprefixer')
 var path = require('path')
 var webpack = require('webpack')
 
@@ -15,12 +16,15 @@ var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 module.exports = {
    entry: {
       react:["react", "prop-types", "react-router", "react-redux", "redux"],
+      beehive: ['./src/beehive/index.js'],
+      highlight: ['highlight.js'],
       app: './src/entry.js'
    },
    output: {
       path: config.build.assetsRoot,
       publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
-      filename: '[name].js'
+      filename: '[name].js',
+      chunkFilename: '[name].[chunkhash:5].chunk.js'
    },
    resolve: {
       extensions: ['.js', '.jsx', '.json'],
@@ -40,7 +44,6 @@ module.exports = {
    },
    module: {
       rules: [
-
          {
             test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
             use: [{
@@ -64,13 +67,36 @@ module.exports = {
             use: ['babel-loader'],
             include: path.join(projectRoot, 'src'),
             exclude: /node_modules/
+         }, {
+            test: /\.less$/,
+            use:["style-loader", "css-loader",
+               {
+                  loader: "postcss-loader",
+                  options: { plugins: [autoprefixer(autoprefixerConfig)] }
+               }, "less-loader"]
+         },{
+            test: /\.(scss|sass)$/,
+            use:["style-loader", "css-loader",
+               {
+                  loader: "postcss-loader",
+                  options: { plugins: [autoprefixer(autoprefixerConfig)]}
+               }, "sass-loader"]
          }
       ]
    },
    plugins: [
       new webpack.optimize.CommonsChunkPlugin({
-         names: ["react"],
+         names: ["highlight", "beehive", "react"],
          minChunks: Infinity
       })
    ]
+}
+
+var autoprefixerConfig = {
+   browsers: [
+      "> 1%",
+      "last 4 versions"
+   ],
+   cascade: true,
+   remove: true
 }
