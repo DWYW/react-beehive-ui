@@ -4,7 +4,7 @@
 import React from "react"
 // import {Route, Link} from 'react-router-dom'
 
-import {BHButton, BHInput, NumberInput,BHTree} from './beehive/'
+import {BHButton, BHInput, NumberInput, BHTree, BHCheckBox} from './beehive/'
 // import utils from './common/utils/'
 
 export default class App extends React.Component {
@@ -91,6 +91,10 @@ export default class App extends React.Component {
             </div>
 
             <BHTree data={this.treeData}></BHTree>
+
+            <div>
+               <BHCheckBox></BHCheckBox>
+            </div>
 
          </div>
       )
