@@ -93,7 +93,14 @@ export default class App extends React.Component {
             <BHTree data={this.treeData}></BHTree>
 
             <div>
-               <BHCheckBox></BHCheckBox>
+               <BHCheckBox>12131</BHCheckBox>
+               <BHCheckBox className='primary' style={{color: '#ccc'}}>12131</BHCheckBox>
+               <BHCheckBox iconType="heart" className='success'>12131</BHCheckBox>
+               <BHCheckBox iconType="hearts" className='warning'>12131</BHCheckBox>
+               <BHCheckBox className='error'>12131</BHCheckBox>
+               <BHCheckBox className='error' disabled={true}>12131</BHCheckBox>
+               <BHCheckBox className='error' disabled={true} iconStyle={{color: 'pink'}}>12131</BHCheckBox>
+
             </div>
 
          </div>

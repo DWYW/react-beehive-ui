@@ -6,26 +6,86 @@ import PropTypes from 'prop-types';
 class BHCheckBox extends React.Component {
    constructor(props) {
       super(props);
+      this.handleSetCheckBoxStatus = this.handleSetCheckBoxStatus.bind(this);
+      this.state = {
+         isChecked: props.checked,
+         isDisabled: props.disabled
+      }
    }
 
-   handleSetCheckBoxStatus() {
+   componentWillReceiveProps(nextPorps) {
+      const st = {};
+      const {isChecked, isDisabled} = this.state;
+
+      if(nextPorps.checked !== isChecked) {
+         st.isChecked = nextPorps.checked;
+      }
+
+      if(nextPorps.disabled !== isDisabled) {
+         st.isDisabled = nextPorps.disabled
+      }
+
+      this.setState(st);
+   }
+
+   handleSetCheckBoxStatus(e) {
+      console.log(e.target.checked)
+      if(this.props.onChange) {
+         this.props.onChange(e.target.checked);
+      }
+
+      this.setState({
+         isChecked: e.target.checked
+      })
 
    }
 
    render() {
+      let {isChecked, isDisabled} = this.state;
+      let {iconType, children, className, iconStyle, style} = this.props;
+      iconType = iconType in BHCheckBox.ICONS ? iconType : 'default';
+      const icons = BHCheckBox.ICONS[iconType];
+
       return (
-         <div className={BHUtil.combineClassnames(BHCHECKBOX_CLASSNAME)}>
-            <i></i>
-            <i></i>
-            <span className="checkbox-info">{this.props.children}</span>
-            <input type="checkbox" checked={this.props.checked} onChange={this.handleSetCheckBoxStatus}/>
-         </div>
+         <label className={BHUtil.combineClassnames(BHCHECKBOX_CLASSNAME, className,{'disabled': isDisabled})} style={style}>
+            <i className={BHUtil.combineClassnames('iconfont', icons.default, {
+               'icon-checked': !isChecked,
+               'icon-default': isChecked
+            })} style={iconStyle}></i>
+            <i className={BHUtil.combineClassnames('iconfont', icons.checked, {
+               'icon-checked': isChecked,
+               'icon-default': !isChecked
+            })} style={iconStyle}></i>
+            <span className="checkbox-info">{children}</span>
+            <input ref='checkbox' type="checkbox" disabled={isDisabled} checked={isChecked} onChange={this.handleSetCheckBoxStatus}/>
+         </label>
       )
    }
 }
 
 BHCheckBox.propTypes = {
-   className: PropTypes.string
+   className: PropTypes.string,
+   disabled: PropTypes.bool,
+   iconStyle: PropTypes.object,
+   iconType: PropTypes.string,
+   style: PropTypes.object
+}
+
+BHCheckBox.defaultProps = {
+   iconType: 'default',
+   disabled: false,
+   checked: false
+}
+
+BHCheckBox.ICONS = {
+   default: {
+      default: 'icon-checkbox3',
+      checked: 'icon-checkbox-checked'
+   },
+   heart: {
+      default: 'icon-heart1',
+      checked: 'icon-heart'
+   }
 }
 
 const BHCHECKBOX_CLASSNAME = `${PREFIX}-checkbox-container`
