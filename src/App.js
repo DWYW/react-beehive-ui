@@ -4,7 +4,7 @@
 import React from "react"
 // import {Route, Link} from 'react-router-dom'
 
-import {BHButton, BHInput, NumberInput, BHTree, BHCheckBox} from './beehive/'
+import {BHButton, BHInput, NumberInput, BHTree, BHCheckBox, BHSwitch} from './beehive/'
 // import utils from './common/utils/'
 
 export default class App extends React.Component {
@@ -101,6 +101,16 @@ export default class App extends React.Component {
                <BHCheckBox className='error' disabled={true}>12131</BHCheckBox>
                <BHCheckBox className='error' disabled={true} iconStyle={{color: 'pink'}}>12131</BHCheckBox>
 
+            </div>
+
+            <div>
+               <BHSwitch open={true}/>
+               <BHSwitch open={true} className='success'/>
+               <BHSwitch open={true} className='warning'/>
+               <BHSwitch open={true} className='error'/>
+               <BHSwitch disabled={true} className='success'/>
+               <BHSwitch className='success'/>
+               <BHSwitch type={'smaller'} className='success'/>
             </div>
 
          </div>

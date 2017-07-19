@@ -5,6 +5,7 @@ import BHTree from './tree/BHTree';
 import BHInput from './input/BHInput';
 import NumberInput from './input/NumberInput';
 import BHCheckBox from './checkbox/BHCheckBox';
+import BHSwitch from './checkbox/BHSwitch';
 
 import './index.less';
 
@@ -15,5 +16,6 @@ module.exports = {
    BHTree,
    BHInput,
    NumberInput,
-   BHCheckBox
+   BHCheckBox,
+   BHSwitch
 }
