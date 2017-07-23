@@ -4,7 +4,7 @@
 import React from "react"
 // import {Route, Link} from 'react-router-dom'
 
-import {BHButton, BHInput, NumberInput, BHTree, BHCheckBox, BHSwitch, BHSelect} from './beehive/'
+import {BHButton, BHInput, NumberInput, BHTree, BHCheckBox, BHSwitch, BHSelect, Notification} from './beehive/'
 // import utils from './common/utils/'
 
 export default class App extends React.Component {
@@ -74,7 +74,13 @@ export default class App extends React.Component {
             <BHButton className={'error'} onClick={() => this._callback()}>error</BHButton>
             <BHButton className={'success'} onClick={() => this._callback()}>success</BHButton>
             <br/>
-            <BHButton animation={true} onClick={() => this._callback()}>primary</BHButton>
+            <BHButton animation={true} onClick={() => this._callback()}
+               onClick={() => Notification.primary('这是一个notification提示,内容不宜太多', {
+                 icon: false,
+                 duration: 5,
+                 close: false
+               })}>
+               primary</BHButton>
             <BHButton animation={true}>default</BHButton>
             <BHButton animation={true} className={'primary'} onClick={() => this._callback()}>primary</BHButton>
             <BHButton animation={true} className={'warning'} onClick={() => this._callback()}>warning</BHButton>
@@ -119,11 +125,12 @@ export default class App extends React.Component {
                   <BHSelect.option value='1'>test2</BHSelect.option>
                   <BHSelect.option value='2'>test3</BHSelect.option>
                </BHSelect>
-               <BHSelect placeholder="placeHolder sting">
+               <BHSelect className="primary" placeholder="placeHolder sting">
                   <BHSelect.option value='0'>test1</BHSelect.option>
                   <BHSelect.option value='1'>test2</BHSelect.option>
                   <BHSelect.option value='2'>test3</BHSelect.option>
                </BHSelect>
+
             </div>
 
          </div>

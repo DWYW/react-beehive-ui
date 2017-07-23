@@ -17,11 +17,11 @@ class BHSwitch extends React.Component {
 
    componentWillReceiveProps(nextProps) {
       const st = {};
-      if(nextProps.open && nextProps.open !== this.state.isOpen) {
+      if(nextProps.open && nextProps.open !== this.props.open && nextProps.open !== this.state.isOpen) {
          st['isOpen'] = nextProps.open === true || nextProps.open === "true" ? true : false;
       }
 
-      if(nextProps.disabled && nextProps.disabled !== this.state.isDisabled) {
+      if(nextProps.disabled && nextProps.disabled !== this.props.disabled && nextProps.disabled !== this.state.isDisabled) {
          st['isDisabled'] = nextProps.disabled === true || nextProps.disabled === "true" ? true : false;
       }
 

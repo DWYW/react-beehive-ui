@@ -1,0 +1,182 @@
+@notificationDefaultBackGround: #ffffff;
+@notificationDefaultColor: #333333;
+@notificationDefaultIconColor: #707070;
+@notificationDefaultCloseColor: #707070;
+
+@notificationPrimaryBackGround: #00bcd4;
+@notificationPrimaryColor: #ffffff;
+@notificationPrimaryIconColor: #ffffff;
+@notificationPrimaryCloseColor: #ffffff;
+
+@notificationErrorBackGround: #d9534f;
+@notificationErrorColor: #ffffff;
+@notificationErrorIconColor: #ffffff;
+@notificationErrorCloseColor: #ffffff;
+
+@notificationSuccessBackGround: #5cb85c;
+@notificationSuccessColor: #ffffff;
+@notificationSuccessIconColor: #ffffff;
+@notificationSuccessCloseColor: #ffffff;
+
+@notificationDangerBackGround: rgb(240, 173, 78);
+@notificationDangerColor: #4c421a;
+@notificationDangerIconColor: #6b5d26;
+@notificationDangerCloseColor: #4c421a;
+
+.s-notification {
+  width: 240px;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  z-index: 99999;
+  .s-notification-section {
+    width: 100%;
+    box-sizing: border-box;
+    .s-notification-item {
+      position: relative;
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 300;
+      word-wrap: break-word;
+      border-radius: 4px;
+      box-sizing: border-box;
+      padding: 1em 2em 1em 1.5em;
+      box-shadow: 2px 3px 8px rgba(0, 0, 0, .4);
+      .s-notification-close {
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        display: block;
+        width: 20px;
+        height: 20px;
+        line-height: 17px;
+        text-align: center;
+        white-space: nowrap;
+        user-select: none;
+        touch-action: manipulation;
+        border-radius: 50%;
+        overflow: hidden;
+        transition: all 0.2s;
+        &:hover {
+          background: rgba(10, 10, 10, 0.18);
+        }
+      }
+      .s-notification-icon-section {
+        position: absolute;
+        left: 0.8em;
+        top: 50%;
+        i {
+          display: block;
+          margin-top: -50%;
+          font-size: 1.8em;
+        }
+      }
+    }
+    .s-notification-item-default {
+      background: @notificationDefaultBackGround;
+      color: @notificationDefaultColor;
+      .s-notification-close {
+        color: @notificationDefaultCloseColor;
+        &:hover {
+          background: rgba(10, 10, 10, 0.08);
+        }
+      }
+      .s-notification-icon-section {
+        color: @notificationDefaultIconColor;
+      }
+    }
+    .s-notification-item-primary {
+      background: @notificationPrimaryBackGround;
+      color: @notificationPrimaryColor;
+      .s-notification-close {
+        color: @notificationPrimaryCloseColor;
+      }
+      .s-notification-icon-section {
+        color: @notificationPrimaryIconColor;
+      }
+    }
+    .s-notification-item-danger {
+      background: @notificationDangerBackGround;
+      color: @notificationDangerColor;
+      .s-notification-close {
+        color: @notificationDangerCloseColor;
+      }
+      .s-notification-icon-section {
+        color: @notificationDangerIconColor;
+      }
+    }
+
+    .s-notification-item-success {
+      background: @notificationSuccessBackGround;
+      color: @notificationSuccessColor;
+      .s-notification-close {
+        color: @notificationSuccessCloseColor;
+      }
+      .s-notification-icon-section {
+        color: @notificationSuccessIconColor;
+      }
+    }
+
+    .s-notification-item-error {
+      background: @notificationErrorBackGround;
+      color: @notificationErrorColor;
+      .s-notification-close {
+        color: @notificationErrorCloseColor;
+      }
+      .s-notification-icon-section {
+        color: @notificationErrorIconColor;
+      }
+    }
+  }
+}
+
+@keyframes bounceInRight {
+  from, 60%, 75%, 90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  from {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0);
+  }
+  75% {
+    transform: translate3d(10px, 0, 0);
+  }
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.bounceInRight {
+  animation-name: bounceInRight;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes bounceOutRight {
+  20% {
+    opacity: 1;
+    transform: translate3d(-20px, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(2000px, 0, 0);
+  }
+}
+
+.bounceOutRight {
+  animation-name: bounceOutRight;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}

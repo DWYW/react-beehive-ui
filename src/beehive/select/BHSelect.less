@@ -55,9 +55,9 @@
       transform-origin: center top;
       transform: scaleY(0);
       background-color: #ffffff;
-      // border: 1px solid @borderColor;
       border-radius: 4px;
-      box-shadow: 0 0 2px @borderColor;
+      box-shadow: 0 0 4px @borderColor;
+      overflow: hidden;
 
       &.options-open {
          transform: scaleY(1);
@@ -83,6 +83,28 @@
             background-color: #e5e5e5;
             font-weight: 600;
          }
+      }
+   }
+
+   &.primary {
+      &.select-active {
+         border-color: @primaryColor;
+         .select-container >i.iconfont{
+            color: @primaryColor;
+         }
+      }
+
+      .option-container{
+         .option-container-item{
+            &:hover{
+               background-color: #d7efff;
+            }
+
+            &.item-selected{
+               background-color: #e5e5e5;
+            }
+         }
+
       }
    }
 }

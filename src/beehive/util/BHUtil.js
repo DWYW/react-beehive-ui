@@ -75,7 +75,7 @@ export default class BHUtil {
       return {left: left, top: top}
    }
 
-   static mouseIN(event, target, includeBoundary = true) {
+   static mouseIn(event, target, includeBoundary = true) {
       const mousePos = BHUtil.getMousePos(event);
       const targetOffset = BHUtil.getOffset(target);
 
@@ -135,6 +135,9 @@ export default class BHUtil {
       event.nativeEvent.stopImmediatePropagation();
    }
 
+   /**
+    * Get to screen Distance.
+    */
    static getToScreenDistance(target) {
       if(!target) {
          return null
@@ -149,6 +152,33 @@ export default class BHUtil {
       }
 
       return distance
+   }
+
+   /**
+    * Is mobile.
+    */
+   static isMobile() {
+      const userAgentInfo = navigator.userAgent;
+      const Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+      let flag = false;
+
+      for (let v = 0; v < Agents.length; v++) {
+         if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = true; break; }
+      }
+
+      return flag;
+   }
+
+   /**
+    * Is weixin.
+    */
+   static isWeChat() {
+      if(navigator.userAgent.indexOf('MicroMessenger') > -1) {
+         return true;
+      }
+      else {
+         return false;
+      }
    }
 
 }

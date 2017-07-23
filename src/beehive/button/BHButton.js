@@ -1,3 +1,4 @@
+import BHUtil from 'beehive/util/BHUtil';
 import FieldClick from './FieldClick';
 import FlexBox from '../grid/FlexBox';
 import FlexItem from '../grid/FlexItem';
@@ -20,8 +21,8 @@ class BHButton extends React.Component {
       animation = this.props.disabled ? false : animation;
       className = this.props.disabled ? 'disabled' : className;
       return (
-         <div className={this._setClassName(className)} {...otherProps} data-animation={animation}>
-            {animation ? (
+         <div className={this._setClassName(className)} {...otherProps} data-animation={animation && !BHUtil.isMobile()}>
+            {animation && !BHUtil.isMobile() ? (
                <FieldClick>
                   <FlexBox justifyContent="center" alignItems="center" style={FLEX_BOX_STYLE}>
                      <FlexItem style={FLEX_ITEM_STYLE}>

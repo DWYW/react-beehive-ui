@@ -23,11 +23,11 @@ class BHSelect extends React.Component {
    }
 
    render() {
-      const {style} = this.props;
+      const {style, className} = this.props;
       const {lineHeight, value, isOpen} = this.state;
 
       return (
-         <div ref="selectContainer" className={BHUtil.combineClassnames(BHSELECT_CONTAINER_CLASSNAME)}
+         <div ref="selectContainer" className={BHUtil.combineClassnames(BHSELECT_CONTAINER_CLASSNAME, className, {'select-active': isOpen})}
             style={{...style, lineHeight: lineHeight}}
          >
             <div className="select-container" onClick={this.clickHandle}>
@@ -83,9 +83,7 @@ class BHSelect extends React.Component {
       })
    }
 
-   clickHandle = (e) => {
-      BHUtil.stopPropagation(e);
-
+   clickHandle = () => {
       if(!this.state.isOpen) {
          const distance = BHUtil.getToScreenDistance(this.refs.selectContainer);
          const selectHeight = this.refs.selectContainer.offsetHeight;
@@ -107,7 +105,6 @@ class BHSelect extends React.Component {
          BHUtil.removeListener(document, 'click', this.hideOptions)
          this.setOptionsShow(false);
       }
-
    }
 
    hideOptions = () => {
@@ -129,8 +126,9 @@ class BHSelect extends React.Component {
 }
 
 BHSelect.propTypes = {
+   className: PropTypes.string,
    placeholder: PropTypes.string,
-   style: PropTypes.object,
+   style: PropTypes.object
    // showNum: PropTypes.number,
    // value: PropTypes.oneOfType([
    //       PropTypes.string,

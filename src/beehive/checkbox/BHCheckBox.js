@@ -9,8 +9,15 @@ class BHCheckBox extends React.Component {
       this.handleSetCheckBoxStatus = this.handleSetCheckBoxStatus.bind(this);
       this.state = {
          isChecked: props.checked,
-         isDisabled: props.disabled
+         isDisabled: props.disabled,
+         iconMarginTop: null
       }
+   }
+
+   componentDidMount() {
+      this.setState({
+         iconMarginTop: `-${parseInt(this.refs.checkboxContainer.offsetHeight / 2)}px`
+      })
    }
 
    componentWillReceiveProps(nextPorps) {
@@ -40,21 +47,22 @@ class BHCheckBox extends React.Component {
    }
 
    render() {
-      let {isChecked, isDisabled} = this.state;
+      let {isChecked, isDisabled, iconMarginTop} = this.state;
       let {iconType, children, className, iconStyle, style} = this.props;
       iconType = iconType in BHCheckBox.ICONS ? iconType : 'default';
       const icons = BHCheckBox.ICONS[iconType];
+      const _iconStyle = {marginTop: iconMarginTop}
 
       return (
-         <label className={BHUtil.combineClassnames(BHCHECKBOX_CLASSNAME, className,{'disabled': isDisabled})} style={style}>
+         <label ref='checkboxContainer' className={BHUtil.combineClassnames(BHCHECKBOX_CLASSNAME, className,{'disabled': isDisabled})} style={style}>
             <i className={BHUtil.combineClassnames('iconfont', icons.default, {
                'icon-checked': !isChecked,
                'icon-default': isChecked
-            })} style={iconStyle}></i>
+            })} style={{...iconStyle, ..._iconStyle}}></i>
             <i className={BHUtil.combineClassnames('iconfont', icons.checked, {
                'icon-checked': isChecked,
                'icon-default': !isChecked
-            })} style={iconStyle}></i>
+            })} style={{...iconStyle, ..._iconStyle}}></i>
             <span className="checkbox-info">{children}</span>
             <input ref='checkbox' type="checkbox" disabled={isDisabled} checked={isChecked} onChange={this.handleSetCheckBoxStatus}/>
          </label>
