@@ -6,6 +6,7 @@ import BHInput from './input/BHInput';
 import NumberInput from './input/NumberInput';
 import BHCheckBox from './checkbox/BHCheckBox';
 import BHSwitch from './checkbox/BHSwitch';
+import BHSelect from  './select/BHSelect';
 
 import './index.less';
 
@@ -17,5 +18,6 @@ module.exports = {
    BHInput,
    NumberInput,
    BHCheckBox,
-   BHSwitch
+   BHSwitch,
+   BHSelect
 }

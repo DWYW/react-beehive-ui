@@ -21,7 +21,6 @@ let codes = [`<BHButton disabled={true}>disabled</BHButton>
 class ButtonComponent extends React.Component {
    constructor(props) {
       super(props);
-      this.code = ""
    }
 
    render() {

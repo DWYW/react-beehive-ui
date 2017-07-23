@@ -35,6 +35,15 @@ const navigations = [{
    },
    children: []
 }, {
+   label: "CheckBox",
+   iconClassName: 'icon-checkbox-checked',
+   isOpen: false,
+   isSelected: false,
+   to: {
+      pathname: '/checkbox'
+   },
+   children: []
+}, {
    label: "lable2",
    iconClassName: 'icon-zujian1',
    isOpen: false,

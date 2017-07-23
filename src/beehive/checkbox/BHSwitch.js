@@ -47,8 +47,8 @@ class BHSwitch extends React.Component {
 
       this.setState(st);
 
-      if(this.props.callback) {
-         this.props.callback(e.target.checked)
+      if(this.props.onChange) {
+         this.props.onChange(e.target.checked)
       }
    }
 
@@ -76,7 +76,8 @@ class BHSwitch extends React.Component {
 BHSwitch.PropTypes = {
    type: PropTypes.string,
    open: PropTypes.bool,
-   disabled: PropTypes.bool
+   disabled: PropTypes.bool,
+   onChange: PropTypes.func
 
 }
 

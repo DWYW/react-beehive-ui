@@ -8,8 +8,10 @@ import App from '../App';
 import ButtonComponent from 'bundle-loader?lazy&name=[name]!../components/ButtonComponent.js';
 import GridComponent from 'bundle-loader?lazy&name=[name]!../components/GridComponent.js';
 import InputComponent from 'bundle-loader?lazy&name=[name]!../components/InputComponent.js';
+import CheckBoxComponent from 'bundle-loader?lazy&name=[name]!../components/CheckBoxComponent.js';
+import Test from 'bundle-loader?lazy&name=[name]!../Test.js';
 
-import Test from '../Test'
+// import Test from '../Test'
 import Hello from '../Hello'
 import Welcome from '../Welcome'
 import Default from '../Default'
@@ -43,6 +45,12 @@ const routes = [{
    params: {
       classname: 'InputComponent'
    },
+},  {
+   path: '/checkbox',
+   component: GetContainers(CheckBoxComponent),
+   params: {
+      classname: 'CheckBoxComponent'
+   },
 }, {
    path: '/welcome',
    component: Welcome,
@@ -64,7 +72,7 @@ const routes = [{
       }
    }, {
       path: '/welcome/test',
-      component: Test,
+      component: GetContainers(Test),
       params: {
          classname: 'Test'
       }

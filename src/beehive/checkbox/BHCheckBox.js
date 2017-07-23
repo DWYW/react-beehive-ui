@@ -29,7 +29,6 @@ class BHCheckBox extends React.Component {
    }
 
    handleSetCheckBoxStatus(e) {
-      console.log(e.target.checked)
       if(this.props.onChange) {
          this.props.onChange(e.target.checked);
       }
@@ -66,9 +65,11 @@ class BHCheckBox extends React.Component {
 BHCheckBox.propTypes = {
    className: PropTypes.string,
    disabled: PropTypes.bool,
+   checked: PropTypes.bool,
    iconStyle: PropTypes.object,
    iconType: PropTypes.string,
-   style: PropTypes.object
+   style: PropTypes.object,
+   onChange: PropTypes.func
 }
 
 BHCheckBox.defaultProps = {

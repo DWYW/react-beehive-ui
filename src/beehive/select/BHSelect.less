@@ -1,0 +1,88 @@
+@import '../variables';
+
+.@{prefix}select-container {
+   box-sizing: border-box;
+   display: inline-block;
+   min-width: 80px;
+   width: 120px;
+   border: 1px solid @borderColor;
+   position: relative;
+   height: 28px;
+   border-radius: 4px;
+   font-size: 14px;
+   color: #666666;
+   margin: 2px 4px;
+
+   .select-container {
+      .fill;
+      position: relative;
+      cursor: pointer;
+
+      .select-label {
+         .fill;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+         display: inline-block;
+         padding-left: 5px;
+         padding-right: 20px;
+      }
+
+      >i.iconfont {
+         display: inline-block;
+         height: 100%;
+         width: 16px;
+         position: absolute;
+         right: 0;
+         top: 0;
+         font-size: 12px;
+         font-weight: bold;
+         transition: transform 0.2s;
+         text-align: center;
+
+         &.is-open {
+            transform: rotate(180deg);
+         }
+      }
+   }
+
+   .option-container{
+      width: 100%;
+      max-height: 120px;
+      position: absolute;
+      left: 0;
+      transition: transform 0.1s ease-out;
+      transform-origin: center top;
+      transform: scaleY(0);
+      background-color: #ffffff;
+      // border: 1px solid @borderColor;
+      border-radius: 4px;
+      box-shadow: 0 0 2px @borderColor;
+
+      &.options-open {
+         transform: scaleY(1);
+      }
+
+      .option-container-item{
+         cursor: pointer;
+         width: 100%;
+         padding: 0 5px;
+         font-size: 14px;
+         box-sizing: border-box;
+         line-height: 28px;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+         transition: background 0.2s;
+
+         &:hover{
+            background-color: #f2f2f2;
+         }
+
+         &.item-selected{
+            background-color: #e5e5e5;
+            font-weight: 600;
+         }
+      }
+   }
+}

@@ -4,7 +4,7 @@
 import React from "react"
 // import {Route, Link} from 'react-router-dom'
 
-import {BHButton, BHInput, NumberInput, BHTree, BHCheckBox, BHSwitch} from './beehive/'
+import {BHButton, BHInput, NumberInput, BHTree, BHCheckBox, BHSwitch, BHSelect} from './beehive/'
 // import utils from './common/utils/'
 
 export default class App extends React.Component {
@@ -111,6 +111,19 @@ export default class App extends React.Component {
                <BHSwitch disabled={true} className='success'/>
                <BHSwitch className='success'/>
                <BHSwitch type={'smaller'} className='success'/>
+            </div>
+
+            <div>
+               <BHSelect placeholder="placeHolder sting">
+                  <BHSelect.option value='0'>test1</BHSelect.option>
+                  <BHSelect.option value='1'>test2</BHSelect.option>
+                  <BHSelect.option value='2'>test3</BHSelect.option>
+               </BHSelect>
+               <BHSelect placeholder="placeHolder sting">
+                  <BHSelect.option value='0'>test1</BHSelect.option>
+                  <BHSelect.option value='1'>test2</BHSelect.option>
+                  <BHSelect.option value='2'>test3</BHSelect.option>
+               </BHSelect>
             </div>
 
          </div>
