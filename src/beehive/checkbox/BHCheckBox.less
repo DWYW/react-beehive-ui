@@ -16,13 +16,21 @@
       cursor: pointer;
       color: @primaryColor + #191919;
 
+      &.icon-animation-show {
+        animation: checkboxShow 0.2s ;
+      }
+
+      &.icon-animation-hide {
+        animation: checkboxHide 0.2s;
+      }
+
       &.icon-checked {
-         animation: checkboxShow 0.2s;
+         // animation: checkboxShow 0.2s;
          transform: scale(1);
       }
 
       &.icon-default {
-         animation: checkboxHide 0.2s;
+         // animation: checkboxHide 0.2s;
          transform: scale(0);
       }
    }

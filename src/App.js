@@ -74,26 +74,54 @@ export default class App extends React.Component {
             <BHButton className={'error'} onClick={() => this._callback()}>error</BHButton>
             <BHButton className={'success'} onClick={() => this._callback()}>success</BHButton>
             <br/>
-            <BHButton animation={true} onClick={() => this._callback()}
-               onClick={() => Notification.primary('这是一个notification提示,内容不宜太多', {
-                 icon: false,
-                 duration: 5,
-                 close: false
-               })}>
+            <BHButton animation={true}
+               onClick={() => {Notification.primary('这是一个notification提示,内容不宜太多', {
+                  showIcon: false,
+                  duration: 5,
+                  showClose: true
+               })}} >
                primary</BHButton>
-            <BHButton animation={true}>default</BHButton>
-            <BHButton animation={true} className={'primary'} onClick={() => this._callback()}>primary</BHButton>
-            <BHButton animation={true} className={'warning'} onClick={() => this._callback()}>warning</BHButton>
-            <BHButton animation={true} className={'error'} onClick={() => this._callback()}>error</BHButton>
-            <BHButton animation={true} className={'success'} onClick={() => this._callback()}>success</BHButton>
+            <BHButton animation={true}
+               onClick={() => {Notification.default('这是一个notification提示,内容不宜太多', {
+                  showIcon: true,
+                  duration: 0,
+                  showClose: true
+               })}}>default</BHButton>
+            <BHButton animation={true} className={'primary'}
+               onClick={() => {Notification.primary('这是一个notification提示,内容不宜太多', {
+                  showIcon: true,
+                  duration: 0,
+                  showClose: true
+               })}}>primary</BHButton>
+            <BHButton animation={true} className={'warning'}
+               onClick={() => {Notification.warn('这是一个内容不宜太多', {
+                  showIcon: true,
+                  duration: 0,
+                  showClose: true
+               })}}>warning</BHButton>
+            <BHButton animation={true} className={'error'}
+               onClick={() => {Notification.error('这是一个notification提示,内容不宜太多', {
+                  showIcon: true,
+                  duration: 0,
+                  showClose: true
+               })}}>error</BHButton>
+            <BHButton animation={true} className={'success'}
+               onClick={() => {Notification.success('这是一个notification提示,内容不宜太多', {
+                  showIcon: true,
+                  duration: 0,
+                  showClose: true
+               })}}>success</BHButton>
 
             <div>
-               <div><BHInput type={'text'}/></div>
-               <div><NumberInput className={'primary'} type={'number'} onChange={(res) => {console.log(res)}}/></div>
-               <div><NumberInput className={'success'} type={'number'} /></div>
-               <div><NumberInput className={'warning'} type={'number'} /></div>
-               <div><NumberInput className={'error'} type={'number'} /></div>
-               <div><NumberInput type={'number'} /></div>
+               <div><BHInput type='text' prevIcon="icon-scan" nextIcon="icon-success"/></div>
+               <div><NumberInput type={'number'} min={0} max={10}/></div>
+               {  /*
+                  <div><NumberInput className={'primary'} type={'number'} onChange={(res) => {console.log(res)}}/></div>
+                  <div><NumberInput className={'success'} type={'number'} /></div>
+                  <div><NumberInput className={'warning'} type={'number'} /></div>
+                  <div><NumberInput className={'error'} type={'number'} /></div>
+                  <div><NumberInput type={'number'} /></div>*/
+               }
             </div>
 
             <BHTree data={this.treeData}></BHTree>

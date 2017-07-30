@@ -9,6 +9,9 @@ import ButtonComponent from 'bundle-loader?lazy&name=[name]!../components/Button
 import GridComponent from 'bundle-loader?lazy&name=[name]!../components/GridComponent.js';
 import InputComponent from 'bundle-loader?lazy&name=[name]!../components/InputComponent.js';
 import CheckBoxComponent from 'bundle-loader?lazy&name=[name]!../components/CheckBoxComponent.js';
+import NotificationComponent from 'bundle-loader?lazy&name=[name]!../components/NotificationComponent.js';
+import SelectComponent from 'bundle-loader?lazy&name=[name]!../components/SelectComponent.js';
+
 import Test from 'bundle-loader?lazy&name=[name]!../Test.js';
 
 // import Test from '../Test'
@@ -24,65 +27,53 @@ const routes = [{
    path: '/',
    exact: true,
    component: App,
-   params: {
-      classname: 'App'
-   },
+   params: {},
 }, {
    path: '/flexgrid',
    component: GetContainers(GridComponent),
-   params: {
-      classname: 'GridComponent'
-   },
+   params: {},
 }, {
    path: '/button',
    component: GetContainers(ButtonComponent),
-   params: {
-      classname: 'ButtonComponent'
-   },
+   params: {},
 }, {
    path: '/input',
    component: GetContainers(InputComponent),
-   params: {
-      classname: 'InputComponent'
-   },
+   params: {},
 },  {
    path: '/checkbox',
    component: GetContainers(CheckBoxComponent),
-   params: {
-      classname: 'CheckBoxComponent'
-   },
+   params: {},
+},  {
+   path: '/notification',
+   component: GetContainers(NotificationComponent),
+   params: {},
+},  {
+   path: '/select',
+   component: GetContainers(SelectComponent),
+   params: {},
 }, {
    path: '/welcome',
    component: Welcome,
-   params: {
-      classname: 'Welcome'
-   },
+   params: {},
    childrens: [{
       path: '/welcome/',
       component: Default,
       exact: true,
-      params: {
-         classname: 'Default'
-      }
+      params: {}
    }, {
       path: '/welcome/default',
       component: Default,
-      params: {
-         classname: 'Default'
-      }
+      params: {}
    }, {
       path: '/welcome/test',
       component: GetContainers(Test),
-      params: {
-         classname: 'Test'
-      }
+      params: {}
    }]
 }, {
    path: '/hello',
    component: Hello,
-   params: {
-      classname: 'Hello'
-   }
+   params: {}
 }]
 
 module.exports = routes

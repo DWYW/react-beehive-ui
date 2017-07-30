@@ -6,17 +6,18 @@ import PropTypes from 'prop-types';
 class BHCheckBox extends React.Component {
    constructor(props) {
       super(props);
-      this.handleSetCheckBoxStatus = this.handleSetCheckBoxStatus.bind(this);
+
       this.state = {
          isChecked: props.checked,
          isDisabled: props.disabled,
+         animation: false,
          iconMarginTop: null
       }
    }
 
    componentDidMount() {
       this.setState({
-         iconMarginTop: `-${parseInt(this.refs.checkboxContainer.offsetHeight / 2)}px`
+         iconMarginTop: `-${parseInt(this.refs.checkboxContainer.offsetHeight / 2)}px`,
       })
    }
 
@@ -35,19 +36,23 @@ class BHCheckBox extends React.Component {
       this.setState(st);
    }
 
-   handleSetCheckBoxStatus(e) {
+   handleSetCheckBoxStatus = (e) => {
+      const st = {};
+      st['isChecked'] = e.target.checked;
+
+      if(!this.state.animation) {
+         st['animation'] = true;
+      }
+
+      this.setState(st);
+
       if(this.props.onChange) {
          this.props.onChange(e.target.checked);
       }
-
-      this.setState({
-         isChecked: e.target.checked
-      })
-
    }
 
    render() {
-      let {isChecked, isDisabled, iconMarginTop} = this.state;
+      let {isChecked, isDisabled, animation, iconMarginTop} = this.state;
       let {iconType, children, className, iconStyle, style} = this.props;
       iconType = iconType in BHCheckBox.ICONS ? iconType : 'default';
       const icons = BHCheckBox.ICONS[iconType];
@@ -56,10 +61,14 @@ class BHCheckBox extends React.Component {
       return (
          <label ref='checkboxContainer' className={BHUtil.combineClassnames(BHCHECKBOX_CLASSNAME, className,{'disabled': isDisabled})} style={style}>
             <i className={BHUtil.combineClassnames('iconfont', icons.default, {
+               'icon-animation-show': animation && !isChecked,
+               'icon-animation-hide': animation && isChecked,
                'icon-checked': !isChecked,
                'icon-default': isChecked
             })} style={{...iconStyle, ..._iconStyle}}></i>
             <i className={BHUtil.combineClassnames('iconfont', icons.checked, {
+               'icon-animation-show': animation && isChecked,
+               'icon-animation-hide': animation && !isChecked,
                'icon-checked': isChecked,
                'icon-default': !isChecked
             })} style={{...iconStyle, ..._iconStyle}}></i>

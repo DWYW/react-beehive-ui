@@ -56,7 +56,7 @@ class CheckBoxComponent extends React.Component {
                         <td>className</td>
                         <td>自定义的 class。</td>
                         <td>string</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                      <tr>
                         <td>checked</td>
@@ -80,19 +80,19 @@ class CheckBoxComponent extends React.Component {
                         <td>iconStyle</td>
                         <td>icon 的 style属性</td>
                         <td>object</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                      <tr>
                         <td>style</td>
                         <td>checkbox 的 style属性</td>
                         <td>object</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                      <tr>
                         <td>onChange</td>
                         <td>checkbox 的 onChange event, return (true|false)</td>
                         <td>function</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                   </tbody>
                </table>
@@ -132,7 +132,7 @@ class CheckBoxComponent extends React.Component {
                         <td>className</td>
                         <td>自定义的 class。</td>
                         <td>string</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                      <tr>
                         <td>open</td>
@@ -156,7 +156,7 @@ class CheckBoxComponent extends React.Component {
                         <td>onChange</td>
                         <td>checkbox 的 onChange event，return (true|false)</td>
                         <td>function</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                   </tbody>
                </table>

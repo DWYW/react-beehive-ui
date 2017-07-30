@@ -2,11 +2,20 @@ import React from 'react'
 import reactDOM from 'react-dom'
 import Contents from './contents.js'
 
-const div = document.createElement('div');
-document.body.appendChild(div);
+let notificationContainer;
+
+if(document.getElementById('notificationContainer')) {
+   notificationContainer = document.getElementById('notificationContainer');
+}
+else {
+   notificationContainer = document.createElement('div');
+   notificationContainer.id = "notificationContainer";
+}
+
+document.body.appendChild(notificationContainer);
 const contents = reactDOM.render(
    <Contents></Contents>,
-   div
+   notificationContainer
 );
 
 function create(type) {
@@ -14,11 +23,12 @@ function create(type) {
       if (type) {
          opts.type = type
       }
-      opts.id = new Date().getTime();
+
+      opts.id = "notification" + new Date().getTime() + Math.random().toString().substring(2);
       opts.content = content;
-      opts.icon = opts.icon !== undefined ? opts.icon !== false && opts.icon !== true ? true : opts.icon : false;
-      opts.close = opts.close !== undefined ? opts.close !== false && opts.close !== true ? false : opts.close : true;
-      opts.duration = opts.duration !== undefined ? opts.close ? opts.duration : 5 : 5;
+      opts.showIcon = opts.showIcon !== undefined ? opts.showIcon !== false && opts.showIcon !== true ? true : opts.showIcon : false;
+      opts.showClose = opts.showClose !== undefined ? opts.showClose !== false && opts.showClose !== true ? false : opts.showClose : true;
+      opts.duration = opts.duration !== undefined ? opts.showClose ? opts.duration : 5 : 5;
       contents.addMessage(opts)
    }
 }
@@ -28,5 +38,5 @@ export default {
    success: create('success'),
    primary: create('primary'),
    error: create('error'),
-   danger: create('danger')
+   warn: create('danger')
 }

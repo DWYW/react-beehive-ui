@@ -17,6 +17,7 @@ class BHSelect extends React.Component {
    }
 
    componentDidMount() {
+      this.init();
       const st = {};
       st['lineHeight'] = this.refs.selectContainer.offsetHeight - 2 + 'px';
       this.setState(st);
@@ -45,18 +46,40 @@ class BHSelect extends React.Component {
    }
 
    createOptions = (options) => {
-      return (
-         options.map((option, key) => {
-            return(
-               <div className={BHUtil.combineClassnames('option-container-item',{'item-selected': this.state.optionItem == `${key}${option.props.value}`})}
-                  key={`selectOtion${key}${option.props.value}`} value={option.props.value}
-                  onClick={() => {this.optionClickHandle(option.props.value, option.props.children, `${key}${option.props.value}`)}}
-               >
-                  {option.props.children}
-               </div>
-            )
+      const newOptions = options.map((option, key) => {
+         return(
+            <div className={BHUtil.combineClassnames('option-container-item',{'item-selected': this.state.optionItem == `${key}${option.props.value}`})}
+               key={`selectOtion${key}${option.props.value}`} value={option.props.value}
+               onClick={() => {this.optionClickHandle(option.props.value, option.props.children, `${key}${option.props.value}`)}}
+            >
+               {option.props.children}
+            </div>
+         )
+      })
+
+      return newOptions;
+   }
+
+   init = () => {
+      let selectedOption = null;
+
+      this.props.children.map((option, key) => {
+         if(option.props.selected) {
+            selectedOption = Object.assign({}, option, {selectedKey: key});
+         }
+      })
+
+      if(selectedOption) {
+         if(this.props.onChange) {
+            this.props.onChange(selectedOption.props.value);
+         }
+
+         this.setState({
+            value: selectedOption.props.children,
+            optionItem: `${selectedOption.selectedKey}${selectedOption.props.value}`
          })
-      )
+      }
+
    }
 
    setOptionsStyle = () => {
@@ -129,16 +152,10 @@ BHSelect.propTypes = {
    className: PropTypes.string,
    placeholder: PropTypes.string,
    style: PropTypes.object
-   // showNum: PropTypes.number,
-   // value: PropTypes.oneOfType([
-   //       PropTypes.string,
-   //       PropTypes.number
-   //    ])
 }
 
 BHSelect.defaultProps = {
-   placeholder: "",
-   // showNum: 10
+   placeholder: ""
 
 }
 
@@ -152,6 +169,17 @@ class Option extends React.Component {
       return null
    }
 
+}
+
+Option.propTypes = {
+   value: PropTypes.any.isRequired,
+   label: PropTypes.any.isRequired,
+   selected: PropTypes.oneOf(['selected', 'true', true])
+}
+
+Option.defaultProps = {
+   value: "",
+   label: ""
 }
 
 const BHSELECT_CONTAINER_CLASSNAME = `${PREFIX}-select-container`;

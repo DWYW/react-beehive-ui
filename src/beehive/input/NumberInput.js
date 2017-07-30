@@ -1,4 +1,5 @@
 import BHInput from './BHInput';
+import BHUtil from '../util/BHUtil';
 import {PREFIX} from '../variables';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -6,84 +7,118 @@ import PropTypes from 'prop-types';
 class NumberInput extends BHInput {
    constructor(props) {
       super(props);
-      this._timeout = null;
-      this._handleCountAdd = this._handleCountAdd.bind(this);
-      this._handleCountSubtract = this._handleCountSubtract.bind(this);
+      this._bakValue = "";
+      this.state = {
+         btnLineHeight: null,
+         value: ""
+      }
    }
 
-   componentWillReceiveProps(nextPorps) {
-      if(nextPorps.value != this.props.value && nextPorps.value.toString().match(/^[-]?\d*$/g)) {
-         this._updateValue(nextPorps.value)
+   componentDidMount() {
+      const {defaultValue, value} = this.props;
+      let  setValue = 0;
+
+      if(defaultValue && defaultValue.toString().match(/^[-]?\d*$/g)) {
+         setValue = defaultValue;
       }
+
+      if(value && value.toString().match(/^[-]?\d*$/g)) {
+         setValue = value;
+      }
+
+      this._updateValue(setValue)
+      this._setCountBtnLineHeight();
    }
 
    render() {
+      const props = Object.assign({}, this.props);
+      delete props.min;
+      delete props.max;
+      delete props.value;
+      delete props.onChange;
+
       return (
-         <div className={this.getClassName(this.className)}>
-            {this.iconClassName &&
-               <i className={`iconfont ${this.iconClassName}`}></i>
-            }
-            <input className={`${BHINPUT_CLASSNAME} input-number`} type={this.type} style={this.style}
-               onChange={(e) => {this._handleChange(e)}} value={this.state.value}
-               {...this.restProps}/>
-            <div className={'count-btn-container'}>
-               <div className='count-btn count-add-btn' onClick={this._handleCountAdd}><span></span></div>
-               <div className={'count-btn count-subtract-btn'} onClick={this._handleCountSubtract}><span></span></div>
+         <div className={BHUtil.combineClassnames(NUMBER_CONTAINER)}>
+            <BHInput {...props} type="text"  value={this.state.value} onChange={this._handleChange}/>
+            <div className={'count-btn-container'} ref="countBtnContainer">
+               <i className="iconfont icon-up count-btn count-add-btn"
+                  style={{"lineHeight": this.state.btnLineHeight + "px"}}
+                  onClick={this._handleCountAdd}></i>
+               <i className="iconfont icon-down count-btn count-subtract-btn"
+                  style={{"lineHeight": this.state.btnLineHeight + "px"}}
+                  onClick={this._handleCountSubtract}></i>
             </div>
          </div>
       )
+
    }
 
-   propsInit(props){
-      super.propsInit(props);
-      const {onChange, ...restProps} = this.restProps;
-      this._onChange = onChange;
-      this.restProps = restProps;
-      this._bakValue = this.defaultValue;
+   /**
+    * Set count button lineHeight.
+    */
+   _setCountBtnLineHeight = () => {
+      const lineHeight = this.refs.countBtnContainer.offsetHeight / 2;
+      this.setState({
+         btnLineHeight: lineHeight
+      })
    }
 
-   set type(type) {
-      this._type = "text"
-   }
-
-   get type() {
-      return this._type;
-   }
-
-   set defaultValue(value) {
-      this._defaultValue = typeof value == 'number' ? value : 0;
-   }
-
-   get defaultValue(){
-      return this._defaultValue;
-   }
-
-   _handleChange(e) {
+   /**
+    * Number input change event handle.
+    */
+   _handleChange = (e) => {
       let value = e.target.value;
-      clearTimeout(this._timeout);
+      const {min, max} = this.props;
 
-      this._timeout = window.setTimeout(()=>{
-         if(value.match(/^[-]?\d*$/g)) {
-            this._updateValue(value);
+      if(value.toString().match(/^[-]?\d*$/g)) {
+         if(min !== undefined && min.toString().match(/^[-]?\d*$/g) && (parseInt(value) < parseInt(min) ||
+            (parseInt(min) >= 0 && value === '-')))
+         {
+            value = this._bakValue;
+         }
 
-            if(this._onChange){
-               this._onChange(value);
-            }
+         if(max !== undefined && max.toString().match(/^[-]?\d*$/g) && (parseInt(value) > parseInt(max) ||
+            (parseInt(max) <= 0 && !value.toString.match(/^-/g))))
+         {
+            value = this._bakValue;
          }
-         else {
-            this.setState({
-               value: this._bakValue
-            })
+
+         this._updateValue(value);
+
+         if(this._onChange) {
+            this._onChange(e);
          }
-      },100)
+      }
+      else {
+         this.setState({
+            value: this._bakValue
+         })
+      }
    }
 
-   _handleCountAdd() {
+   /**
+    * Number add click event handle.
+    */
+   _handleCountAdd = () => {
       if(this.props.disabled === true || this.props.disabled === "disabled") {
          return false;
       }
 
-      const value = this.state.value == "" ? 1 : parseInt(this.state.value) + 1;
+      let value = this.state.value == "" ? 1 : parseInt(this.state.value) + 1;
+      const {min, max} = this.props;
+
+      if(min !== undefined && min.toString().match(/^[-]?\d*$/g) && (parseInt(value) < parseInt(min) ||
+            (parseInt(min) >= 0 && value === '-')))
+      {
+         value = this._bakValue;
+      }
+
+      if(max !== undefined && max.toString().match(/^[-]?\d*$/g) && (parseInt(value) > parseInt(max) ||
+            (parseInt(max) <= 0 && !value.toString.match(/^-/g))))
+      {
+         value = this._bakValue;
+      }
+
       this._updateValue(value.toString());
 
       if(this._onChange){
@@ -91,19 +126,39 @@ class NumberInput extends BHInput {
       }
    }
 
-   _handleCountSubtract() {
+   /**
+    * Number subtract click event handle.
+    */
+   _handleCountSubtract = () => {
       if(this.props.disabled === true || this.props.disabled === "disabled") {
          return false;
       }
 
-      const value = this.state.value == "" ? -1 :  parseInt(this.state.value) - 1;
+      let value = this.state.value == "" ? -1 :  parseInt(this.state.value) - 1;
+      const {min, max} = this.props;
+
+      if(min !== undefined && min.toString().match(/^[-]?\d*$/g) && (parseInt(value) < parseInt(min) ||
+            (parseInt(min) >= 0 && value === '-')))
+      {
+         value = this._bakValue;
+      }
+
+      if(max !== undefined && max.toString().match(/^[-]?\d*$/g) && (parseInt(value) > parseInt(max) ||
+            (parseInt(max) <= 0 && !value.toString.match(/^-/g))))
+      {
+         value = this._bakValue;
+      }
+
       this._updateValue(value.toString());
       if(this._onChange){
          this._onChange(value.toString());
       }
    }
 
-   _updateValue(value) {
+   /**
+    * Update value.
+    */
+   _updateValue = (value) => {
       this._bakValue = value;
       this.setState({
          value: value
@@ -112,15 +167,10 @@ class NumberInput extends BHInput {
 }
 
 NumberInput.propTypes = {
-   type: PropTypes.string,
-   style: PropTypes.object,
-   className: PropTypes.string
+   className: PropTypes.string,
+   min: PropTypes.number,
+   max: PropTypes.number
 }
 
-NumberInput.defaultProps = {
-   type: 'number',
-   style: {}
-}
-
-const BHINPUT_CLASSNAME = `${PREFIX}-input`
+const NUMBER_CONTAINER = `${PREFIX}-number-container`
 export default NumberInput;

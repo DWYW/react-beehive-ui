@@ -33,7 +33,7 @@
 .media-col(@clsPrefix, @i:1) when (@i <= 12) {
    .@{clsPrefix}-@{i} {
       flex-basis: @i/12*100%;
-      max-width: @i/12*100%;
+      width: @i/12*100%;
    }
    .media-col(@clsPrefix, @i + 1)
 }

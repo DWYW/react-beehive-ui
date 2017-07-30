@@ -44,18 +44,27 @@ const navigations = [{
    },
    children: []
 }, {
-   label: "lable2",
-   iconClassName: 'icon-zujian1',
+   label: "Select",
+   iconClassName: 'icon-xialakuangbiaodan-copy',
+   isOpen: false,
+   isSelected: false,
+   to: {
+      pathname: '/select'
+   },
+   children: []
+}, {
+   label: "Pop Layer",
+   iconClassName: 'icon-danchuceng',
    isOpen: false,
    isSelected: false,
    to: null,
    children: [{
-      label: "lable2-1",
+      label: "Notification",
       iconClassName: 'icon-zujian',
       isOpen: false,
       isSelected: false,
       to: {
-         pathname: '/welcome'
+         pathname: '/notification'
       },
       query: {},
       children: []

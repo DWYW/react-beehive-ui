@@ -69,7 +69,7 @@ class ButtonComponent extends React.Component {
                         <td>className</td>
                         <td>自定义的class。</td>
                         <td>string</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                      <tr>
                         <td>animation</td>

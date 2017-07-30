@@ -6,6 +6,23 @@
    display: inline-block;
    margin: 2px 5px;
 
+   .input-prev-icon , .input-next-icon {
+      font-size: 14px;
+      position: absolute;
+      display: inline-block;
+      width: 24px;
+      text-align: center;
+      top: 1px;
+   }
+
+   .input-prev-icon {
+      left: 0;
+   }
+
+   .input-next-icon {
+      right: 0;
+   }
+
    .@{prefix}input {
       outline: none;
       border: none;
@@ -20,86 +37,94 @@
       border: 1px solid @borderColor;
       border-radius: 4px;
       color: #666666;
+      display: block;
 
-      &.input-number {
+      // &.input-number {
+      //    padding-right: 25px;
+      // }
+      &.hasIcon-prev {
+         padding-left: 25px;
+      }
+
+      &.hasIcon-next {
          padding-right: 25px;
       }
 
       &:disabled {
          background-color: @disableColor;
 
-         & + .count-btn-container .count-btn {
-            cursor: default;
+         // & + .count-btn-container .count-btn {
+         //    cursor: default;
 
-            &:active {
-               background-color: transparent;
-            }
+         //    &:active {
+         //       background-color: transparent;
+         //    }
 
-            >span{
-               border-color: #bfb9b9;
-            }
-         }
+         //    >span{
+         //       border-color: #bfb9b9;
+         //    }
+         // }
       }
    }
 
-   .count-btn-container {
-      position: absolute;
-      right: 0;
-      top: 0;
-      height: 100%;
-      min-width: 20px;
+   // .count-btn-container {
+   //    position: absolute;
+   //    right: 0;
+   //    top: 0;
+   //    height: 100%;
+   //    min-width: 20px;
 
-      .count-btn {
-         width: 100%;
-         height: 50%;
-         box-sizing: border-box;
-         border-left: 1px solid @borderColor;
-         font-size: 12px;
-         display: flex;
-         flex-direction: column;
-         flex-wrap: wrap;
-         justify-content: center;
-         align-items: center;
-         align-content: center;
-         cursor: pointer;
-         user-select: none;
-         overflow: hidden;
+   //    .count-btn {
+         // width: 100%;
+         // height: 50%;
+         // box-sizing: border-box;
+         // border-left: 1px solid @borderColor;
+         // font-size: 12px;
+         // display: flex;
+         // flex-direction: column;
+         // flex-wrap: wrap;
+         // justify-content: center;
+         // align-items: center;
+         // align-content: center;
+         // cursor: pointer;
+         // user-select: none;
+         // overflow: hidden;
 
-         &.count-add-btn>span, &.count-subtract-btn>span {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            box-sizing: border-box;
-            transform: rotate(45deg);
-         }
+         // &.count-add-btn>span, &.count-subtract-btn>span {
+         //    display: inline-block;
+         //    width: 8px;
+         //    height: 8px;
+         //    box-sizing: border-box;
+         //    transform: rotate(45deg);
+         // }
 
-         &.count-add-btn {
-            border-bottom: 1px solid @borderColor;
-            border-radius: 0 4px 0 0;
+         // &.count-add-btn {
+         //    border-bottom: 1px solid @borderColor;
+         //    border-radius: 0 4px 0 0;
 
-            >span {
-               border-left: 1px solid @TBBorderColor;
-               border-top: 1px solid @TBBorderColor;
-               margin-top: 3px;
-            }
-         }
+         //    >span {
+         //       border-left: 1px solid @TBBorderColor;
+         //       border-top: 1px solid @TBBorderColor;
+         //       margin-top: 3px;
+         //    }
+         // }
 
-         &.count-subtract-btn {
-            border-radius: 0 0 4px 0;
+         // &.count-subtract-btn {
+         //    border-radius: 0 0 4px 0;
 
-            >span{
-               border-right: 1px solid @TBBorderColor;
-               border-bottom: 1px solid @TBBorderColor;
-               margin-top: -3px;
-            }
-         }
+         //    >span{
+         //       border-right: 1px solid @TBBorderColor;
+         //       border-bottom: 1px solid @TBBorderColor;
+         //       margin-top: -3px;
+         //    }
+         // }
 
 
-         &:active {
-            background-color: rgba(0, 0, 0, 0.2);
-         }
-      }
-   }
+         // &:active {
+         //    background-color: rgba(0, 0, 0, 0.2);
+         // }
+   //    }
+   // }
 
    .@{prefix}input:focus {
       box-shadow: 0 0 2px @borderColor - #333333;
@@ -116,25 +141,25 @@
          }
       }
 
-      .count-btn-container .count-btn {
-         border-color: @primaryColor;
+      // .count-btn-container .count-btn {
+      //    border-color: @primaryColor;
 
-         >span{
-            border-color: @primaryColor - #111111;
-         }
+      //    >span{
+      //       border-color: @primaryColor - #111111;
+      //    }
 
-         &:active {
-            background-color: @primaryColor;
+      //    &:active {
+      //       background-color: @primaryColor;
 
-            >span{
-               border-color: #ffffff;
-            }
-         }
-      }
+      //       >span{
+      //          border-color: #ffffff;
+      //       }
+      //    }
+      // }
 
-      .@{prefix}input:focus + .count-btn-container .count-btn {
-         border-color: @primaryColor;
-      }
+      // .@{prefix}input:focus + .count-btn-container .count-btn {
+      //    border-color: @primaryColor;
+      // }
    }
 
    &.success {
@@ -148,25 +173,25 @@
          }
       }
 
-      .count-btn-container .count-btn {
-         border-color: @successColor;
+      // .count-btn-container .count-btn {
+      //    border-color: @successColor;
 
-         >span{
-            border-color: @successColor - #111111;
-         }
+      //    >span{
+      //       border-color: @successColor - #111111;
+      //    }
 
-         &:active {
-            background-color: @successColor;
+      //    &:active {
+      //       background-color: @successColor;
 
-            >span{
-               border-color: #ffffff;
-            }
-         }
-      }
+      //       >span{
+      //          border-color: #ffffff;
+      //       }
+      //    }
+      // }
 
-      .@{prefix}input:focus + .count-btn-container .count-btn {
-         border-color: @successColor;
-      }
+      // .@{prefix}input:focus + .count-btn-container .count-btn {
+      //    border-color: @successColor;
+      // }
    }
 
    &.warning {
@@ -180,25 +205,25 @@
          }
       }
 
-      .count-btn-container .count-btn {
-         border-color: @warningColor;
+      // .count-btn-container .count-btn {
+      //    border-color: @warningColor;
 
-         >span{
-            border-color: @warningColor - #111111;
-         }
+      //    >span{
+      //       border-color: @warningColor - #111111;
+      //    }
 
-         &:active {
-            background-color: @warningColor;
+      //    &:active {
+      //       background-color: @warningColor;
 
-            >span{
-               border-color: #ffffff;
-            }
-         }
-      }
+      //       >span{
+      //          border-color: #ffffff;
+      //       }
+      //    }
+      // }
 
-      .@{prefix}input:focus + .count-btn-container .count-btn {
-         border-color: @warningColor;
-      }
+      // .@{prefix}input:focus + .count-btn-container .count-btn {
+      //    border-color: @warningColor;
+      // }
    }
 
    &.error {
@@ -212,24 +237,90 @@
          }
       }
 
-      .count-btn-container .count-btn {
-         border-color: @errorColor;
+      // .count-btn-container .count-btn {
+      //    border-color: @errorColor;
 
-         >span{
-            border-color: @errorColor - #111111;
+      //    >span{
+      //       border-color: @errorColor - #111111;
+      //    }
+
+      //    &:active {
+      //       background-color: @errorColor;
+
+      //       >span{
+      //          border-color: #ffffff;
+      //       }
+      //    }
+      // }
+
+      // .@{prefix}input:focus + .count-btn-container .count-btn {
+      //    border-color: @errorColor;
+      // }
+   }
+}
+
+// Nuber input container.
+
+.@{prefix}number-container {
+   position: relative;
+   display: inline-block;
+   vertical-align: middle;
+   margin: 2px 5px;
+
+   .@{prefix}input-container {
+      margin: 0;
+      display: block;
+   }
+
+   .count-btn-container {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      min-width: 20px;
+      border: 1px solid transparent;
+      box-sizing: border-box;
+
+      .count-btn {
+         width: 100%;
+         height: 50%;
+         box-sizing: border-box;
+         border-left: 1px solid @borderColor;
+         font-size: 12px;
+         cursor: pointer;
+         user-select: none;
+         overflow: hidden;
+         display: block;
+         text-align: center;
+         color: @borderColor;
+         font-weight: bold;
+
+         &.count-add-btn {
+            border-bottom: 1px solid @borderColor;
+            border-radius: 0 4px 0 0;
+
+            // >span {
+            //    border-left: 1px solid @TBBorderColor;
+            //    border-top: 1px solid @TBBorderColor;
+            //    margin-top: 3px;
+            // }
          }
+
+         &.count-subtract-btn {
+            border-radius: 0 0 4px 0;
+
+            // >span{
+            //    border-right: 1px solid @TBBorderColor;
+            //    border-bottom: 1px solid @TBBorderColor;
+            //    margin-top: -3px;
+            // }
+         }
+
 
          &:active {
-            background-color: @errorColor;
-
-            >span{
-               border-color: #ffffff;
-            }
+            background-color: rgba(0, 0, 0, 0.2);
+            color: #aaaaaa;
          }
-      }
-
-      .@{prefix}input:focus + .count-btn-container .count-btn {
-         border-color: @errorColor;
       }
    }
 }

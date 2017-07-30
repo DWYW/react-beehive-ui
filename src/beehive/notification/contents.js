@@ -56,21 +56,21 @@ class Contents extends React.Component {
                <div className="s-notification-section">
                   {
                      Object.keys(messages).map((key) => {
-                        const {type,duration, icon, close} = messages[key]
+                        const {type,duration, showIcon, showClose} = messages[key]
                         return (
                            <div key={key}
                               className={duration >= 0 ? "bounceInRight s-notification-item s-notification-item-" + type : "bounceOutRight s-notification-item s-notification-item-" + type}
-                              style={icon ? close ? {paddingLeft: "3.2em"} : {
+                              style={showIcon ? showClose ? {paddingLeft: "3.2em"} : {
                                  paddingLeft: "3.2em",
                                  paddingRight: "1em"
-                              } : close ? {} : {paddingRight: "1em"}}>
+                              } : showClose ? {} : {paddingRight: "1em"}}>
                               {messages[key].content}
-                              {close &&
+                              {showClose &&
                                  <span className="s-notification-close" onClick={() => {
                                     this.dismiss(key)
                                  }}>×</span>
                               }
-                              {icon &&
+                              {showIcon &&
                                  <div className="s-notification-icon-section">
                                     {type === 'success' &&
                                        <i className="iconfont icon-circle-success"></i>

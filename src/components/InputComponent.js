@@ -78,7 +78,7 @@ class ButtonComponent extends React.Component {
                         <td>className</td>
                         <td>自定义的class。</td>
                         <td>string</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                      <tr>
                         <td>type</td>
@@ -90,13 +90,13 @@ class ButtonComponent extends React.Component {
                         <td>iconClassName</td>
                         <td>有效的icon className。（暂不支持）</td>
                         <td>string</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                      <tr>
                         <td>defaultValue</td>
                         <td>input的默认值。</td>
                         <td>string</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                   </tbody>
                </table>
@@ -119,7 +119,7 @@ class ButtonComponent extends React.Component {
                         <td>className</td>
                         <td>自定义的class。</td>
                         <td>string</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                      <tr>
                         <td>type</td>
@@ -131,19 +131,19 @@ class ButtonComponent extends React.Component {
                         <td>iconClassName</td>
                         <td>有效的icon className。（暂不支持）</td>
                         <td>string</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                      <tr>
                         <td>defaultValue</td>
                         <td>input的默认值。</td>
                         <td>string</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                      <tr>
                         <td>onChange</td>
                         <td>onChange事件的handler。</td>
                         <td>function</td>
-                        <td>undefined</td>
+                        <td>无</td>
                      </tr>
                   </tbody>
                </table>
