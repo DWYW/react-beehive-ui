@@ -33,7 +33,7 @@ module.exports = {
       "object-curly-spacing": [1, "never"], //{}开始和结束前不允许有空格
       "no-useless-computed-key": 1, //禁止object计算键
       "semi-style": [1, "last"], //执行语句分号的位置 last在句末，first在开头
-      "space-infix-ops": 1, //运算符左右有空格
+      // "space-infix-ops": 1, //运算符左右有空格
       "switch-colon-spacing": 1, //switch 语句 冒号 左右间隔  default {"after": true, "before": false}
       "space-unary-ops": [1, {
          "words": true,

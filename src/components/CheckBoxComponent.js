@@ -72,7 +72,7 @@ class CheckBoxComponent extends React.Component {
                      </tr>
                      <tr>
                         <td>iconType</td>
-                        <td>icon 的类型，可选值：default, heart</td>
+                        <td>icon 的类型，可选值：default, heart, ghost</td>
                         <td>string</td>
                         <td>default</td>
                      </tr>

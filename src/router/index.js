@@ -1,16 +1,19 @@
 import Bundle from '../common/Bundle';
 import React from 'react';
+// import {withRouter} from 'react-router'
 
 // Sync load component.
-import App from '../App';
+// import App from '../App';
 
 // Async load component.
+import App from 'bundle-loader?lazy&name=[name]!../App.js';
 import ButtonComponent from 'bundle-loader?lazy&name=[name]!../components/ButtonComponent.js';
 import GridComponent from 'bundle-loader?lazy&name=[name]!../components/GridComponent.js';
 import InputComponent from 'bundle-loader?lazy&name=[name]!../components/InputComponent.js';
 import CheckBoxComponent from 'bundle-loader?lazy&name=[name]!../components/CheckBoxComponent.js';
 import NotificationComponent from 'bundle-loader?lazy&name=[name]!../components/NotificationComponent.js';
 import SelectComponent from 'bundle-loader?lazy&name=[name]!../components/SelectComponent.js';
+import LoginComponent from 'bundle-loader?lazy&name=[name]!../components/LoginComponent.js';
 
 import Test from 'bundle-loader?lazy&name=[name]!../Test.js';
 
@@ -26,11 +29,17 @@ const GetContainers = (component) => {
 const routes = [{
    path: '/',
    exact: true,
-   component: App,
+   component: GetContainers(App),
+   private: true,
+   params: {},
+}, {
+   path: '/login',
+   component: GetContainers(LoginComponent),
    params: {},
 }, {
    path: '/flexgrid',
    component: GetContainers(GridComponent),
+   private: true,
    params: {},
 }, {
    path: '/button',

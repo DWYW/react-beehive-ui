@@ -13,6 +13,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "blueimp-md5": "^2.8.0",
     "bundle-loader": "^0.5.5",
     "highlight.js": "^9.12.0",
     "prop-types": "^15.5.10",

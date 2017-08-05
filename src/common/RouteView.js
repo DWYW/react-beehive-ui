@@ -1,16 +1,40 @@
+import BHUtil from 'beehive/util/BHUtil';
+import Cookie from 'common/Cookie';
 import React from 'react'
-import {Route} from 'react-router-dom'
+import {Route, Redirect} from 'react-router-dom'
 
-function RouteView(routes){
-   return (
-      <div className="beehive-route-view">
-         {routes.routes.map((route) => (
-            <Route path={route.path} key={route.path} exact={route.exact} render={props => (
-               <route.component {...props} routes={route.childrens} params={route.params}/>
-            )}/>
-         ))}
-      </div>
-   )
+class RouteView extends React.Component {
+   render() {
+      const privateRoutes = [], publicRoutes = [];
+      const {routes, className} = this.props;
+
+      routes.map((route) => {
+         route.private ? privateRoutes.push(route) : publicRoutes.push(route);
+      })
+
+      return (
+         <div className={BHUtil.combineClassnames('beehive-route-view',className)}>
+            {publicRoutes.map((route) => (
+               <Route path={route.path} key={route.path} exact={route.exact} component={route.component}/>
+            ))}
+
+            {privateRoutes.map((route) => (
+               <Route path={route.path} key={route.path} exact={route.exact} render={(props) => (
+                  Cookie.getCookie('username') ? (
+                     <route.component {...props} routes={route.childrens} params={route.params}/>
+                  ) : (
+                     <Redirect to={{
+                        pathname: '/login',
+                        state: {from: props.location}
+                     }}/>
+                  )
+               )} />
+
+            ))}
+
+         </div>
+      )
+   }
 }
 
 export default RouteView

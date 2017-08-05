@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1501405350642'); /* IE9*/
-  src: url('iconfont.eot?t=1501405350642#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1501405350642') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1501405350642') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1501405350642#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1501909088005'); /* IE9*/
+  src: url('iconfont.eot?t=1501909088005#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1501909088005') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1501909088005') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1501909088005#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -29,6 +29,8 @@
 
 .icon-jian:before { content: "\e609"; }
 
+.icon-exit:before { content: "\e60b"; }
+
 .icon-github:before { content: "\eaf6"; }
 
 .icon-traingle-down:before { content: "\e611"; }
@@ -36,6 +38,8 @@
 .icon-zujianxuanze:before { content: "\e67d"; }
 
 .icon-switch:before { content: "\e6a7"; }
+
+.icon-checkbox:before { content: "\e615"; }
 
 .icon-close:before { content: "\e641"; }
 
@@ -91,6 +95,8 @@
 
 .icon-bk-line-chart2:before { content: "\e629"; }
 
+.icon-password:before { content: "\e62a"; }
+
 .icon-traingle-right:before { content: "\e604"; }
 
 .icon-heart:before { content: "\e684"; }
@@ -103,11 +109,17 @@
 
 .icon-timepickertool:before { content: "\e6aa"; }
 
+.icon-zhanghao:before { content: "\e621"; }
+
 .icon-xialakuangbiaodan-copy:before { content: "\e617"; }
+
+.icon-qunzu:before { content: "\e610"; }
 
 .icon-CheckBox:before { content: "\e61f"; }
 
 .icon-success1:before { content: "\e74a"; }
+
+.icon-exit2:before { content: "\e616"; }
 
 .icon-diy-com-scrollablepicker:before { content: "\e926"; }
 
@@ -129,6 +141,8 @@
 
 .icon-piaofang:before { content: "\e60d"; }
 
+.icon-zhanghaomima-:before { content: "\e698"; }
+
 .icon-tubiao:before { content: "\e60e"; }
 
 .icon-radio:before { content: "\e652"; }
@@ -146,4 +160,6 @@
 .icon-Onebuttonalarm:before { content: "\e6df"; }
 
 .icon-warn:before { content: "\e68f"; }
+
+.icon-zhanghaomima:before { content: "\e978"; }
 

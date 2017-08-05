@@ -11,13 +11,18 @@ let codes = [`<BHInput type={'text'}/>
 <BHInput className="error" type={'text'}/>
 <BHInput disabled={true} type={'text'}/>
 <BHInput readOnly={true} defaultValue={"readOnly"} type={'text'}/>
-`,`<NumberInput type={'text'}/>
+`, `<NumberInput type={'text'}/>
 <NumberInput className="primary" type={'text'}/>
 <NumberInput className="warning" type={'text'}/>
 <NumberInput className="success" type={'text'}/>
 <NumberInput className="error" type={'text'}/>
 <NumberInput disabled={true} type={'text'}/>
-<NumberInput readOnly={true} defaultValue={"readOnly"} type={'text'}/>`
+<NumberInput readOnly={true} defaultValue={"readOnly"} type={'text'}/>
+`, `<BHInput className="primary" type={'text'} prevIcon="icon-shuru"/>
+<BHInput className="warning" type={'text'} prevIcon="icon-warn"/>
+<BHInput className="success" type={'text'} nextIcon="icon-success"/>
+<BHInput className="error" type={'text'} nextIcon="icon-close"/>
+`
 
 ]
 
@@ -47,6 +52,14 @@ class ButtonComponent extends React.Component {
                      <BHInput className="error" type={'text'}/>
                      <BHInput disabled={true} type={'text'}/>
                      <BHInput readOnly={true} defaultValue={"readOnly"} type={'text'}/>
+                  </Example>
+                  <Example title={"带有 icon"}
+                     description="有5种颜色可供选择,default, primary, warning, success, error"
+                     code={codes[2]}>
+                     <BHInput className="primary" type={'text'} prevIcon="icon-shuru"/>
+                     <BHInput className="warning" type={'text'} prevIcon="icon-warn"/>
+                     <BHInput className="success" type={'text'} nextIcon="icon-success"/>
+                     <BHInput className="error" type={'text'} nextIcon="icon-close"/>
                   </Example>
                </FlexItem>
                <FlexItem className={'col-xs-12 col-sm-6'}>
@@ -87,9 +100,27 @@ class ButtonComponent extends React.Component {
                         <td>text</td>
                      </tr>
                      <tr>
-                        <td>iconClassName</td>
-                        <td>有效的icon className。（暂不支持）</td>
+                        <td>prevIcon</td>
+                        <td>有效的icon className。</td>
                         <td>string</td>
+                        <td>无</td>
+                     </tr>
+                     <tr>
+                        <td>prevIconStyle</td>
+                        <td>prevIcon 的样式集合</td>
+                        <td>object</td>
+                        <td>无</td>
+                     </tr>
+                     <tr>
+                        <td>nextIcon</td>
+                        <td>有效的icon className。</td>
+                        <td>string</td>
+                        <td>无</td>
+                     </tr>
+                     <tr>
+                        <td>nextIconStyle</td>
+                        <td>nextIcon 的样式集合</td>
+                        <td>object</td>
                         <td>无</td>
                      </tr>
                      <tr>
@@ -122,15 +153,27 @@ class ButtonComponent extends React.Component {
                         <td>无</td>
                      </tr>
                      <tr>
-                        <td>type</td>
-                        <td>input的type属性，可选值：除number之外的其它可选值。</td>
+                        <td>prevIcon</td>
+                        <td>有效的icon className。</td>
                         <td>string</td>
-                        <td>text</td>
+                        <td>无</td>
                      </tr>
                      <tr>
-                        <td>iconClassName</td>
-                        <td>有效的icon className。（暂不支持）</td>
-                        <td>string</td>
+                        <td>prevIconStyle</td>
+                        <td>prevIcon 的样式集合</td>
+                        <td>object</td>
+                        <td>无</td>
+                     </tr>
+                     <tr>
+                        <td>min</td>
+                        <td>最小值</td>
+                        <td>number</td>
+                        <td>无</td>
+                     </tr>
+                     <tr>
+                        <td>max</td>
+                        <td>最大值</td>
+                        <td>number</td>
                         <td>无</td>
                      </tr>
                      <tr>

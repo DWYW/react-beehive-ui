@@ -76,7 +76,7 @@ class NotificationComponent extends React.Component {
                      </div>
                      <div className="col-xs-12">
                         自动关闭时间（s）：
-                        <NumberInput min={0} onChange={(e) => {this.setAttribute('duration', e.target.value)}}></NumberInput>
+                        <NumberInput min={0} onChange={(value) => {this.setAttribute('duration', value)}}></NumberInput>
                      </div>
                      <div className="col-xs-12">
                         <BHButton className={'primary'} animation={true} onClick={this.notificationHandle}>notification</BHButton>
@@ -102,6 +102,7 @@ class NotificationComponent extends React.Component {
     * Sets notification attribute.
     */
    setAttribute = (attr, value) => {
+      console.log(value);
       const st = {};
       st[attr] = value;
       this.setState(st);

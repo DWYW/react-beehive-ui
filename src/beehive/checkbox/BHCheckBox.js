@@ -47,7 +47,7 @@ class BHCheckBox extends React.Component {
       this.setState(st);
 
       if(this.props.onChange) {
-         this.props.onChange(e.target.checked);
+         this.props.onChange(e);
       }
    }
 
@@ -103,6 +103,10 @@ BHCheckBox.ICONS = {
    heart: {
       default: 'icon-heart1',
       checked: 'icon-heart'
+   },
+   ghost: {
+      default: 'icon-checkbox3',
+      checked: 'icon-checkbox'
    }
 }
 
