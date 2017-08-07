@@ -28,7 +28,8 @@ function create(type) {
       opts.content = content;
       opts.showIcon = opts.showIcon !== undefined ? opts.showIcon !== false && opts.showIcon !== true ? true : opts.showIcon : false;
       opts.showClose = opts.showClose !== undefined ? opts.showClose !== false && opts.showClose !== true ? false : opts.showClose : true;
-      opts.duration = opts.duration !== undefined ? opts.showClose ? opts.duration : 5 : 5;
+      opts.duration = opts.duration !== undefined ?
+         opts.showClose ? parseInt(opts.duration) : parseInt(opts.duration) === 0 ? 5 : parseInt(opts.duration) : 5;
       contents.addMessage(opts)
    }
 }

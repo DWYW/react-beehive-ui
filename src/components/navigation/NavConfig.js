@@ -44,6 +44,15 @@ const navigations = [{
    },
    children: []
 }, {
+   label: "Radio",
+   iconClassName: 'icon-radio',
+   isOpen: false,
+   isSelected: false,
+   to: {
+      pathname: '/radio'
+   },
+   children: []
+}, {
    label: "Select",
    iconClassName: 'icon-xialakuangbiaodan-copy',
    isOpen: false,

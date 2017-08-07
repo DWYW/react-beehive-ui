@@ -51,29 +51,39 @@ class BHCheckBox extends React.Component {
       }
    }
 
+   /**
+    * Get Icon type.
+    */
+   getIconType = (iconType) => {
+      iconType = iconType in BHCheckBox.ICONS ? iconType : 'default';
+      return BHCheckBox.ICONS[iconType];
+   }
+
    render() {
       let {isChecked, isDisabled, animation, iconMarginTop} = this.state;
-      let {iconType, children, className, iconStyle, style} = this.props;
-      iconType = iconType in BHCheckBox.ICONS ? iconType : 'default';
-      const icons = BHCheckBox.ICONS[iconType];
+      let {iconType, children, className, iconStyle, style, ...props} = this.props;
+      const icons = this.getIconType(iconType);
       const _iconStyle = {marginTop: iconMarginTop}
+      delete props.onChange;
+      delete props.checked;
+      delete props.disabled;
 
       return (
          <label ref='checkboxContainer' className={BHUtil.combineClassnames(BHCHECKBOX_CLASSNAME, className,{'disabled': isDisabled})} style={style}>
             <i className={BHUtil.combineClassnames('iconfont', icons.default, {
-               'icon-animation-show': animation && !isChecked,
-               'icon-animation-hide': animation && isChecked,
+               'icon-animation-show': animation && !isChecked && this.props.type !== "radio",
+               'icon-animation-hide': animation && isChecked && this.props.type !== "radio",
                'icon-checked': !isChecked,
                'icon-default': isChecked
             })} style={{...iconStyle, ..._iconStyle}}></i>
             <i className={BHUtil.combineClassnames('iconfont', icons.checked, {
                'icon-animation-show': animation && isChecked,
-               'icon-animation-hide': animation && !isChecked,
+               'icon-animation-hide': animation && !isChecked && this.props.type !== "radio",
                'icon-checked': isChecked,
                'icon-default': !isChecked
             })} style={{...iconStyle, ..._iconStyle}}></i>
-            <span className="checkbox-info">{children}</span>
-            <input ref='checkbox' type="checkbox" disabled={isDisabled} checked={isChecked} onChange={this.handleSetCheckBoxStatus}/>
+            <span className="checkbox-info">{children || this.props.value}</span>
+            <input ref='checkbox' {...props}  disabled={isDisabled} checked={isChecked} onChange={this.handleSetCheckBoxStatus}/>
          </label>
       )
    }
@@ -86,13 +96,15 @@ BHCheckBox.propTypes = {
    iconStyle: PropTypes.object,
    iconType: PropTypes.string,
    style: PropTypes.object,
-   onChange: PropTypes.func
+   onChange: PropTypes.func,
+   type: PropTypes.oneOf(["checkbox", "radio"])
 }
 
 BHCheckBox.defaultProps = {
    iconType: 'default',
    disabled: false,
-   checked: false
+   checked: false,
+   type: "checkbox"
 }
 
 BHCheckBox.ICONS = {

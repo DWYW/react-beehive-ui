@@ -14,6 +14,7 @@ import CheckBoxComponent from 'bundle-loader?lazy&name=[name]!../components/Chec
 import NotificationComponent from 'bundle-loader?lazy&name=[name]!../components/NotificationComponent.js';
 import SelectComponent from 'bundle-loader?lazy&name=[name]!../components/SelectComponent.js';
 import LoginComponent from 'bundle-loader?lazy&name=[name]!../components/LoginComponent.js';
+import RadioComponent from 'bundle-loader?lazy&name=[name]!../components/RadioComponent.js';
 
 import Test from 'bundle-loader?lazy&name=[name]!../Test.js';
 
@@ -21,6 +22,7 @@ import Test from 'bundle-loader?lazy&name=[name]!../Test.js';
 import Hello from '../Hello'
 import Welcome from '../Welcome'
 import Default from '../Default'
+import NoMatch from '../components/NoMatch'
 
 const GetContainers = (component) => {
    return () => (<Bundle load={component}>{(Containers) => <Containers />}</Bundle>)
@@ -49,15 +51,19 @@ const routes = [{
    path: '/input',
    component: GetContainers(InputComponent),
    params: {},
-},  {
+}, {
    path: '/checkbox',
    component: GetContainers(CheckBoxComponent),
    params: {},
-},  {
+}, {
+   path: '/radio',
+   component: GetContainers(RadioComponent),
+   params: {},
+}, {
    path: '/notification',
    component: GetContainers(NotificationComponent),
    params: {},
-},  {
+}, {
    path: '/select',
    component: GetContainers(SelectComponent),
    params: {},
@@ -82,6 +88,10 @@ const routes = [{
 }, {
    path: '/hello',
    component: Hello,
+   params: {}
+}, {
+   path: null,
+   component: NoMatch,
    params: {}
 }]
 

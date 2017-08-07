@@ -6,6 +6,8 @@ import BHInput from './input/BHInput';
 import NumberInput from './input/NumberInput';
 import BHCheckBox from './checkbox/BHCheckBox';
 import BHSwitch from './checkbox/BHSwitch';
+import BHRadio from './radio/BHRadio';
+import RadioGroup from './radio/RadioGroup';
 import BHSelect from  './select/BHSelect';
 import Notification from './notification/';
 
@@ -20,6 +22,8 @@ module.exports = {
    NumberInput,
    BHCheckBox,
    BHSwitch,
+   BHRadio,
+   RadioGroup,
    BHSelect,
    Notification
 }

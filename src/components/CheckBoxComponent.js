@@ -90,7 +90,7 @@ class CheckBoxComponent extends React.Component {
                      </tr>
                      <tr>
                         <td>onChange</td>
-                        <td>checkbox 的 onChange event, return (true|false)</td>
+                        <td>checkbox 的 onChange event</td>
                         <td>function</td>
                         <td>无</td>
                      </tr>

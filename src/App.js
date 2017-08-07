@@ -4,7 +4,7 @@
 import React from "react"
 // import {Route, Link} from 'react-router-dom'
 
-import {BHButton, BHInput, NumberInput, BHTree, BHCheckBox, BHSwitch, BHSelect, Notification} from './beehive/'
+import {BHButton, BHInput, NumberInput, BHTree, BHCheckBox, BHSwitch, BHSelect, Notification, BHRadio, RadioGroup} from './beehive/'
 // import utils from './common/utils/'
 
 export default class App extends React.Component {
@@ -158,6 +158,15 @@ export default class App extends React.Component {
                   <BHSelect.option value='1'>test2</BHSelect.option>
                   <BHSelect.option value='2'>test3</BHSelect.option>
                </BHSelect>
+
+            </div>
+
+            <div>
+               <RadioGroup onChange={(e) => {console.log(e.target)}} value="radio">
+                  <BHRadio value="radio">radio</BHRadio>
+                  <BHRadio value="radio1">radio1</BHRadio>
+                  <BHRadio value="radio2">radio2</BHRadio>
+               </RadioGroup>
 
             </div>
 
