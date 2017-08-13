@@ -1,7 +1,6 @@
 import Example from 'common/Example';
 import TextPane from 'common/TextPane';
 import utils from 'common/utils/';
-// import i18n from  'i18n/';
 import {BHSelect, NumberInput, BHInput, BHButton, FlexBox, FlexItem, Notification} from 'beehive';
 import React from 'react';
 
@@ -76,10 +75,11 @@ class NotificationComponent extends React.Component {
                      </div>
                      <div className="col-xs-12">
                         自动关闭时间（s）：
-                        <NumberInput min={0} onChange={(value) => {this.setAttribute('duration', value)}}></NumberInput>
+                        <NumberInput min={0} onChange={(value) => {this.setAttribute('duration', value)}} value={this.state.duration}></NumberInput>
                      </div>
                      <div className="col-xs-12">
-                        <BHButton className={'primary'} animation={true} onClick={this.notificationHandle}>notification</BHButton>
+                        <BHButton className={'primary'} animation={true} onClick={this.notificationHandle}>create notification</BHButton>
+                        <BHButton animation={true} onClick={() => Notification.clearAll()}>clear all notification</BHButton>
                      </div>
                   </Example>
                </FlexItem>
@@ -87,6 +87,7 @@ class NotificationComponent extends React.Component {
 
             <TextPane title={"Notification API"}>
                <p>{"调用方式：Notification[type](content, {options})"}</p>
+               <p>{"移除所有：Notification.clearAll()"}</p>
             </TextPane>
             {utils.UIUtil.createTable(NotificationComponent.table, 'notificationApi')}
 
@@ -102,7 +103,6 @@ class NotificationComponent extends React.Component {
     * Sets notification attribute.
     */
    setAttribute = (attr, value) => {
-      console.log(value);
       const st = {};
       st[attr] = value;
       this.setState(st);
@@ -113,6 +113,7 @@ class NotificationComponent extends React.Component {
     */
    notificationHandle = () => {
       const {method, content, isShowIcon, isShowClose, duration} = this.state;
+
       Notification[method](content,{
          showIcon: isShowIcon,
          showClose: isShowClose,

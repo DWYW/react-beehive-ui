@@ -9,7 +9,6 @@ class Navigation extends React.Component {
    }
 
    render() {
-
       return (
          <FlexBox className="navigation">
             <FlexItem className="col-xs-12" style={{paddingTop: '30px'}}>

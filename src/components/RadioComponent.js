@@ -59,7 +59,7 @@ class RadioComponent extends React.Component {
 
             <TextPane title={"BHRadio API"} />
             {utils.UIUtil.createTable(RadioComponent.tables[0], 'selectApi')}
-            <TextPane>其他可用属性都会直接传递给{"<BHRadio／>"}</TextPane>
+            <TextPane>其他可用属性都会直接传递给{"<BHRadio/>"}</TextPane>
 
             <TextPane title={"RadioGroup API"} />
             {utils.UIUtil.createTable(RadioComponent.tables[1], 'selectOptionApi')}

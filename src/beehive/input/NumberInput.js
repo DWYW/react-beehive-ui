@@ -8,6 +8,8 @@ class NumberInput extends BHInput {
    constructor(props) {
       super(props);
       this._bakValue = "";
+      this.isOnChange = false;
+
       this.state = {
          btnLineHeight: null,
          value: ""
@@ -40,10 +42,13 @@ class NumberInput extends BHInput {
       delete props.defaultValue;
       delete props.nextIcon;
       delete props.nextIconStyle;
+      const {style, ...restProps} = props;
+      const styles = this.getContainerStyle(style);
 
       return (
-         <div className={BHUtil.combineClassnames(NUMBER_CONTAINER)}>
-            <BHInput {...props} type="text"  value={this.state.value} onBlur={this._handleBlur} onChange={this._handleChange}/>
+         <div className={BHUtil.combineClassnames(NUMBER_CONTAINER)} style={styles.containerStyle}>
+            <BHInput {...restProps} style={styles.style} type="text"  value={this.state.value} onBlur={this._handleBlur} onChange={this._handleChange}
+               onCompositionStart={this._handleOnCompositionStart} onCompositionEnd={this._handleOnCompositionEnd}/>
             <div className={BHUtil.combineClassnames('count-btn-container', props.className, {
                'count-btn-container-disabled': props.disabled
             })} ref="countBtnContainer">
@@ -84,24 +89,51 @@ class NumberInput extends BHInput {
    }
 
    /**
+    * Number add onCompositionStart event handle.
+    */
+   _handleOnCompositionStart = () => {
+      if(!this.isOnChange) {
+         this.isOnChange = true;
+      }
+   }
+
+   /**
+    * Number add onCompositionStart event handle.
+    */
+   _handleOnCompositionEnd = (e) => {
+      if(this.isOnChange) {
+         this.isOnChange = false;
+         this._handleChange(e);
+      }
+   }
+
+   /**
     * Number input change event handle.
     */
    _handleChange = (e) => {
-      let value = e.target.value;
+      if(!this.isOnChange) {
+         let value = e.target.value;
 
-      if(value.toString().match(/^[-]?\d*$/g)) {
-         value = this.checkRange(value);
-         this._updateValue(value);
+         if(value.toString().match(/^[-]?\d*$/g)) {
+            value = this.checkRange(value);
+            this._updateValue(value);
 
-         if(this.props.onChange) {
-            this.props.onChange(value.toString());
+            if(this.props.onChange) {
+               this.props.onChange(value.toString());
+            }
+         }
+         else {
+            this.setState({
+               value: this._bakValue
+            })
          }
       }
       else {
          this.setState({
-            value: this._bakValue
+            value: e.target.value
          })
       }
+
    }
 
    /**
@@ -170,6 +202,7 @@ class NumberInput extends BHInput {
          value: value
       })
    }
+
 }
 
 NumberInput.propTypes = {

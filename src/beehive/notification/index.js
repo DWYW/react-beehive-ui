@@ -1,8 +1,8 @@
 import React from 'react'
 import reactDOM from 'react-dom'
-import Contents from './contents.js'
+import Notification from './Notification.js'
 
-let notificationContainer;
+let notificationContainer = null;
 
 if(document.getElementById('notificationContainer')) {
    notificationContainer = document.getElementById('notificationContainer');
@@ -10,15 +10,18 @@ if(document.getElementById('notificationContainer')) {
 else {
    notificationContainer = document.createElement('div');
    notificationContainer.id = "notificationContainer";
+   document.body.appendChild(notificationContainer);
 }
 
-document.body.appendChild(notificationContainer);
-const contents = reactDOM.render(
-   <Contents></Contents>,
+const notification = reactDOM.render(
+   <Notification/>,
    notificationContainer
 );
 
-function create(type) {
+/**
+ * Create Notification.
+ */
+const create = (type) => {
    return (content, opts = {}) => {
       if (type) {
          opts.type = type
@@ -30,7 +33,16 @@ function create(type) {
       opts.showClose = opts.showClose !== undefined ? opts.showClose !== false && opts.showClose !== true ? false : opts.showClose : true;
       opts.duration = opts.duration !== undefined ?
          opts.showClose ? parseInt(opts.duration) : parseInt(opts.duration) === 0 ? 5 : parseInt(opts.duration) : 5;
-      contents.addMessage(opts)
+      notification.addMessage(opts)
+   }
+}
+
+/**
+ * Clear all Notification.
+ */
+const clearAll = () => {
+   return () => {
+      notification.clearAllMessage();
    }
 }
 
@@ -39,5 +51,6 @@ export default {
    success: create('success'),
    primary: create('primary'),
    error: create('error'),
-   warn: create('danger')
+   warn: create('danger'),
+   clearAll: clearAll()
 }

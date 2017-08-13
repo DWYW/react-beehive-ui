@@ -25,8 +25,31 @@ class BHInput extends React.Component {
       }
    }
 
+   getContainerStyle = (style) => {
+      let inputStyle = Object.assign({}, style);
+      const attrs = ["marginLeft", "marginTop", "marginRight", "marginBottom", "margin", "display", "width"];
+      const containerStyle = {};
+
+      if(inputStyle) {
+         attrs.forEach((attr) => {
+            if(attr in inputStyle) {
+               containerStyle[attr] = inputStyle[attr];
+               delete inputStyle[attr];
+            }
+         })
+
+      }
+
+      return {
+         containerStyle: containerStyle,
+         style: inputStyle
+      }
+
+   }
+
    render() {
-      const {className, prevIcon, prevIconStyle, nextIcon, nextIconStyle, ...props} = this.props;
+      const {className, prevIcon, prevIconStyle, nextIcon, nextIconStyle, style, ...props} = this.props;
+      const styles = this.getContainerStyle(style);
 
       if(props.value) {
          delete props.defaultValue;
@@ -36,7 +59,7 @@ class BHInput extends React.Component {
       const restProps = this.props.value ? Object.assign({},props,{value: this.state.value}) : props;
 
       return (
-         <div className={BHUtil.combineClassnames(BHINPUT_CONTAINER_CLASSNAME, className)}>
+         <div className={BHUtil.combineClassnames(BHINPUT_CONTAINER_CLASSNAME, className)} style={styles.containerStyle}>
             {prevIcon &&
                <i className={BHUtil.combineClassnames('iconfont', prevIcon, {'input-prev-icon': prevIcon})}
                   style={Object.assign({}, prevIconStyle, {"lineHeight": `${this.state.iconLineHeight}px`})}></i>
@@ -46,7 +69,7 @@ class BHInput extends React.Component {
                className={BHUtil.combineClassnames(BHINPUT_CLASSNAME,{
                   'hasIcon-prev': prevIcon,
                   'hasIcon-next': nextIcon
-               })} {...restProps} />
+               })} style={styles.style} {...restProps} />
             {nextIcon &&
                <i className={BHUtil.combineClassnames('iconfont', nextIcon, {'input-next-icon': nextIcon})}
                   style={Object.assign({}, nextIconStyle, {"lineHeight": `${this.state.iconLineHeight}px`})}></i>

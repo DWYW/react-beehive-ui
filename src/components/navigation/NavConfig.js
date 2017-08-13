@@ -77,6 +77,16 @@ const navigations = [{
       },
       query: {},
       children: []
+   }, {
+      label: "Dialog",
+      iconClassName: 'icon-zujian',
+      isOpen: false,
+      isSelected: false,
+      to: {
+         pathname: '/dialog'
+      },
+      query: {},
+      children: []
    }]
 }, {
    label: "lable3",

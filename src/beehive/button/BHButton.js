@@ -59,7 +59,7 @@ const FLEX_BOX_STYLE = {
 }
 const FLEX_ITEM_STYLE = {
    textAlign: 'center',
-   marginTop: '-2px'
+   // marginTop: '-2px'
 }
 
 export default BHButton

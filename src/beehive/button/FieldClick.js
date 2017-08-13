@@ -45,16 +45,20 @@ class FieldClick extends React.Component {
    }
 
    _getOffset(element){
-      let left = 0, top = 0, parent = element.offsetParent;
-      left += this.FieldClick.offsetLeft;
-      top += this.FieldClick.offsetTop;
+      // let left = 0, top = 0, parent = element.offsetParent;
+      // left += this.FieldClick.offsetLeft;
+      // top += this.FieldClick.offsetTop;
 
-      while(parent) {
-         left += parent.offsetLeft;
-         top += parent.offsetTop;
-         parent = parent.offsetParent
-      }
+      // while(parent) {
+      //    left += parent.offsetLeft;
+      //    top += parent.offsetTop;
+      //    parent = parent.offsetParent
+      // }
 
+      // console.log(element.getBoundingClientRect())
+      // console.log({left: left, top: top})
+      const left = element.getBoundingClientRect().left;
+      const top = element.getBoundingClientRect().top;
       return {left: left, top: top}
    }
 

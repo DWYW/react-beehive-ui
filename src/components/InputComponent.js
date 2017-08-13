@@ -184,7 +184,7 @@ class ButtonComponent extends React.Component {
                      </tr>
                      <tr>
                         <td>onChange</td>
-                        <td>onChange事件的handler。</td>
+                        <td>onChange事件的handler。(return value)</td>
                         <td>function</td>
                         <td>无</td>
                      </tr>

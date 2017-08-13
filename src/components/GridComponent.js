@@ -97,7 +97,7 @@ class GridComponent extends React.Component {
             <FlexBox>
                <FlexItem className={'col-xs-12 col-sm-6'}>
                   <Example title={i18n.$t('gridExampleTitle1')} code={codes[0]} description={descriptions[0]}>
-                     <FlexBox flexDirection="row" flexWrap="nowrap">
+                     <FlexBox className="hide-x" flexDirection="row" flexWrap="nowrap">
                         {[1,2,5,4, 2].map((item, key) => {
                            return (
                               <FlexItem key={`example1-${key}`} style={key % 2 == 0 ? STYLE_PRIMSRY : STYLE_WRANING}>
@@ -110,7 +110,7 @@ class GridComponent extends React.Component {
                </FlexItem>
                <FlexItem className={'col-xs-12 col-sm-6'}>
                   <Example title={i18n.$t('gridExampleTitle1')} code={codes[1]} description={descriptions[0]}>
-                     <FlexBox flexDirection="row" flexWrap="wrap">
+                     <FlexBox className="hide-x" flexDirection="row" flexWrap="wrap">
                         {[1,2,5,4, 2].map((item, key) => {
                            return (
                               <FlexItem key={`example2-${key}`} style={key % 2 == 0 ? key == 4 ? STYLE_WRANING : STYLE_PRIMSRY : STYLE_WRANING}>

@@ -15,6 +15,7 @@ import NotificationComponent from 'bundle-loader?lazy&name=[name]!../components/
 import SelectComponent from 'bundle-loader?lazy&name=[name]!../components/SelectComponent.js';
 import LoginComponent from 'bundle-loader?lazy&name=[name]!../components/LoginComponent.js';
 import RadioComponent from 'bundle-loader?lazy&name=[name]!../components/RadioComponent.js';
+import DialogComponent from 'bundle-loader?lazy&name=[name]!../components/DialogComponent.js';
 
 import Test from 'bundle-loader?lazy&name=[name]!../Test.js';
 
@@ -62,6 +63,10 @@ const routes = [{
 }, {
    path: '/notification',
    component: GetContainers(NotificationComponent),
+   params: {},
+}, {
+   path: '/dialog',
+   component: GetContainers(DialogComponent),
    params: {},
 }, {
    path: '/select',
