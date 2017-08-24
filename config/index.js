@@ -4,10 +4,10 @@ module.exports = {
    title: 'beehive-ui',
    build: {
       env: require('./prod.env'),
-      index: path.resolve(__dirname, '../../beehiveUI.io/index.html'),
-      assetsRoot: path.resolve(__dirname, '../../beehiveUI.io'),
+      index: path.resolve(__dirname, '../../../pr-events-fe/index.html'),
+      assetsRoot: path.resolve(__dirname, '../../../pr-events-fe'),
       assetsSubDirectory: 'static',
-      assetsPublicPath: '/',
+      assetsPublicPath: '/jmc170820/',
       productionSourceMap: true,
       // Gzip off by default as many popular static hosts such as
       // Surge or Netlify already gzip all static assets for you.
@@ -18,7 +18,7 @@ module.exports = {
    },
    dev: {
       env: require('./dev.env'),
-      port: 4402,
+      port: 4403,
       assetsSubDirectory: 'static',
       assetsPublicPath: '/',
       proxyTable: {

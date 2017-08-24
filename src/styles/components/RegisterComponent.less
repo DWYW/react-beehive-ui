@@ -1,0 +1,112 @@
+@btnBGColor: #fe4451;
+@titleColor: #fe4451;
+@defaultColor: #9b9b9b;
+@activeBGColor: #e22f3b;
+
+.height(@height) {
+   height: @height;
+   min-height: @height;
+}
+
+.register-container {
+   position: relative;
+   box-sizing: border-box;
+   font-size: 0.34rem;
+   color: @defaultColor;
+   background-image: url(../../../static/dialog/dialog_top_bg.png);
+   background-repeat: no-repeat;
+   background-size: 0.8rem auto;
+
+   .register-content {
+      padding: 0 0.5rem;
+   }
+
+   .register-title {
+      color: @titleColor;
+      line-height: 0.6rem;
+      text-align: center;
+      padding: 50px 0 20px;
+   }
+
+   .register-body {
+      margin-top: 0.3rem;
+
+      .get-verification {
+         flex: 0 0 1.6rem;
+
+         .get-verification-btn {
+            .height(0.8rem);
+            line-height: 0.8rem;
+            font-size: 0.2rem;
+            border-radius: 0;
+            background: @btnBGColor;
+            color: #fff;
+            border: none;
+
+            &:active {
+               background-color: @activeBGColor;
+            }
+         }
+      }
+   }
+
+   .dialog-bottom-bg-contianer {
+      width: 100%;
+      height: 176px;
+
+      img {
+         width: 100%;
+         display: block;
+      }
+   }
+
+   .cancel-btn ,.confirm-btn {
+      max-width: 360px;
+      display: inline-block;
+      min-width: 250px;
+      color: #fff;
+      border: none;
+   }
+
+   .cancel-btn {
+      background-color: #cccccc;
+      margin-right: 0.3rem;
+
+      &:active {
+         background-color: #a9a9a9;
+      }
+   }
+
+   .confirm-btn {
+      background-color: @btnBGColor;
+
+      &.sigle-btn {
+         width: 360px;
+      }
+
+      &:active {
+         background-color: @activeBGColor;
+      }
+   }
+
+   .item-label {
+      flex: 0 0 1.8rem;
+      text-align: right;
+   }
+
+   .hasBorder {
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      .height(0.8rem);
+
+      input {
+         font-size: 26px;
+         color: #9b9b9b;
+      }
+
+      &::after {
+         border: none;
+      }
+   }
+
+}

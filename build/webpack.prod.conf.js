@@ -8,17 +8,12 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var env = config.build.env
 var assetsSubDirectory = process.env.NODE_ENV === 'production' ? config.build.assetsSubDirectory : config.dev.assetsSubDirectory
 
-//add fetch
-Object.keys(baseWebpackConfig.entry).forEach(function(name) {
-   baseWebpackConfig.entry[name] = ['whatwg-fetch'].concat(baseWebpackConfig.entry[name])
-})
-
 var webpackConfig = merge(baseWebpackConfig, {
    devtool: config.build.productionSourceMap ? 'source-map' : false,
    output: {
       path: config.build.assetsRoot,
       filename: path.posix.join(assetsSubDirectory, 'js/[name].[chunkhash].js'),
-      chunkFilename: path.posix.join(assetsSubDirectory, 'js/[id].[chunkhash].js')
+      chunkFilename: path.posix.join(assetsSubDirectory, 'js/[name].[chunkhash].js')
    },
    plugins: [
       new webpack.DefinePlugin({

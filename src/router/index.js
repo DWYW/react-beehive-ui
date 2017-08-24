@@ -1,29 +1,11 @@
 import Bundle from '../common/Bundle';
 import React from 'react';
-// import {withRouter} from 'react-router'
-
-// Sync load component.
-// import App from '../App';
 
 // Async load component.
 import App from 'bundle-loader?lazy&name=[name]!../App.js';
-import ButtonComponent from 'bundle-loader?lazy&name=[name]!../components/ButtonComponent.js';
-import GridComponent from 'bundle-loader?lazy&name=[name]!../components/GridComponent.js';
-import InputComponent from 'bundle-loader?lazy&name=[name]!../components/InputComponent.js';
-import CheckBoxComponent from 'bundle-loader?lazy&name=[name]!../components/CheckBoxComponent.js';
-import NotificationComponent from 'bundle-loader?lazy&name=[name]!../components/NotificationComponent.js';
-import SelectComponent from 'bundle-loader?lazy&name=[name]!../components/SelectComponent.js';
-import LoginComponent from 'bundle-loader?lazy&name=[name]!../components/LoginComponent.js';
-import RadioComponent from 'bundle-loader?lazy&name=[name]!../components/RadioComponent.js';
-import DialogComponent from 'bundle-loader?lazy&name=[name]!../components/DialogComponent.js';
-
-import Test from 'bundle-loader?lazy&name=[name]!../Test.js';
-
-// import Test from '../Test'
-import Hello from '../Hello'
-import Welcome from '../Welcome'
-import Default from '../Default'
-import NoMatch from '../components/NoMatch'
+import MyFriendIndex from 'bundle-loader?lazy&name=[name]!../MyFriendIndex.js';
+import RankListComponent from 'bundle-loader?lazy&name=[name]!../RankListComponent.js';
+import PresentGiftComponent from 'bundle-loader?lazy&name=[name]!../PresentGiftComponent.js';
 
 const GetContainers = (component) => {
    return () => (<Bundle load={component}>{(Containers) => <Containers />}</Bundle>)
@@ -33,71 +15,23 @@ const routes = [{
    path: '/',
    exact: true,
    component: GetContainers(App),
-   private: true,
+   private: false,
    params: {},
 }, {
-   path: '/login',
-   component: GetContainers(LoginComponent),
+   path: '/myfriend',
+   component: GetContainers(MyFriendIndex),
+   private: false,
    params: {},
 }, {
-   path: '/flexgrid',
-   component: GetContainers(GridComponent),
-   private: true,
+   path: '/rank',
+   component: GetContainers(RankListComponent),
+   private: false,
    params: {},
 }, {
-   path: '/button',
-   component: GetContainers(ButtonComponent),
+   path: '/presentgift',
+   component: GetContainers(PresentGiftComponent),
+   private: false,
    params: {},
-}, {
-   path: '/input',
-   component: GetContainers(InputComponent),
-   params: {},
-}, {
-   path: '/checkbox',
-   component: GetContainers(CheckBoxComponent),
-   params: {},
-}, {
-   path: '/radio',
-   component: GetContainers(RadioComponent),
-   params: {},
-}, {
-   path: '/notification',
-   component: GetContainers(NotificationComponent),
-   params: {},
-}, {
-   path: '/dialog',
-   component: GetContainers(DialogComponent),
-   params: {},
-}, {
-   path: '/select',
-   component: GetContainers(SelectComponent),
-   params: {},
-}, {
-   path: '/welcome',
-   component: Welcome,
-   params: {},
-   childrens: [{
-      path: '/welcome/',
-      component: Default,
-      exact: true,
-      params: {}
-   }, {
-      path: '/welcome/default',
-      component: Default,
-      params: {}
-   }, {
-      path: '/welcome/test',
-      component: GetContainers(Test),
-      params: {}
-   }]
-}, {
-   path: '/hello',
-   component: Hello,
-   params: {}
-}, {
-   path: null,
-   component: NoMatch,
-   params: {}
 }]
 
 module.exports = routes
