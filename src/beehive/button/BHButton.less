@@ -1,0 +1,111 @@
+@import '../variables.less';
+
+.@{prefix}button {
+   min-width: 120px;
+   height: 32px;
+   border: 1px solid @borderColor;
+   border-radius: 4px;
+   margin: 2px 3px;
+   display: inline-block;
+   vertical-align: middle;
+   user-select:none;
+   cursor: pointer;
+   background-color: #ffffff;
+   font-size: 0.9rem;
+   transition: background .2s;
+   outline: none;
+
+   &:hover {
+      background-color: #eeeeee;
+   }
+
+   &:active {
+      background-color: #e0e0e0;
+   }
+
+
+   &.primary, &.warning, &.success, &.error {
+      transition: background .2s;
+
+      .@{prefix}field-click-animation-item{
+         background: rgba(255, 255, 255, .3) !important;
+      }
+   }
+
+   &.primary {
+      background-color: @primaryColor + #111111;
+      border-color: @primaryColor;
+      color: #ffffff;
+
+      &:hover {
+         background-color: @primaryColor ;
+      }
+
+      &:active {
+         background-color: @primaryColor - #222222;
+      }
+
+      &[data-animation = true]:hover, &[data-animation = true]:active{
+         background-color: @primaryColor;
+      }
+   }
+
+   &.warning {
+      background-color: @warningColor + #090909;
+      border-color: @warningColor;
+      color: #ffffff;
+
+      &:hover {
+         background-color: @warningColor;
+      }
+
+      &:active {
+         background-color: @warningColor - #222222;
+      }
+
+      &[data-animation = true]:hover, &[data-animation = true]:active{
+         background-color: @warningColor;
+      }
+   }
+
+   &.success {
+      background-color: @successColor + #111111;
+      border-color: @successColor;
+      color: #ffffff;
+
+      &:hover {
+         background-color: @successColor;
+      }
+
+      &:active {
+         background-color: @successColor - #222222;
+      }
+
+      &[data-animation = true]:hover, &[data-animation = true]:active{
+         background-color: @successColor;
+      }
+   }
+
+   &.error {
+      background-color: @errorColor + #111111;
+      border-color: @errorColor;
+      color: #ffffff;
+
+      &:hover {
+         background-color: @errorColor;
+      }
+
+      &:active {
+         background-color: @errorColor - #222222;
+      }
+
+      &[data-animation = true]:hover, &[data-animation = true]:active{
+         background-color: @errorColor;
+      }
+   }
+
+   &.disabled {
+      cursor: default;
+      background-color: @disableColor;
+   }
+}

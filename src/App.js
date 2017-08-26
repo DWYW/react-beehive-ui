@@ -1,174 +1,175 @@
-import {API, isFirstEntry, isFirstScanCode, clearTime, shareTime, tokenName, service} from './service/Api';
-import {GDialog} from 'mobileUI/index/';
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router'
-import * as test from './store/actions/test'
-import ActiveRuleComponent from './components/ActiveRuleComponent';
-import ApiUtil from 'common/utils/ApiUtil';
-import FixedHeadComponent from './components/FixedHeadComponent';
-import FooterComponent from './components/FooterComponent';
-import RegisterComponent from './components/RegisterComponent';
-import ShareDialogContentComponent from './components/ShareDialogContentComponent';
-import FriendPresentListComponent from './components/FriendPresentListComponent';
-import UIUtil from 'common/utils/UIUtil';
-import {Modal, Toast} from 'antd-mobile';
-import moment from 'moment';
-import React from "react";
+// import {Route, Link} from 'react-router-dom'
+// import RouteView from './common/RouteView'
+// import Navigation from './components/navigation/Navigation';
+import React from "react"
+// import {Route, Link} from 'react-router-dom'
 
-<<<<<<< HEAD
 import {BHButton, BHInput, NumberInput, BHTree, BHCheckBox, BHSwitch, BHSelect, Notification, BHRadio, RadioGroup, Tabs, TabItem} from './beehive/'
 // import utils from './common/utils/'
-=======
-import './styles/App.less';
->>>>>>> abb58e72a8a3f37d5e13f8ed9e1f432211298813
 
-class App extends React.Component {
+export default class App extends React.Component {
    constructor(props) {
       super(props);
-      this._ruleDialog = null;
-      this._registerDialog = null;
-      this._shareDialog = null;
-      this.tokenName = null;
-      this.officialId = null;
+      this.className = "app";
+      this.test1 = "ewerwq";
+      this.test2 = "wrw";
+      this._callback = this._callback.bind(this);
 
       this.state = {
-         userInfo: null,
-         openid: null,
-         modalVisible: false,
-         orderInfo: null
+         count: 0
       }
+
+      this.treeData = [{
+         idx: '000001',
+         label: "tree-0-0",
+         isSelected: false,
+         isOpen: false,
+         iconClassName: [null, null],
+         children: [{
+            idx: '000011',
+            label: "tree-0-1-0",
+            isSelected: false,
+            isOpen: false,
+            iconClassName: [null, null],
+            children: null
+         }]
+      }, {
+         idx: '000002',
+         label: "tree-0-1",
+         isSelected: false,
+         isOpen: false,
+         iconClassName: [null, null],
+         children: null
+      }]
    }
-   componentWillMount() {
-      if(!localStorage.getItem(clearTime)) {
-         localStorage.clear();
-         localStorage.setItem(clearTime, true);
-      }
+   _callback(){
 
-      //react-router 自动跳转redirect_router_path
-      if(ApiUtil.getQueryValue("redirect_router_path") && ApiUtil.getQueryValue("redirect_router_path")!=='/') {
-         if(ApiUtil.getQueryValue("router_openid")) {
-            this.props.history.push({
-               pathname: '/presentgift',
-               search: `router_openid=${ApiUtil.getQueryValue("router_openid")}`
-            })
-
-            return false;
-         }
-
-         this.props.history.push({
-            pathname: ApiUtil.getQueryValue("redirect_router_path")
+      setTimeout(()=>{
+         const count = ++this.state.count;
+         this.setState({
+            count
          })
-         return false
-      }
-
-      this.officialId = ApiUtil.getQueryValue("official_id");
-      this.tokenName = `${tokenName}${this.officialId}`;
-      this.fromOpenId = ApiUtil.getQueryValue("from_openid");
-      this.pageFrom = ApiUtil.getQueryValue("page_from");
-      ApiUtil.setToken(API, this.tokenName, this.officialId);
-
-      if(ApiUtil.getQueryValue('access_token')) {
-         let href = null;
-
-         if(window.location.search.substring(0,1) == "?") {
-            href = window.location.href.replace(`&access_token=${ApiUtil.getQueryValue('access_token')}`, '');
-
-         }
-         else {
-            href = window.location.href.replace(`access_token=${ApiUtil.getQueryValue('access_token')}`, '');
-         }
-
-         window.location.href = href;
-      }
-
-      if(ApiUtil.getToken(this.tokenName)) {
-         this.dataInit();
-      }
-   }
-
-   componentDidMount() {
-      this.pageInit();
-   }
-
-   componentWillUnmount() {
-      GDialog.removeAll();
+      },100)
    }
 
    render() {
-      const {userInfo, openid} = this.state;
+      // console.log(utils.string.removeStringBlanks('  sfsf-sf ',false));
+      // let a = {a: 'a', c: 4};
+      // let b = {b: 'b', c: 8};
+      // a = utils.object.assignOwnProperty(a,b);
+      // console.log(a);
+      // b.c = 10;
+      // console.log(a);
+      // console.log(b);
 
       return (
-         <div className="person-index">
-            <FixedHeadComponent/>
-            <div className="index-container">
-               <div className="header-container">
-                  <span className="active-rule-btn" onClick={()=>{this.addDialog('rule')}}>
-                     <span>活动规则</span> <i className="iconfont icon-info"></i>
-                  </span>
-               </div>
-               <div className="content-container">
-                  <div className="content-slogan text-center">赢iPhone7，坐江铃玫瑰花车</div>
-                  <div className="person-info text-center">
-                     已收到
-                     <span className="rose-number">{userInfo ? userInfo.point : 0}</span>
-                     朵玫瑰，排名
-                     <span className="rank-number">{userInfo ? userInfo.rank : 0}</span>
-                     <span className="view-rank-btn" onClick={this.routeToRank}>查看排行榜</span>
-                  </div>
-                  <div className="share-btn">
-                     <div className="share-btn-bg" onClick={this.showShareDialog}></div>
-                  </div>
+         <div className="beehive-app">
 
-                  <div className="register-btn text-center" onClick={()=>{this.addDialog('register')}}>注册即送999朵玫瑰</div>
+            <h2>{this.state.count}</h2>
 
-                  <div className="text-center"><a className="jmc-skip" href="http://www.jmc.com.cn/">车辆和促销详情请点击</a></div>
+            <BHButton className={'primary'} animation={true} disabled={true} onClick={() => this._callback()}>disabled</BHButton>
+            <BHButton onClick={() => this._callback()}>primary</BHButton>
+            <BHButton className={'primary'} onClick={() => this._callback()}>primary</BHButton>
+            <BHButton className={'warning'} onClick={() => this._callback()}>warning</BHButton>
+            <BHButton className={'error'} onClick={() => this._callback()}>error</BHButton>
+            <BHButton className={'success'} onClick={() => this._callback()}>success</BHButton>
+            <br/>
+            <BHButton animation={true}
+               onClick={() => {Notification.primary('这是一个notification提示,内容不宜太多', {
+                  showIcon: false,
+                  duration: 5,
+                  showClose: true
+               })}} >
+               primary</BHButton>
+            <BHButton animation={true}
+               onClick={() => {Notification.default('这是一个notification提示,内容不宜太多', {
+                  showIcon: true,
+                  duration: 0,
+                  showClose: true
+               })}}>default</BHButton>
+            <BHButton animation={true} className={'primary'}
+               onClick={() => {Notification.primary('这是一个notification提示,内容不宜太多', {
+                  showIcon: true,
+                  duration: 0,
+                  showClose: true
+               })}}>primary</BHButton>
+            <BHButton animation={true} className={'warning'}
+               onClick={() => {Notification.warn('这是一个内容不宜太多', {
+                  showIcon: true,
+                  duration: 0,
+                  showClose: true
+               })}}>warning</BHButton>
+            <BHButton animation={true} className={'error'}
+               onClick={() => {Notification.error('这是一个notification提示,内容不宜太多', {
+                  showIcon: true,
+                  duration: 0,
+                  showClose: true
+               })}}>error</BHButton>
+            <BHButton animation={true} className={'success'}
+               onClick={() => {Notification.success('这是一个notification提示,内容不宜太多', {
+                  showIcon: true,
+                  duration: 0,
+                  showClose: true
+               })}}>success</BHButton>
 
-                  <FriendPresentListComponent linkTo={true} openId={openid} ownerOpenId={openid} titleImg={FRIEND_PRESENT_LIST_COMPONENT_TITLE} />
-
-                  <FooterComponent/>
-
-               </div>
+            <div>
+               <div><BHInput type='text' prevIcon="icon-scan" nextIcon="icon-success"/></div>
+               <div><NumberInput type={'number'} min={0} max={10}/></div>
+               {  /*
+                  <div><NumberInput className={'primary'} type={'number'} onChange={(res) => {console.log(res)}}/></div>
+                  <div><NumberInput className={'success'} type={'number'} /></div>
+                  <div><NumberInput className={'warning'} type={'number'} /></div>
+                  <div><NumberInput className={'error'} type={'number'} /></div>
+                  <div><NumberInput type={'number'} /></div>*/
+               }
             </div>
-            <Modal
-               title={this.state.orderInfo && this.state.orderInfo.title}
-               transparent
-               maskClosable={false}
-               visible={this.state.modalVisible}
-               footer={[{text: '确定', onPress: () => {this.hideModal();}}]}
-               platform="ios"
-            >
-               {this.state.orderInfo &&  `您已成功领取${this.state.orderInfo.brand}${this.state.orderInfo.coupon}，
-                     请凭手机号码到${this.state.orderInfo.official_name}可以享受每1万朵玫瑰花，直降100元的优惠，每台车最多500元。`}
 
-            </Modal>
-         </div>
-      )
-   }
+            <BHTree data={this.treeData}></BHTree>
 
-   /**
-    * Data init event.
-    */
-   dataInit = async () => {
-      const wxUserInfo = await service.getWxUserInfo(this.tokenName);
-      const userInfo = await service.getUserInfo({
-         openid: wxUserInfo.data.open_id,
-         official_id: this.officialId
-      });
+            <div>
+               <BHCheckBox>12131</BHCheckBox>
+               <BHCheckBox className='primary' style={{color: '#ccc'}}>12131</BHCheckBox>
+               <BHCheckBox iconType="heart" className='success'>12131</BHCheckBox>
+               <BHCheckBox iconType="hearts" className='warning'>12131</BHCheckBox>
+               <BHCheckBox className='error'>12131</BHCheckBox>
+               <BHCheckBox className='error' disabled={true}>12131</BHCheckBox>
+               <BHCheckBox className='error' disabled={true} iconStyle={{color: 'pink'}}>12131</BHCheckBox>
 
-      const openid = wxUserInfo.data.open_id;
-      localStorage.setItem("openid", openid);
+            </div>
 
-      this.setState({
-         userInfo: userInfo.data,
-         openid: localStorage.getItem("openid")
-      },() => {
-         this.createShare();
-      })
+            <div>
+               <BHSwitch open={true}/>
+               <BHSwitch open={true} className='success'/>
+               <BHSwitch open={true} className='warning'/>
+               <BHSwitch open={true} className='error'/>
+               <BHSwitch disabled={true} className='success'/>
+               <BHSwitch className='success'/>
+               <BHSwitch type={'smaller'} className='success'/>
+            </div>
 
-      this.dialogInit();
-   }
+            <div>
+               <BHSelect placeholder="placeHolder sting">
+                  <BHSelect.option value='0'>test1</BHSelect.option>
+                  <BHSelect.option value='1'>test2</BHSelect.option>
+                  <BHSelect.option value='2'>test3</BHSelect.option>
+               </BHSelect>
+               <BHSelect className="primary" placeholder="placeHolder sting">
+                  <BHSelect.option value='0'>test1</BHSelect.option>
+                  <BHSelect.option value='1'>test2</BHSelect.option>
+                  <BHSelect.option value='2'>test3</BHSelect.option>
+               </BHSelect>
 
-<<<<<<< HEAD
+            </div>
+
+            <div>
+               <RadioGroup onChange={(e) => {console.log(e.target)}} value="radio">
+                  <BHRadio value="radio">radio</BHRadio>
+                  <BHRadio value="radio1">radio1</BHRadio>
+                  <BHRadio value="radio2">radio2</BHRadio>
+               </RadioGroup>
+
+            </div>
+
             <div>
                <Tabs style={{width: '320px', padding: "5px", boxSizing: 'border-box'}}>
                   <TabItem label="tab1">
@@ -191,282 +192,5 @@ class App extends React.Component {
 
          </div>
       )
-=======
-   /**
-    * Dialog init event.
-    */
-   dialogInit = async () => {
-      if(!localStorage.getItem(isFirstScanCode) && this.pageFrom == 'scanCode') {
-         localStorage.setItem(isFirstScanCode, true);
-         const getRose9999 = await service.getRoses({
-            official_id: this.officialId,
-            openid: this.state.openid,
-            type: 15
-         })
-
-         if(getRose9999.code === 0 ) {
-            localStorage.setItem(isFirstEntry, true);
-            this.showRegisterDialog(true);
-            return false;
-         }
-      }
-
-      if(!localStorage.getItem(isFirstEntry)) {
-         localStorage.setItem(isFirstEntry, true);
-         this.showRuleDialog(true);
-      }
-   }
-
-   /**
-    * Page init event.
-    */
-   pageInit = () => {
-      UIUtil.pageScrollTopTo(0);
-   }
-
-   /**
-    * Create share event.
-    */
-   createShare = async () => {
-      const signature = await service.getSignature({
-         url: window.location.href
-      },this.officialId)
-
-      if(signature.code === 0) {
-         ApiUtil.shareEvent(signature.data, {
-            title: `七夕活动收江铃玫瑰，今天是第 ${ApiUtil.mountDays()} 天，已收到 ${this.state.userInfo.point} 朵`,
-            link: `${location.origin}${location.pathname}?official_id=${this.officialId}&from_openid=${this.state.openid}#/myfriend`,
-            imgUrl: this.state.userInfo.headimgurl,
-            desc: `跟前一名还差一点点，大家来助力帮我赢iPhone`,
-            success: () => {
-               this.shareSuccess();
-            }
-         })
-      }
-   }
-
-   /**
-    * Share success.
-    */
-   shareSuccess = async () => {
-      const getRoses = await service.getRoses({
-         official_id: this.officialId,
-         openid: this.state.openid,
-         type: 16
-      })
-
-      if(getRoses.code === 0) {
-         const prevShareTime  = localStorage.getItem(shareTime);
-         const {clueAuth, mobileAuth} = this.state.userInfo;
-
-         if(!prevShareTime) {
-            this.shareSuccessShowDialog(clueAuth, mobileAuth);
-            return false;
-         }
-
-         if(!ApiUtil.isToDay(prevShareTime)) {
-            this.shareSuccessShowDialog(clueAuth, mobileAuth);
-            return false;
-         }
-
-         window.location.reload();
-      }
-   }
-
-   /**
-    * Share success show dialog.
-    */
-   shareSuccessShowDialog = (clueAuth, mobileAuth) => {
-      localStorage.setItem(shareTime, moment().format('YYYYMMDD'));
-      if(mobileAuth == 2 || clueAuth == 2) {
-         this.showRegisterDialog(true, false, true);
-      }
-      else {
-         Toast.info("签到完成！成功领取800朵玫瑰", 2)
-      }
-   }
-
-   /**
-    * Add dialog event.
-    */
-   addDialog = (component) => {
-
-      switch(component) {
-      case 'rule':
-         this.showRuleDialog();
-         break;
-      case 'register':
-         this.showRegisterDialog(false, true, false);
-         break;
-      default:
-         return null
-      }
-   }
-
-   /**
-    * Show rule dialog.
-    */
-   showRuleDialog = () => {
-      GDialog.addDialog({
-         content: <ActiveRuleComponent
-            cancel={()=>GDialog.removeDialog(this._ruleDialog)}
-         />,
-         callback: (id) => {
-            this._ruleDialog = id;
-         }
-      })
-   }
-
-   /**
-    * Get register dialog content title.
-    */
-   getRegisterTitle = (clueAuth, mobileAuth, awaitFun, shareCB) => {
-      if(clueAuth == 2 && mobileAuth == 2) {
-         return awaitFun ? (
-            shareCB ? `签到完成！成功领取800朵玫瑰！<br/>继续注册再领取999朵玫瑰` : `手机注册领取999朵玫瑰`
-         ) : (
-            shareCB ? `签到完成！成功领取800朵玫瑰！<br/>继续注册再领取999朵玫瑰` : `已领取9999朵玫瑰<br/>继续注册再获得999朵玫瑰`
-         );
-      }
-      else if(clueAuth == 2 && mobileAuth == 0) {
-         return awaitFun ? (
-            shareCB ? `签到完成！成功领取800朵玫瑰！<br/>快来领取新车优惠` : `江铃提醒您领取新车优惠券`
-         ) : (
-            shareCB ? `签到完成！成功领取800朵玫瑰！<br/>快来领取新车优惠` : `江铃提醒您领取新车优惠券`
-         )
-      }
-      else {
-         return awaitFun ? (
-            shareCB ? `签到完成！成功领取800朵玫瑰！<br/>继续注册再领取999朵玫瑰` : `手机注册领取999朵玫瑰`
-         ) : (
-            shareCB ? `签到完成！成功领取800朵玫瑰！<br/>快来领取新车优惠` : `已领取9999朵玫瑰<br/>继续注册再获得999朵玫瑰`
-         );
-      }
-   }
-
-   /**
-    * Show register dialog.
-    */
-   showRegisterDialog = (cancelReload = false, awaitFun = false, shareCB = false) => {
-      const {clueAuth, mobileAuth} = this.state.userInfo;
-      const contentTitle = this.getRegisterTitle(clueAuth, mobileAuth, awaitFun, shareCB);
-
-      if(clueAuth == 2 || mobileAuth == 2) {
-         const props = Object.assign({},{clueAuth, mobileAuth})
-         GDialog.addDialog({
-            content: <RegisterComponent
-               contentTitle={contentTitle}
-               openId={this.state.openid}
-               officialId={this.officialId}
-               fromOpenId={this.fromOpenId}
-               getRoseType="11"
-               {...props}
-               cancel={(options = null, reload = false)=>{
-                  GDialog.removeDialog(this._registerDialog);
-
-                  if(options) {
-                     this.showModal(options, reload);
-                     return false;
-                  }
-                  else {
-                     if(reload) {
-                        this.dataInit();
-                        return false;
-                     }
-                  }
-
-                  if(cancelReload) {
-                     this.dataInit();
-                  }
-
-               }}
-            />,
-            callback: (id) => {
-               this._registerDialog = id;
-               localStorage.setItem("smsVisibled",true);
-            },
-            cancel: (options = null) => {
-               localStorage.removeItem("smsVisibled");
-
-               if(cancelReload) {
-                  this.dataInit();
-               }
-            }
-         })
-      }
-      else {
-         this.showModal({
-            reload: false,
-            title: "您已领取优惠券!",
-            coupon: "新车购车优惠券",
-            brand: this.state.userInfo.clue.brand,
-            official_name: this.state.userInfo.clue.official_name
-         })
-      }
-
-   }
-
-   showModal = (options, reload) => {
-      this.setState({
-         pageReload: reload,
-         modalVisible: true,
-         orderInfo: options
-      })
-   }
-
-   hideModal = () => {
-      this.setState({
-         modalVisible: false
-      });
-
-      if(this.state.pageReload) {
-         this.dataInit();
-      }
-   }
-
-   /**
-    * Hide register dialog.
-    */
-   hideRegisterDialg = () => {
-      GDialog.removeDialog(this._registerDialog);
-   }
-
-   /**
-    * Show share dialog.
-    */
-   showShareDialog = () => {
-      // ShareDialogContentComponent.showDialog();
-      GDialog.addDialog({
-         content: <ShareDialogContentComponent cancel={()=>GDialog.removeDialog(this._shareDialog)}/>,
-         showClose: false,
-         callback: (id) => {
-            this._shareDialog = id;
-         }
-      })
-   }
-
-   /**
-    * Route to /rank.
-    */
-   routeToRank = () => {
-      this.props.history.push({
-         pathname: '/rank'
-      })
-   }
-
-}
-
-const FRIEND_PRESENT_LIST_COMPONENT_TITLE = {
-   imgUrl: "static/system/my_prevince_list_title.png",
-   width: 249,
-   height: 36
-}
-
-function mapStateToProps(state) {
-   return {
-      num: state.test
->>>>>>> abb58e72a8a3f37d5e13f8ed9e1f432211298813
    }
 }
-// export default withRouter(App)
-export default connect(mapStateToProps,test)(withRouter(App))

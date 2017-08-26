@@ -1,104 +1,14 @@
-@import './components/RegisterComponent.less';
-@import './components/SubscribeComponent.less';
-@import './components/FriendPresentListComponent.less';
-
-@green: #41ac95;
-@red: #fe4451;
-
-.person-index {
-   position: relative;
+#app{
+   width: 100%;
    min-height: 100vh;
-   background: #f6eeeb;
 
-   .index-container {
-      padding-top: 104px;
-
-      .header-container {
-         position: relative;
-         width: 100%;
-         height: 478px;
-         background-image: url(../../static/system/header_bg.jpg);
-         background-size: 100%;
-         background-repeat: no-repeat;
-
-         .active-rule-btn {
-            position: absolute;
-            top: 221px;
-            right: 20px;
-            color: @green;
-            font-size: 36px;
-
-            & >span {
-               text-decoration: underline;
-            }
-
-            .icon-info {
-               font-weight: bold;
-               font-size: 36px;
-            }
-
-         }
-      }
-
-      .content-container {
-         width: 100%;
-
-         .content-slogan {
-            font-size: 36px;
-            font-weight: bold;
-            color: #444444;
-            padding-top: 25px;
-         }
-
-         .person-info {
-            color: #444444;
-            font-size: 30px;
-            padding-top: 25px;
-
-            .rose-number, .rank-number {
-               color: @red;
-               font-size: 36px;
-            }
-
-            .view-rank-btn {
-               color: @green;
-               text-decoration: underline;
-            }
-         }
-
-         .share-btn {
-            width: 340px;
-            height: 94px;
-            background-color: @red;
-            border-radius: 8px;
-            margin: 45px auto;
-            position: relative;
-
-            .share-btn-bg {
-               width: 235px;
-               height: 39px;
-               background-image: url( ../../static/system/share_btn_bg.png);
-               background-size: 100% 100%;
-               background-repeat: no-repeat;
-               margin: 0 auto;
-               position: relative;
-               top:  27px;
-            }
-         }
-
-         .register-btn {
-            color: @green;
-            text-decoration: underline;
-            font-size: 30px;
-         }
-
-         .jmc-skip {
-            font-size: 30px;
-            color: @red;
-            padding-top: 0.3rem;
-            display: inline-block;
-            text-decoration: underline;
-         }
-      }
+   .root-route-view{
+      width: 100%;
+      box-sizing: border-box;
+   }
+   .padding180px {
+      padding-left: 180px;
    }
 }
+
+@import './components/index.less';
