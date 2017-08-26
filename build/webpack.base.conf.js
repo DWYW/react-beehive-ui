@@ -2,7 +2,6 @@ var config = require('../config')
 var autoprefixer = require('autoprefixer')
 var path = require('path')
 var webpack = require('webpack')
-const pxtorem = require('postcss-pxtorem')
 
 var projectRoot = path.resolve(__dirname, '../')
 
@@ -27,15 +26,11 @@ var autoprefixerConfig = {
    remove: true
 }
 
-var pxtoremConfig = {
-   rootValue: 100,
-   propWhiteList: []
-}
-
 module.exports = {
    entry: {
       react:["react", "prop-types", "react-router", "react-redux", "redux"],
-      moment: ["moment"],
+      beehive: ['./src/beehive/index.js'],
+      highlight: ['highlight.js'],
       app: './src/entry.js'
    },
    output: {
@@ -45,7 +40,7 @@ module.exports = {
       chunkFilename: '[name].[chunkhash:5].chunk.js'
    },
    resolve: {
-      extensions: ['.web.js', '.js', '.jsx', '.json'],
+      extensions: ['.js', '.jsx', '.json'],
       enforceExtension: false,
       modules: [path.join(__dirname, '../node_modules')],
       alias: {
@@ -54,7 +49,6 @@ module.exports = {
          'components': path.resolve(__dirname, '../src/components'),
          'common': path.resolve(__dirname, '../src/common'),
          'i18n': path.resolve(__dirname, '../src/i18n'),
-         'mobileUI': path.resolve(__dirname, '../src/mobileUI'),
          'beehive': path.resolve(__dirname, '../src/beehive')
       }
    },
@@ -93,8 +87,7 @@ module.exports = {
                   loader: "postcss-loader",
                   options: {
                      plugins: [
-                        autoprefixer(autoprefixerConfig),
-                        pxtorem(pxtoremConfig)
+                        autoprefixer(autoprefixerConfig)
                      ]
                   }
                }, "less-loader"]
@@ -105,8 +98,7 @@ module.exports = {
                   loader: "postcss-loader",
                   options: {
                      plugins: [
-                        autoprefixer(autoprefixerConfig),
-                        pxtorem(pxtoremConfig)
+                        autoprefixer(autoprefixerConfig)
                      ]
                   }
                }, "sass-loader"]
@@ -115,7 +107,7 @@ module.exports = {
    },
    plugins: [
       new webpack.optimize.CommonsChunkPlugin({
-         names: ["react", "moment"],
+         names: ["highlight", "beehive", "react"],
          minChunks: Infinity
       })
    ]

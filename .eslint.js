@@ -19,8 +19,8 @@ module.exports = {
    ],
 
    "globals": {
-      "WeixinJSBridge": true,
-      "wx": true
+      // "WeixinJSBridge": true,
+      // "wx": true
    },
 
    "rules": {
@@ -45,9 +45,9 @@ module.exports = {
          "words": true,
          "nonwords": false
       }], //对一元运算符的间隙限制
-      // "camelcase": [1, {
-      //    "properties": "always"
-      // }], //驼峰命名
+      "camelcase": [1, {
+         "properties": "always"
+      }], //驼峰命名
       "no-multiple-empty-lines": [1, {
          max: 1
       }], //最大空行数
