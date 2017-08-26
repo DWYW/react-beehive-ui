@@ -10,7 +10,9 @@ import BHRadio from './radio/BHRadio';
 import RadioGroup from './radio/RadioGroup';
 import BHSelect from  './select/BHSelect';
 import Notification from './notification/';
-import Dialog from './dialog/'
+import Dialog from './dialog/';
+import Tabs from './tabs/Tabs';
+import TabItem from './tabs/TabItem';
 
 import './index.less';
 
@@ -27,5 +29,7 @@ module.exports = {
    RadioGroup,
    BHSelect,
    Notification,
-   Dialog
+   Dialog,
+   Tabs,
+   TabItem
 }
