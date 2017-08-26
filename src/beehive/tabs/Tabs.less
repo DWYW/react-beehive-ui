@@ -1,0 +1,47 @@
+@import '../variables.less';
+
+.beehive-tabs {
+   background-color: #ffffff;
+
+   .tabs-container {
+      width: 100%;
+      border-bottom: 1px solid @borderColor;
+
+      .label-container {
+         padding: 6px 15px;
+         display: inline-block;
+         margin-bottom: -1px;
+         border-radius: 4px 4px 0 0;
+         box-sizing: border-box;
+         cursor: pointer;
+
+         &:hover {
+            background-color: fadeout(@borderColor, 50%);
+         }
+
+         &.actived {
+            border: 1px solid @borderColor;
+            border-bottom-color: #ffffff;
+            color: @primaryColor;
+
+            &:hover {
+               background-color: #ffffff
+            }
+            // background-color: fadeout(@primaryColor, 50%);
+         }
+
+      }
+   }
+
+   &.is-line .label-container {
+      &:hover {
+         background-color: transparent;
+         border-bottom: 1px solid #333333;
+      }
+
+      &.actived {
+         border-color: transparent;
+         border-bottom-color: @primaryColor;
+      }
+   }
+}

@@ -4,7 +4,7 @@
 import React from "react"
 // import {Route, Link} from 'react-router-dom'
 
-import {BHButton, BHInput, NumberInput, BHTree, BHCheckBox, BHSwitch, BHSelect, Notification, BHRadio, RadioGroup} from './beehive/'
+import {BHButton, BHInput, NumberInput, BHTree, BHCheckBox, BHSwitch, BHSelect, Notification, BHRadio, RadioGroup, Tabs, TabItem} from './beehive/'
 // import utils from './common/utils/'
 
 export default class App extends React.Component {
@@ -168,6 +168,26 @@ export default class App extends React.Component {
                   <BHRadio value="radio2">radio2</BHRadio>
                </RadioGroup>
 
+            </div>
+
+            <div>
+               <Tabs style={{width: '320px', padding: "5px", boxSizing: 'border-box'}}>
+                  <TabItem label="tab1">
+                     <div>tab1</div>
+                  </TabItem>
+                  <TabItem label="tab2">
+                     <div>tab2</div>
+                  </TabItem>
+               </Tabs>
+
+               <Tabs className="is-line" style={{width: '320px', padding: "5px", boxSizing: 'border-box'}}>
+                  <TabItem label="tab1">
+                     <div>tab1</div>
+                  </TabItem>
+                  <TabItem label="tab2">
+                     <div>tab2</div>
+                  </TabItem>
+               </Tabs>
             </div>
 
          </div>
