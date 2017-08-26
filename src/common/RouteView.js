@@ -1,7 +1,9 @@
-import BHUtil from 'beehive/util/BHUtil';
+import UIUtil from './utils/UIUtil';
 import Cookie from 'common/Cookie';
-import React from 'react'
-import {Route, Redirect, Switch} from 'react-router-dom'
+import React from 'react';
+import {Route, Redirect, Switch} from 'react-router-dom';
+
+const defaultPathName = '/login'
 
 class RouteView extends React.Component {
    render() {
@@ -13,7 +15,7 @@ class RouteView extends React.Component {
       })
 
       return (
-         <div className={BHUtil.combineClassnames('beehive-route-view',className)}>
+         <div className={UIUtil.combineClassnames('beehive-route-view',className)}>
             <Switch>
                {publicRoutes.map((route) => (
                   <Route path={route.path} key={route.path} exact={route.exact} component={route.component}/>
@@ -25,7 +27,7 @@ class RouteView extends React.Component {
                         <route.component {...props} routes={route.childrens} params={route.params}/>
                      ) : (
                         <Redirect to={{
-                           pathname: '/login',
+                           pathname: defaultPathName,
                            state: {from: props.location}
                         }}/>
                      )

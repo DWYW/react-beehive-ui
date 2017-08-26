@@ -1,4 +1,19 @@
+@import '../mobileUI/index/index.less';
 @import './base.less';
 @import '../assets/iconfont.css';
-@import './hlgt_default.css';
-@import './app.less';
+@import './components/FixedHeadComponent.less';
+@import './components/FooterComponent.less';
+@import './components/ActiveRuleComponent.less';
+@import './components/ShareDialogContentComponent.less';
+
+.am-picker-popup-mask, .am-picker-popup-wrap {
+   z-index: 99999 !important;
+}
+
+.am-toast {
+   z-index: 99999 !important;
+}
+
+.am-modal-wrap, .am-modal-mask {
+   z-index: 99999 !important;
+}
